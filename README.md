@@ -7,6 +7,9 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R-CMD-check](https://github.com/llrs/bugRzilla/workflows/R-CMD-check/badge.svg)](https://github.com/llrs/bugRzilla/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/llrs/bugRzilla/branch/master/graph/badge.svg)](https://codecov.io/gh/llrs/bugRzilla?branch=master)
 <!-- badges: end -->
 
 The goal of bugRzilla is to provide a package to download and analyze
