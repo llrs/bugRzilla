@@ -22,3 +22,5 @@ Suggests:
     rmarkdown
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+URL: https://github.com/llrs/bugRzilla
+BugReports: https://github.com/llrs/bugRzilla/issues
