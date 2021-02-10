@@ -1,6 +1,7 @@
 #' @importFrom xml2 xml_find_all xml_children xml_attrs xml_child
+#' @importFrom methods is
 parse_issue <- function(xml) {
-    stopifnot(is(xml, "xml_document"))
+    stopifnot(methods::is(xml, "xml_document"))
 
     xml2 <- xml2::xml_find_all(xml, "./bug/*")
 
@@ -15,16 +16,36 @@ parse_issue <- function(xml) {
     values <- c(values, who)
 
     long_desc <- xml2[names %in% "long_desc"]
-    ld <- sapply(long_desc, parse_long_desc)
+    ld <- lapply(long_desc, parse_long_desc)
+    comments <- as.data.frame(t(simplify2array(ld)))
     attachment <- xml2[names %in% "attachment"]
-    at <- sapply(attachment, parse_attachment)
+    at <- lapply(attachment, parse_attachment)
+    attachments <- as.data.frame(t(simplify2array(at)))
+    values <- as.data.frame(as.list(values))
+    out <- cbind.data.frame(comments, values)
+    out <- merge(out, attachments, all = TRUE, sort = FALSE,
+                 by = "attachid")
+    out
 }
 
 
 parse_long_desc <- function(x) {
-
+    x <- xml2::xml_children(x)
+    values <- xml2::xml_text(x)
+    names(values) <- xml2::xml_name(x)
+    who <- xml2::xml_attr(xml2::xml_find_all(x, "./who"), "name")
+    values <- c(values, "name" = who)
+    if (!"attachid" %in% names(values)) {
+        # Assumes that always there values appear on the same order
+        values <- c(values[1:2], "attachid" =  NA, values[3:5])
+    }
+    values
 }
 
 parse_attachment <- function(x) {
-
+    attachment_attr <- xml2::xml_attrs(x)
+    x <- xml2::xml_children(x)
+    values <- xml2::xml_text(x)
+    names(values) <- xml2::xml_name(x)
+    c(attachment_attr, values)
 }
