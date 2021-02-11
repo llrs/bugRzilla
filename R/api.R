@@ -16,26 +16,54 @@ headers <- httr::add_headers("X-BUGZILLA-API-KEY" = Sys.getenv("R_BUGZILLA"),
 #' @param key API key to check.
 #' @return TRUE invisibly if the actions are performed.
 #' @rdname authentication
+#' @importFrom cli cli_ul
 #' @export
-create_bugzilla_key <- function(host = "https://bugs.r-project.org/bugzilla/") {
+create_bugzilla_key <- function(host) {
+    host <- missing_host(host)
     url <- paste0(host, "userprefs.cgi?tab=apikey")
     browseURL(url)
-    ui_todo(c(" Activate the API key and save it on .Renviron as R_BUGZILLA.\n",
-            "\tusethis::edit_r_environ() might come handy"))
-    ui_todo(" Restart R session so that changes take effect.")
+    msg <- c("Activate the API key and save it on .Renviron as R_BUGZILLA.\n",
+             "\t{.code usethis::edit_r_environ()} might come handy")
+    cli::cli_ul(paste0(msg, collapse = ""))
+    cli::cli_ul("Restart R session so that changes take effect.")
     invisible(TRUE)
 }
 
 #' @name authentication
+#' #' @importFrom cli cli_alert_danger cli_alert_success
 #' @export
-check_authentication <- function(key = Sys.getenv("R_BUGZILLA"),
-                                 host = "https://bugs.r-project.org/bugzilla/") {
+check_authentication <- function(key = Sys.getenv("R_BUGZILLA"), host) {
+    host <- missing_host(host)
     whoami <- httr::GET(paste0(host, "rest/whoami"),
                         httr::add_headers("X-BUGZILLA-API-KEY" = key,
                                           Application = "https://github.com/llrs/bugRzilla/"))
     if ("error" %in% names(httr::content(whoami))) {
-        ui_fail(" Not authenticated.")
+        cli::cli_alert_danger("Not authenticated.")
     }
-    ui_done(" Authenticated!")
+    cli::cli_alert_success("Authenticated!")
     invisible(TRUE)
+}
+
+#' Check API version
+#'
+#' Check if the package is compatible with the API it points to.
+#' @return TRUE if it matches with the version developed, FALSE if inot.
+#' @export
+check_api_version <- function(host) {
+    host <- missing_host(host)
+    version <- httr::GET(paste0(host, "rest/version"))
+    httr::content(version)$version != "5.1.2+"
+}
+
+#' Check last audit
+#'
+#' Check when was the last audit
+#' @return A date.
+#' @export
+check_last_audit <- function(product, host) {
+    host <- missing_host(host)
+    product <- missing_product(product)
+    audit <- httr::GET(paste0(host, "rest/last_audit_time"),
+                         class = product)
+    as.POSIXct(httr::content(audit)$last_audit_time)
 }
