@@ -14,3 +14,6 @@ get_issue(issue, url = "https://bugs.r-project.org/bugzilla/")
 \description{
 Get information of a single issue
 }
+\examples{
+gi <- get_issue(1)
+}

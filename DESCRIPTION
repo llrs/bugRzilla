@@ -9,7 +9,9 @@ BugReports: https://github.com/llrs/bugRzilla/issues
 Imports: 
     xml2 (>= 1.3.2),
     httr (>= 1.4.2),
-    methods
+    methods,
+    cli (>= 2.3.0),
+    crayon (>= 1.4.1)
 Suggests: 
     covr,
     knitr,
