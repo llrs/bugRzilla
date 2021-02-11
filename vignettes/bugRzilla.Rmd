@@ -17,3 +17,42 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(bugRzilla)
 ```
+
+# Introduction
+
+Some time ago the R core team [requested](https://developer.r-project.org/Blog/public/2019/10/09/r-can-use-your-help-reviewing-bug-reports/index.html) help with bugs in bugzilla. Some time later on a [thank you post](https://developer.r-project.org/Blog/public/2019/12/16/thanks-for-reviewing-bug-reports/index.html) they reported bugs closed over time. Which pointed out that we, users, package developer might not be helping enough. This packages tries to lower the barrier to improve R by finding bugs, testing and checking they are reproducible.
+
+To do so this package is to support ease the interaction with bugzilla for a user who wants to:
+
+-   see what happened/what's happening.
+
+-   submit/validate/comment on existing issues.
+
+To do so it uses the Bugzilla API[^1] and sometimes the accessible xml files.
+
+[^1]: The full documentation of the API is [here](https://bugzilla.readthedocs.io/en/latest/api/index.html "API documentation").
+
+# The package
+
+## Authentication
+
+Some queries do not require authenticatication but some do. To set up an authentication you'll need an user (You have to [ask one](mailito:bug-report-request@r-project.org)), and then create an API key.
+
+``` {.r}
+create_api_key()
+```
+
+This will ask you to save your API key to `.Renviron`. To check that the api key is working (after resetting the R session) you have:
+
+``` {.r}
+check_key()
+```
+
+## Getting data
+
+If you don't want much information but want's to know about an issue you have `get_issue()` :
+
+```{r get_issue}
+issue1 <- get_issue(1)
+issue1[, 1:5]
+```
