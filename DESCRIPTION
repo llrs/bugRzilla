@@ -16,7 +16,8 @@ Imports:
     cli,
     httr,
     methods,
-    xml2
+    xml2,
+    utils
 Suggests: 
     covr,
     knitr,

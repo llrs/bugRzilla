@@ -4,12 +4,12 @@
 \alias{get_issue}
 \title{Get information of a single issue}
 \usage{
-get_issue(issue, url = "https://bugs.r-project.org/bugzilla/")
+get_issue(issue, host)
 }
 \arguments{
 \item{issue}{Number of the issue}
 
-\item{url}{Url of the website.}
+\item{host}{Url of the website.}
 }
 \description{
 Get information of a single issue

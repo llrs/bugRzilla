@@ -17,6 +17,7 @@ headers <- httr::add_headers("X-BUGZILLA-API-KEY" = Sys.getenv("R_BUGZILLA"),
 #' @return TRUE invisibly if the actions are performed.
 #' @rdname authentication
 #' @importFrom cli cli_ul
+#' @importFrom utils browseURL
 #' @export
 create_bugzilla_key <- function(host) {
     host <- missing_host(host)

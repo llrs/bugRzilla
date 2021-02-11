@@ -2,16 +2,9 @@
 % Please edit documentation in R/api.R
 \name{create_bugzilla_key}
 \alias{create_bugzilla_key}
-\alias{authentication}
-\alias{check_authentication}
 \title{Authentication}
 \usage{
-create_bugzilla_key(host = "https://bugs.r-project.org/bugzilla/")
-
-check_authentication(
-  key = Sys.getenv("R_BUGZILLA"),
-  host = "https://bugs.r-project.org/bugzilla/"
-)
+create_bugzilla_key(host)
 }
 \arguments{
 \item{host}{URL of the bugzilla instance.}

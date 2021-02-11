@@ -9,7 +9,6 @@ post_bug <- function(description, summary, component, ...,
     version <- missing_version(version)
     host <- missing_host(host)
     product <- missing_product(product)
-    stopifnot(is.numeric(issue), all(issue > 0))
     url <- paste0(host, "rest/bug")
     bugs <- httr::POST(url, product = product,
                        component = component,
