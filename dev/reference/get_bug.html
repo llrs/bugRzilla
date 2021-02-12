@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • bugRzilla</title>
+<title>Get information of issues — get_bug • bugRzilla</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Get information of issues — get_bug" />
+<meta property="og:description" content="Retrieve data from the issues posted." />
 
 
 <meta name="robots" content="noindex">
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -111,96 +112,43 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Get information of issues</h1>
+    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/get_bug.R'><code>R/get_bug.R</code></a></small>
+    <div class="hidden name"><code>get_bug.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Retrieve data from the issues posted.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>get_bug</span><span class='op'>(</span><span class='va'>issue</span>, <span class='va'>host</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="authentication.html">create_bugzilla_key()</a></code> <code><a href="authentication.html">check_authentication()</a></code> </p>
-        </td>
-        <td><p>Authentication</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bugRzilla.html">bugRzilla</a></code> </p>
-        </td>
-        <td><p>bugRzilla: A package to interact with Bugzilla.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="check_api_version.html">check_api_version()</a></code> </p>
-        </td>
-        <td><p>Check API version</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="check_last_audit.html">check_last_audit()</a></code> </p>
-        </td>
-        <td><p>Check last audit</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_bug.html">get_bug()</a></code> </p>
-        </td>
-        <td><p>Get information of issues</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_comment.html">get_comment()</a></code> </p>
-        </td>
-        <td><p>Retrieve comment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_history.html">get_history()</a></code> </p>
-        </td>
-        <td><p>Provide information about the history of an issue.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_issue.html">get_issue()</a></code> </p>
-        </td>
-        <td><p>Get information of a single issue</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="post_bug.html">post_bug()</a></code> </p>
-        </td>
-        <td><p>Open an issue.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="post_comment.html">post_comment()</a></code> </p>
-        </td>
-        <td><p>Post a comment</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>issue</th>
+      <td><p>Number of the issue.</p></td>
+    </tr>
+    <tr>
+      <th>host</th>
+      <td><p>URL of the bugzilla instance if missing the R bugzilla is assumed.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data.frame with all the information available and ordered by comment.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>get_issue() for the equivalent without using the API.</p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>gi</span> <span class='op'>&lt;-</span> <span class='fu'>get_bug</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in named(list(...)): argument is missing, with no default</span></div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
