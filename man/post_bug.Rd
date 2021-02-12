@@ -7,6 +7,9 @@
 post_bug(text, title, component, ..., version, product, host)
 }
 \arguments{
+\item{text}{A character vector with the text of the bug you want to
+open.}
+
 \item{title}{A character vector with the title of the bug.}
 
 \item{component}{A character with the component of R you want to fill an issue with.}
@@ -19,9 +22,6 @@ post_bug(text, title, component, ..., version, product, host)
 automatically filled.}
 
 \item{host}{URL of the bugzilla instance if missing the R bugzilla is assumed.}
-
-\item{description}{A character vector with the text of the bug you want to
-open.}
 }
 \value{
 The ID of the issue posted.

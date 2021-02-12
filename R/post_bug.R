@@ -8,7 +8,7 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #'
 #' Guides through the process of creating an issue.
 #' Requires an user and an API key.
-#' @param description A character vector with the text of the bug you want to
+#' @param text A character vector with the text of the bug you want to
 #' open.
 #' @param title A character vector with the title of the bug.
 #' @param component A character with the component of R you want to fill an issue with.
@@ -17,6 +17,7 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' automatically filled.
 #' @param ... Named arguments passed to the API [check documentation](https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html)
 #' @inheritParams create_bugzilla_key
+#' @importFrom utils select.list
 #' @export
 #' @seealso To obtain and use the API key see create_bugzilla_key().
 #' @return The ID of the issue posted.

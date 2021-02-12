@@ -1,6 +1,11 @@
+#' Retrieve comment
+#'
+#' Get comments from an issue or by id.
+#' @param comment A character with the id of the comment eg. "1".
 #' @inheritParams get_issue
 #' @inheritParams create_bugzilla_key
 #' @export
+#' @return All the available information.
 get_comment <- function(issue, comment, host) {
     host <- missing_host(host)
     if (missing(comment)) {
@@ -12,7 +17,12 @@ get_comment <- function(issue, comment, host) {
     comments <- httr::content(comments)
 
 }
+#' Post a comment
+#'
+#' Add information to a bug report.
+#' @param is_markdown A logical value saying if it is markdown or not.
 #' @inheritParams get_issue
+#' @inheritParams get_comment
 #' @inheritParams create_bugzilla_key
 #' @return The ID of the comment posted.
 #' @export
