@@ -34,18 +34,10 @@ To do so it uses the Bugzilla API[^1] and sometimes the accessible xml files.
 
 # The package
 
-## Authentication
+Any updates?
 
-Some queries do not require authenticatication but some do. To set up an authentication you'll need an user (You have to [ask one](mailito:bug-report-request@r-project.org)), and then create an API key.
-
-``` {.r}
-create_api_key()
-```
-
-This will ask you to save your API key to `.Renviron`. To check that the api key is working (after resetting the R session) you have:
-
-``` {.r}
-check_key()
+```{r last_audit}
+check_last_audit()
 ```
 
 ## Getting data
@@ -55,4 +47,18 @@ If you don't want much information but want's to know about an issue you have `g
 ```{r get_issue}
 issue1 <- get_issue(1)
 issue1[, 1:5]
+```
+
+## Authentication
+
+Most queries do not require authenticatication but some do. To set up an authentication you'll need a user (You have to [ask one](mailito:bug-report-request@r-project.org)), and then create an API key.
+
+``` {.r}
+create_api_key()
+```
+
+This will ask you to save your API key to `.Renviron`. To check that the api key is working (after resetting the R session) you have:
+
+``` {.r}
+check_key()
 ```
