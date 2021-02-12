@@ -48,4 +48,4 @@ Just after having figured out how to authenticate via the API I realized
 that someone might have done this before. After a brief search I found
 [bugtractr](https://github.com/mvkorpel/bugtractr/): It allows to access
 the same data (only non authenticated requests), last commit 3 years
-ago, no test coverage,
+ago, no test coverage, but author is responsive.
