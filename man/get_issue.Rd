@@ -7,13 +7,20 @@
 get_issue(issue, host)
 }
 \arguments{
-\item{issue}{Number of the issue}
+\item{issue}{Number of the issue.}
 
-\item{host}{Url of the website.}
+\item{host}{URL of the bugzilla instance if missing the R bugzilla is assumed.}
+}
+\value{
+A data.frame with all the information available and ordered by comment.
 }
 \description{
-Get information of a single issue
+Retrieve data of an issue from the xml file associated with it (Doesn't use
+the API).
 }
 \examples{
 gi <- get_issue(1)
+}
+\seealso{
+get_bug() for the equivalent using the API.
 }

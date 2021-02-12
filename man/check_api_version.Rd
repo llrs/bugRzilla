@@ -6,9 +6,15 @@
 \usage{
 check_api_version(host)
 }
+\arguments{
+\item{host}{URL of the bugzilla instance if missing the R bugzilla is assumed.}
+}
 \value{
 TRUE if it matches with the version developed, FALSE if inot.
 }
 \description{
 Check if the package is compatible with the API it points to.
+}
+\examples{
+check_api_version()
 }

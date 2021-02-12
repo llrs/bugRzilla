@@ -1,18 +1,14 @@
 
+# https://stackoverflow.com/questions/52997316/ and
+# https://bugzilla.readthedocs.io/en/latest/api/core/v1/general.html#authentication
 #' @importFrom httr GET POST add_headers
 headers <- httr::add_headers("X-BUGZILLA-API-KEY" = Sys.getenv("R_BUGZILLA"),
                        Application = "https://github.com/llrs/bugRzilla/")
-# https://stackoverflow.com/questions/52997316/ and
-# https://bugzilla.readthedocs.io/en/latest/api/core/v1/general.html#authentication
-# gt <- httr::GET("https://bugs.r-project.org/bugzilla/rest/user/1", headers)
-
-# Get data from endpoints
-# Post comments/bugs (depend on reprex?)
 
 #' Authentication
 #'
 #' Obtain an API key or check if it is working.
-#' @param host URL of the bugzilla instance.
+#' @param host URL of the bugzilla instance if missing the R bugzilla is assumed.
 #' @param key API key to check.
 #' @return TRUE invisibly if the actions are performed.
 #' @rdname authentication
@@ -22,6 +18,11 @@ headers <- httr::add_headers("X-BUGZILLA-API-KEY" = Sys.getenv("R_BUGZILLA"),
 create_bugzilla_key <- function(host) {
     host <- missing_host(host)
     url <- paste0(host, "userprefs.cgi?tab=apikey")
+
+    if (!nzchar(Sys.getenv("R_BUGZILLA"))) {
+        cli::cli_alert_warning("Already found an API key.")
+        return(invisible(TRUE))
+    }
     browseURL(url)
     msg <- c("Activate the API key and save it on .Renviron as R_BUGZILLA.\n",
              "\t{.code usethis::edit_r_environ()} might come handy")
@@ -30,8 +31,8 @@ create_bugzilla_key <- function(host) {
     invisible(TRUE)
 }
 
-#' @name authentication
-#' #' @importFrom cli cli_alert_danger cli_alert_success
+#' @rdname authentication
+#' @importFrom cli cli_alert_danger cli_alert_success
 #' @export
 check_authentication <- function(key = Sys.getenv("R_BUGZILLA"), host) {
     host <- missing_host(host)
@@ -48,8 +49,11 @@ check_authentication <- function(key = Sys.getenv("R_BUGZILLA"), host) {
 #' Check API version
 #'
 #' Check if the package is compatible with the API it points to.
+#' @inheritParams create_bugzilla_key
 #' @return TRUE if it matches with the version developed, FALSE if inot.
 #' @export
+#' @examples
+#' check_api_version()
 check_api_version <- function(host) {
     host <- missing_host(host)
     version <- httr::GET(paste0(host, "rest/version"))
@@ -58,9 +62,13 @@ check_api_version <- function(host) {
 
 #' Check last audit
 #'
-#' Check when was the last audit
+#' Check when was the last audit.
+#' @inheritParams create_bugzilla_key
+#' @param product A character of the product you are reporting about.
 #' @return A date.
 #' @export
+#' @examples
+#' check_last_audit()
 check_last_audit <- function(product, host) {
     host <- missing_host(host)
     product <- missing_product(product)

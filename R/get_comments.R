@@ -1,3 +1,6 @@
+#' @inheritParams get_issue
+#' @inheritParams create_bugzilla_key
+#' @export
 get_comment <- function(issue, comment, host) {
     host <- missing_host(host)
     if (missing(comment)) {
@@ -9,8 +12,10 @@ get_comment <- function(issue, comment, host) {
     comments <- httr::content(comments)
 
 }
-
-#' @return The ID of the comment.
+#' @inheritParams get_issue
+#' @inheritParams create_bugzilla_key
+#' @return The ID of the comment posted.
+#' @export
 post_comment <- function(issue, comment, is_markdown, host) {
     stopifnot(!is.logical(is_markdown))
     host <- missing_host(host)

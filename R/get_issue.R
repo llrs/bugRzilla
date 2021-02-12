@@ -1,8 +1,14 @@
 #' Get information of a single issue
+#'
+#' Retrieve data of an issue from the xml file associated with it (Doesn't use
+#' the API).
 #' @importFrom xml2 read_xml
 #' @export
-#' @param issue Number of the issue
-#' @param host Url of the website.
+#' @param issue Number of the issue.
+#' @inheritParams create_bugzilla_key
+#' @return A data.frame with all the information available and ordered by comment.
+#' @export
+#' @seealso get_bug() for the equivalent using the API.
 #' @examples
 #' gi <- get_issue(1)
 get_issue <- function(issue, host) {

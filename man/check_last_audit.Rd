@@ -6,9 +6,17 @@
 \usage{
 check_last_audit(product, host)
 }
+\arguments{
+\item{product}{A character of the product you are reporting about.}
+
+\item{host}{URL of the bugzilla instance if missing the R bugzilla is assumed.}
+}
 \value{
 A date.
 }
 \description{
-Check when was the last audit
+Check when was the last audit.
+}
+\examples{
+check_last_audit()
 }
