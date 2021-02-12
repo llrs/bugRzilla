@@ -5,6 +5,7 @@
 headers <- httr::add_headers("X-BUGZILLA-API-KEY" = Sys.getenv("R_BUGZILLA"),
                        Application = "https://github.com/llrs/bugRzilla/")
 
+
 #' Authentication
 #'
 #' Obtain an API key or check if it is working.
@@ -36,6 +37,7 @@ create_bugzilla_key <- function(host) {
 #' @export
 check_authentication <- function(key = Sys.getenv("R_BUGZILLA"), host) {
     host <- missing_host(host)
+    httr::handle(host)
     whoami <- httr::GET(paste0(host, "rest/whoami"),
                         httr::add_headers("X-BUGZILLA-API-KEY" = key,
                                           Application = "https://github.com/llrs/bugRzilla/"))

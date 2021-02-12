@@ -32,4 +32,5 @@ Requires an user and an API key.
 }
 \seealso{
 To obtain and use the API key see create_bugzilla_key().
+\href{https://bugs.r-project.org/bugzilla/enter_bug.cgi}{Webpage} for manual entry
 }

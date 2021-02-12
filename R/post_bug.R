@@ -20,6 +20,7 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' @importFrom utils select.list
 #' @export
 #' @seealso To obtain and use the API key see create_bugzilla_key().
+#' [Webpage](https://bugs.r-project.org/bugzilla/enter_bug.cgi) for manual entry
 #' @return The ID of the issue posted.
 post_bug <- function(text, title, component, ...,
                     version, product, host) {

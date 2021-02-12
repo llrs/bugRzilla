@@ -17,6 +17,9 @@ get_issue <- function(issue, host) {
     host <- paste0(host, "show_bug.cgi?id=", issue,
            "&ctype=xml")
     xml <- xml2::read_xml(host)
+    if (length(xml2::xml_attrs(xml_child(xml, "bug"))) != 0) {
+        stop("Issue is not a valid bug Id.", call. = FALSE)
+    }
     issue <- parse_issue(xml)
     cn <- colnames(issue)
     issue <- issue[, !cn %in% c("isprivate", "comment_sort_order")]
