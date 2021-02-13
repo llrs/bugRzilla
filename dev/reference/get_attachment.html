@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check last audit — check_last_audit • bugRzilla</title>
+<title>Retrieve information about attachments — get_attachment • bugRzilla</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Check last audit — check_last_audit" />
-<meta property="og:description" content="Check when was the last audit." />
+<meta property="og:title" content="Retrieve information about attachments — get_attachment" />
+<meta property="og:description" content="Given an issue or an attachment" />
 
 
 <meta name="robots" content="noindex">
@@ -114,23 +114,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check last audit</h1>
-    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/api.R'><code>R/api.R</code></a></small>
-    <div class="hidden name"><code>check_last_audit.Rd</code></div>
+    <h1>Retrieve information about attachments</h1>
+    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/get_attachment.R'><code>R/get_attachment.R</code></a></small>
+    <div class="hidden name"><code>get_attachment.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Check when was the last audit.</p>
+    <p>Given an issue or an attachment</p>
     </div>
 
-    <pre class="usage"><span class='fu'>check_last_audit</span><span class='op'>(</span><span class='va'>product</span>, <span class='va'>host</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_attachment</span><span class='op'>(</span><span class='va'>issue</span>, <span class='va'>attachment</span>, <span class='va'>host</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>product</th>
-      <td><p>A character of the product you are reporting about.</p></td>
+      <th>issue</th>
+      <td><p>Number of the issue.</p></td>
+    </tr>
+    <tr>
+      <th>attachment</th>
+      <td><p>A numeric ID of the attachment.</p></td>
     </tr>
     <tr>
       <th>host</th>
@@ -140,11 +144,26 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A date.</p>
+    <p>A data.frame with the information available.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>check_last_audit</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "2021-02-12 16:36:11 UTC"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>get_attachment</span><span class='op'>(</span>issue <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   is_private             summary size
+#&gt; 1      FALSE test attachment ...  134
+#&gt;                                                                                                                                                                                   data
+#&gt; 1 I2luY2x1ZGUgPFJpbnRlcm5hbHMuaD4KClNFWFAgbXlFdmFsKFNFWFAgRk4sIFNFWFAgZmlyc3RfYXJnKSB7CiAgcmV0dXJuIGV2YWwoTENPTlMoRk4sIENPTlMoZmlyc3RfYXJnLCBSX05pbFZhbHVlKSksIFJfR2xvYmFsRW52KTsKfQo=
+#&gt;   creator id is_obsolete    last_change_time flags file_name is_patch bug_id
+#&gt; 1   admin  1       FALSE 2010-02-16 17:43:29    NA      ed.c    FALSE      1
+#&gt;   content_type       creation_time
+#&gt; 1   text/plain 2010-02-16 17:42:59</div><div class='input'><span class='fu'>get_attachment</span><span class='op'>(</span>attachment <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   flags bug_id is_patch file_name       creation_time content_type
+#&gt; 1    NA      1    FALSE      ed.c 2010-02-16 17:42:59   text/plain
+#&gt;               summary is_private size
+#&gt; 1 test attachment ...      FALSE  134
+#&gt;                                                                                                                                                                                   data
+#&gt; 1 I2luY2x1ZGUgPFJpbnRlcm5hbHMuaD4KClNFWFAgbXlFdmFsKFNFWFAgRk4sIFNFWFAgZmlyc3RfYXJnKSB7CiAgcmV0dXJuIGV2YWwoTENPTlMoRk4sIENPTlMoZmlyc3RfYXJnLCBSX05pbFZhbHVlKSksIFJfR2xvYmFsRW52KTsKfQo=
+#&gt;   is_obsolete    last_change_time creator id
+#&gt; 1       FALSE 2010-02-16 17:43:29   admin  1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
