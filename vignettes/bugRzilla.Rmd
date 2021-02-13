@@ -37,7 +37,7 @@ To do so it uses the Bugzilla API[^1] and sometimes the accessible xml files.
 
 # The package
 
-Any updates?
+We can check if there has been an update recently with:
 
 ```{r last_audit}
 check_last_audit()
@@ -45,11 +45,66 @@ check_last_audit()
 
 ## Getting data
 
-If you don't want much information but want's to know about an issue you have `get_issue()` :
+### Issues
+
+To get information about which issues exists you can call `get_bug()` :
+
+```{r bugs}
+bugs <- get_bug(1:100)
+head(bugs)
+plot(bugs$id, bugs$creation_time, 
+     main = "Bug ID vs creation time", xlab = "ID", 
+     ylab = "Creation Time")
+```
+
+We can see that the first issue is created in 2010 while the next issues are from before 2000.
+This is because the first issues is a test and next issues were ported from jitterbug.
+
+We can also see that there are some blank spaces between bugs ids.
+Perhaps some reports where deleted or simply they didn't got filled.
+
+There's information about who created, about what, version, resolution, priority...
+
+### Comments
+
+We can now collect information about comments on issues:
+
+```{r get-commenti}
+get_comment(issue = 1)
+```
+
+Or if we know the id of the comment, of just that comment:
+
+```{r get-commentc}
+get_comment(comment = 1)
+```
+
+### Attachments
+
+If you look carefully you'll see that the third comment on the first issue has an attachment id.
+We can also explore what it is:
+
+```{r get-attachment}
+get_attachment(issue = 1)
+# Similar to get_comment we can also do
+# get_attachment(attachment = 1)
+```
+
+If you want all the information of an issue including attachments you have `get_issue()` :
 
 ```{r get_issue}
 issue1 <- get_issue(1)
 issue1[, 1:5]
+```
+
+This function doesn't use the API and is slower.
+
+### History
+
+If you want to know what changed you can with `get_history()` :
+
+```{r get-history}
+get_history(issue = 1)
 ```
 
 ## Authentication
