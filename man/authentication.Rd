@@ -18,5 +18,9 @@ check_authentication(key = Sys.getenv("R_BUGZILLA"), host)
 TRUE invisibly if the actions are performed.
 }
 \description{
-Obtain an API key or check if it is working.
+Obtain an API key or check if it can fine one that works for this host and
+the version of the bugzilla provided works with this package.
+}
+\seealso{
+set_key() if you want to temporary use an API key.
 }
