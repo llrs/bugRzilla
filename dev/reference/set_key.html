@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve comment — get_comment • bugRzilla</title>
+<title>Set key to use — set_key • bugRzilla</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Retrieve comment — get_comment" />
-<meta property="og:description" content="Get comments from an issue or by id of the comment." />
+<meta property="og:title" content="Set key to use — set_key" />
+<meta property="og:description" content="If you don't want to have the API key on .Renviron or you want to use another
+API key for bugzilla you can set it up this way. It will store the key in the
+envirnoment which will only work for this R session." />
 
 
 <meta name="robots" content="noindex">
@@ -114,47 +116,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve comment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/get_comments.R'><code>R/get_comments.R</code></a></small>
-    <div class="hidden name"><code>get_comment.Rd</code></div>
+    <h1>Set key to use</h1>
+    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/api.R'><code>R/api.R</code></a></small>
+    <div class="hidden name"><code>set_key.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get comments from an issue or by id of the comment.</p>
+    <p>If you don't want to have the API key on .Renviron or you want to use another
+API key for bugzilla you can set it up this way. It will store the key in the
+envirnoment which will only work for this R session.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_comment</span><span class='op'>(</span><span class='va'>issue</span>, <span class='va'>comment</span>, <span class='va'>host</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>set_key</span><span class='op'>(</span>key <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"R_BUGZILLA"</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>issue</th>
-      <td><p>Number of the issue.</p></td>
-    </tr>
-    <tr>
-      <th>comment</th>
-      <td><p>A character with the id of the comment eg. "1", can be
-missing and it will retrieve all comments.</p></td>
-    </tr>
-    <tr>
-      <th>host</th>
-      <td><p>URL of the bugzilla instance if missing the R bugzilla is assumed.</p></td>
+      <th>key</th>
+      <td><p>The API key you want to use.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>data.frame</code> with creation_time, text, creator, time,
-attachment_id, bug_id.</p>
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <p>TRUE</p>
 
-    <p>It doesn't require being authenticated.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>i1</span> <span class='op'>&lt;-</span> <span class='fu'>get_comment</span><span class='op'>(</span>issue <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='co'># The comments on the first issue</span>
-<span class='va'>c1</span> <span class='op'>&lt;-</span> <span class='fu'>get_comment</span><span class='op'>(</span>comment <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='co'># Just the first comment</span>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
