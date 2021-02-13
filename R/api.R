@@ -3,8 +3,7 @@
 # https://bugzilla.readthedocs.io/en/latest/api/core/v1/general.html#authentication
 #' @importFrom httr GET POST add_headers
 headers <- httr::add_headers("X-BUGZILLA-API-KEY" = Sys.getenv("R_BUGZILLA"),
-                       Application = "https://github.com/llrs/bugRzilla/")
-
+                       "User-Agent" = "https://github.com/llrs/bugRzilla/")
 
 #' Authentication
 #'
