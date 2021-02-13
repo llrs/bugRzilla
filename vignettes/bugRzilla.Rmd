@@ -20,7 +20,10 @@ library(bugRzilla)
 
 # Introduction
 
-Some time ago the R core team [requested](https://developer.r-project.org/Blog/public/2019/10/09/r-can-use-your-help-reviewing-bug-reports/index.html) help with bugs in bugzilla. Some time later on a [thank you post](https://developer.r-project.org/Blog/public/2019/12/16/thanks-for-reviewing-bug-reports/index.html) they reported bugs closed over time. Which pointed out that we, users, package developer might not be helping enough. This packages tries to lower the barrier to improve R by finding bugs, testing and checking they are reproducible.
+Some time ago the R core team [requested](https://developer.r-project.org/Blog/public/2019/10/09/r-can-use-your-help-reviewing-bug-reports/index.html) help with bugs in bugzilla.
+Some time later on a [thank you post](https://developer.r-project.org/Blog/public/2019/12/16/thanks-for-reviewing-bug-reports/index.html) they reported bugs closed over time.
+Which pointed out that we, users, package developer might not be helping enough.
+This packages tries to lower the barrier to improve R by finding bugs, testing and checking they are reproducible.
 
 To do so this package is to support ease the interaction with bugzilla for a user who wants to:
 
@@ -51,13 +54,15 @@ issue1[, 1:5]
 
 ## Authentication
 
-Most queries do not require authenticatication but some do. To set up an authentication you'll need a user (You have to [ask one](mailito:bug-report-request@r-project.org)), and then create an API key.
+Most queries do not require authentication but some do.
+To set up an authentication you'll need a user (You have to ask for an account to bug-report-request\@r-project.org), and then create an API key.
 
 ``` {.r}
 create_api_key()
 ```
 
-This will ask you to save your API key to `.Renviron`. To check that the api key is working (after resetting the R session) you have:
+This will ask you to save your API key to `.Renviron`.
+To check that the api key is working (after resetting the R session) you have:
 
 ``` {.r}
 check_key()
