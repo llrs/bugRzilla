@@ -27,7 +27,7 @@ missing_product <- function(product) {
 flatten_list <- function(x) {
     x[lengths(x) == 0] <- list(NA)
     special <- c("creator_detail", "assigned_to_detail", "depends_on",
-                 "cc_detail", "cc")
+                 "cc_detail", "cc", "changes")
     df <- as.data.frame(x[!names(x) %in% special])
     # If there is a list of multiple elements add it as a list of data.frames.
 
@@ -45,8 +45,19 @@ flatten_list <- function(x) {
     if ("creator_detail" %in% names(x)) {
         df$creator_detail <- list(as.data.frame(x$creator_detail))
     }
+    if ("changes" %in% names(x)) {
+        if (length(x$changes) == 1) {
+            df$changes <- list(as.data.frame(x$changes))
+        } else {
+            df$changes <- list(lapply(x$changes, as.data.frame))
+        }
+    }
     if ("assigned_to_detail" %in% names(x)) {
         df$assigned_to_detail <- list(as.data.frame(x$assigned_to_detail))
     }
     df
+}
+
+time <- function(x) {
+    strptime(x, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
 }

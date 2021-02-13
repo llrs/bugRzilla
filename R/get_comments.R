@@ -14,18 +14,20 @@
 #' c1 <- get_comment(comment = 1) # Just the first comment
 get_comment <- function(issue, comment, host) {
     if (missing(issue) && missing(comment)) {
-        stop("Provide an issue or a comment to retrieve from.")
+        stop("Provide an issue or a comment to retrieve from.", call. = FALSE)
+    }
+    if (!missing(issue) && !missing(comment)) {
+        warning("Issue ID is ignored", call. = FALSE)
     }
     host <- missing_host(host)
-    if (missing(comment)) {
-       comments <- get_commenti(issue = issue, host)
-    }
     if (missing(issue)) {
         comments <- get_commentc(comment = comment, host)
+    } else {
+       comments <- get_commenti(issue = issue, host)
     }
 
-    comments$time <- as.POSIXct(comments$time)
-    comments$creation_time <- as.POSIXct(comments$creation_time)
+    comments$time <- time(comments$time)
+    comments$creation_time <- time(comments$creation_time)
     comments
 }
 

@@ -14,5 +14,8 @@ get_history(issue, host, new_since = NULL)
 \item{new_since}{A character with a Date in YYYY-MM-DD format.}
 }
 \description{
-Provide information about the history of an issue.
+See what has changed of an issue.
+}
+\examples{
+get_history(issue = 1)
 }

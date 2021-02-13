@@ -98,7 +98,7 @@ check_last_audit <- function(product, host) {
     product <- missing_product(product)
     audit <- httr::GET(paste0(host, "rest/last_audit_time"),
                          class = product)
-    as.POSIXct(httr::content(audit)$last_audit_time)
+    time(httr::content(audit)$last_audit_time)
 }
 
 

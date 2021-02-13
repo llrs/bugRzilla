@@ -31,15 +31,15 @@ parse_issue <- function(xml) {
         attachments <- as.data.frame(t(simplify2array(at)))
         out <- merge(out, attachments, all = TRUE, sort = FALSE,
                      by = "attachid", suffixes = c(".comment", ".attachment"))
-        out$delta_ts.comment <- as.POSIXct(out$delta_ts.comment)
-        out$delta_ts.attachment <- as.POSIXct(out$delta_ts.attachment)
-        out$date <- as.POSIXct(out$date)
+        out$delta_ts.comment <- time(out$delta_ts.comment)
+        out$delta_ts.attachment <- time(out$delta_ts.attachment)
+        out$date <- time(out$date)
     }
     out$comment_count <- as.numeric(out$comment_count)
     out$commentid <- as.numeric(out$commentid)
     out$attachid <- as.numeric(out$attachid)
-    out$bug_when <- as.POSIXct(out$bug_when)
-    out$creation_ts <- as.POSIXct(out$creation_ts)
+    out$bug_when <- time(out$bug_when)
+    out$creation_ts <- time(out$creation_ts)
     out
 }
 
