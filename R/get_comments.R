@@ -39,7 +39,7 @@ get_commentc <- function(comment, host) {
     if ("error" %in% names(comments)) {
         stop(comments$message, call. = FALSE)
     }
-    comment_df(comments$comments[[1]])
+    flatten_list(comments$comments[[1]])
 }
 
 get_commenti <- function(issue, host) {
@@ -53,7 +53,7 @@ get_commenti <- function(issue, host) {
         stop(comments$message, call. = FALSE)
     }
 
-    l <- lapply(comments$bugs[[1]]$comments, comment_df)
+    l <- lapply(comments$bugs[[1]]$comments, flatten_list)
     do.call(rbind, l)
 }
 
@@ -77,6 +77,3 @@ post_comment <- function(issue, comment, is_markdown, host) {
     httr::content(comments)$id
 
 }
-comment_df <- function(x) {
-    x[lengths(x) == 0] <- list(NA)
-    as.data.frame(x)}

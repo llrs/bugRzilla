@@ -12,8 +12,14 @@
 get_bug <- function(issue, host) {
     host <- missing_host(host)
     stopifnot(is.numeric(issue), all(issue > 0))
-    url <- paste0(host, "rest/bug")
-    httr::handle(host)
-    bugs <- httr::GET(host, path = "rest/bug", config = list(headers), id = issue,)
-    bugs <- httr::content(bugs)
+    issues <- paste0(issue, collapse = ",")
+    url <- paste0(host, "rest/bug?id=", issues)
+    bugs <- httr::GET(url, headers)
+    bugs <- httr::content(bugs)$bugs
+    for (i in seq_along(bugs)) {
+        x <- flatten_list(bugs[[i]])
+        bugs[[i]] <- x[, match(names(bugs[[i]]), colnames(x))]
+    }
+    out <- do.call(rbind, bugs)
+    out
 }

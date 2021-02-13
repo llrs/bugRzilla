@@ -22,3 +22,31 @@ missing_product <- function(product) {
     }
     product
 }
+
+
+flatten_list <- function(x) {
+    x[lengths(x) == 0] <- list(NA)
+    special <- c("creator_detail", "assigned_to_detail", "depends_on",
+                 "cc_detail", "cc")
+    df <- as.data.frame(x[!names(x) %in% special])
+    # If there is a list of multiple elements add it as a list of data.frames.
+
+    if ("depends_on" %in% names(x)) {
+        df$depends_on <- list(unlist(x$depends_on,
+                                    recursive = FALSE,
+                                    use.names = FALSE))
+    }
+    if ("cc" %in% names(x)) {
+        df$cc <- list(unlist(x$cc, recursive = FALSE, use.names = FALSE))
+    }
+    if ("cc_detail" %in% names(x)) {
+        df$cc_detail <- list(as.data.frame(x$cc_detail))
+    }
+    if ("creator_detail" %in% names(x)) {
+        df$creator_detail <- list(as.data.frame(x$creator_detail))
+    }
+    if ("assigned_to_detail" %in% names(x)) {
+        df$assigned_to_detail <- list(as.data.frame(x$assigned_to_detail))
+    }
+    df
+}
