@@ -1,7 +1,7 @@
 #' Get information of a single issue
 #'
 #' Retrieve data of an issue from the xml file associated with it (Doesn't use
-#' the API).
+#' the API). Note that it is slower than get_comment() but provides more information.
 #' @importFrom xml2 read_xml
 #' @export
 #' @param issue Number of the issue.
