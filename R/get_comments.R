@@ -61,8 +61,9 @@ get_commenti <- function(issue, host) {
 #'
 #' Add information to a bug report.
 #' @param is_markdown A logical value saying if it is markdown or not.
-#' @inheritParams get_issue
-#' @inheritParams get_comment
+#' @param issue A numeric value of the issue ID where the comment should be
+#' posted.
+#' @param comment The text you want to post.
 #' @inheritParams create_bugzilla_key
 #' @return The ID of the comment posted.
 #' @export

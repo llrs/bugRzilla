@@ -7,9 +7,10 @@
 post_comment(issue, comment, is_markdown, host)
 }
 \arguments{
-\item{issue}{Number of the issue.}
+\item{issue}{A numeric value of the issue ID where the comment should be
+posted.}
 
-\item{comment}{A character with the id of the comment eg. "1".}
+\item{comment}{The text you want to post.}
 
 \item{is_markdown}{A logical value saying if it is markdown or not.}
 
