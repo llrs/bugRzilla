@@ -1,0 +1,41 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://bugs.r-project.org/bugzilla/rest/bug/1/comment
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-BUGZILLA-API-KEY: Removing this header too just in case
+      User-Agent: https://github.com/llrs/bugRzilla/
+      Authorization: My bearer token is safe
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Sun, 14 Feb 2021 10:10:12 GMT
+      server: gazelle
+      etag: MSekdCtqGyPeOozR7kEd7A
+      content-length: '1321'
+      content-type: application/json; charset=UTF-8
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-login, x-bugzilla-token, x-bugzilla-password, x-bugzilla-api-key
+      access-control-allow-origin: '*'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"comments":{},"bugs":{"1":{"comments":[{"creation_time":"2010-02-15T18:29:54Z","is_markdown":false,"text":"Bug
+        report description.\n\nAnother paragraph.","attachment_id":null,"bug_id":1,"tags":[],"id":1,"creator":"admin@urbanek.info","time":"2010-02-15T18:29:54Z","count":0,"is_private":false},{"count":1,"is_private":false,"id":2,"tags":[],"creator":"admin@urbanek.info","time":"2010-02-15T18:33:25Z","bug_id":1,"text":"Another
+        response ...","is_markdown":false,"creation_time":"2010-02-15T18:33:25Z","attachment_id":null},{"bug_id":1,"is_markdown":false,"creation_time":"2010-02-16T17:42:59Z","text":"Created
+        attachment 1\ntest attachment ...\n\nAttaching a test file ...","attachment_id":1,"is_private":false,"count":2,"time":"2010-02-16T17:42:59Z","id":3,"tags":[],"creator":"admin@urbanek.info"},{"is_markdown":false,"creation_time":"2010-03-09T18:14:23Z","text":"Additional
+        comment ... test, as you may guess ...","attachment_id":null,"bug_id":1,"time":"2010-03-09T18:14:23Z","creator":"simon.urbanek@r-project.org","id":83214,"tags":[],"is_private":false,"count":3},{"creation_time":"2010-03-10T16:54:39Z","text":"Msrking
+        the test bug as fixed.","is_markdown":false,"attachment_id":null,"bug_id":1,"time":"2010-03-10T16:54:39Z","id":83218,"creator":"admin@urbanek.info","tags":[],"is_private":false,"count":4}]}}}'
+  recorded_at: 2021-02-14 10:10:13 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
