@@ -148,22 +148,20 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>get_attachment</span><span class='op'>(</span>issue <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   is_private             summary size
-#&gt; 1      FALSE test attachment ...  134
+</div><div class='output co'>#&gt;   file_name is_patch bug_id flags content_type       creation_time size
+#&gt; 1      ed.c    FALSE      1    NA   text/plain 2010-02-16 17:42:59  134
 #&gt;                                                                                                                                                                                   data
 #&gt; 1 I2luY2x1ZGUgPFJpbnRlcm5hbHMuaD4KClNFWFAgbXlFdmFsKFNFWFAgRk4sIFNFWFAgZmlyc3RfYXJnKSB7CiAgcmV0dXJuIGV2YWwoTENPTlMoRk4sIENPTlMoZmlyc3RfYXJnLCBSX05pbFZhbHVlKSksIFJfR2xvYmFsRW52KTsKfQo=
-#&gt;   creator id is_obsolete    last_change_time flags file_name is_patch bug_id
-#&gt; 1   admin  1       FALSE 2010-02-16 17:43:29    NA      ed.c    FALSE      1
-#&gt;   content_type       creation_time
-#&gt; 1   text/plain 2010-02-16 17:42:59</div><div class='input'><span class='fu'>get_attachment</span><span class='op'>(</span>attachment <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   flags bug_id is_patch file_name       creation_time content_type
-#&gt; 1    NA      1    FALSE      ed.c 2010-02-16 17:42:59   text/plain
-#&gt;               summary is_private size
-#&gt; 1 test attachment ...      FALSE  134
+#&gt;               summary is_private creator id is_obsolete    last_change_time
+#&gt; 1 test attachment ...      FALSE   admin  1       FALSE 2010-02-16 17:43:29</div><div class='input'><span class='fu'>get_attachment</span><span class='op'>(</span>attachment <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   id creator is_obsolete    last_change_time
+#&gt; 1  1   admin       FALSE 2010-02-16 17:43:29
 #&gt;                                                                                                                                                                                   data
 #&gt; 1 I2luY2x1ZGUgPFJpbnRlcm5hbHMuaD4KClNFWFAgbXlFdmFsKFNFWFAgRk4sIFNFWFAgZmlyc3RfYXJnKSB7CiAgcmV0dXJuIGV2YWwoTENPTlMoRk4sIENPTlMoZmlyc3RfYXJnLCBSX05pbFZhbHVlKSksIFJfR2xvYmFsRW52KTsKfQo=
-#&gt;   is_obsolete    last_change_time creator id
-#&gt; 1       FALSE 2010-02-16 17:43:29   admin  1</div></pre>
+#&gt;   size is_private             summary content_type       creation_time
+#&gt; 1  134      FALSE test attachment ...   text/plain 2010-02-16 17:42:59
+#&gt;   file_name bug_id is_patch flags
+#&gt; 1      ed.c      1    FALSE    NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

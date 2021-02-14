@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Provide information about the history of an issue. — get_history • bugRzilla</title>
+<title>Get fields — get_fields • bugRzilla</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Provide information about the history of an issue. — get_history" />
-<meta property="og:description" content="See what has changed of an issue." />
+<meta property="og:title" content="Get fields — get_fields" />
+<meta property="og:description" content="Retrieve possible fields to fill and their values if they are from a closed list." />
 
 
 <meta name="robots" content="noindex">
@@ -114,55 +114,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Provide information about the history of an issue.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/bug_history.R'><code>R/bug_history.R</code></a></small>
-    <div class="hidden name"><code>get_history.Rd</code></div>
+    <h1>Get fields</h1>
+    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/get_fields.R'><code>R/get_fields.R</code></a></small>
+    <div class="hidden name"><code>get_fields.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>See what has changed of an issue.</p>
+    <p>Retrieve possible fields to fill and their values if they are from a closed list.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_history</span><span class='op'>(</span><span class='va'>issue</span>, <span class='va'>host</span>, new_since <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_fields</span><span class='op'>(</span><span class='va'>host</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>issue</th>
-      <td><p>Number of the issue.</p></td>
-    </tr>
-    <tr>
       <th>host</th>
       <td><p>URL of the bugzilla instance if missing the R bugzilla is assumed.</p></td>
     </tr>
-    <tr>
-      <th>new_since</th>
-      <td><p>A character with a Date in YYYY-MM-DD format.</p></td>
-    </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data.frame with three columns, Name of the fields, if it is
+mandatory and the values it can take.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_history</span><span class='op'>(</span>issue <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                  when                         who
-#&gt; 1 2010-02-16 17:43:29          admin@urbanek.info
-#&gt; 2 2010-03-09 18:14:23 simon.urbanek@r-project.org
-#&gt; 3 2010-03-10 16:54:39          admin@urbanek.info
-#&gt; 4 2014-04-19 11:23:06  shanghaihuinanzhen@163.com
-#&gt; 5 2014-04-19 11:25:51  shanghaihuinanzhen@163.com
-#&gt; 6 2014-07-08 07:00:35      kaushjaiswal@gmail.com
-#&gt; 7 2015-12-14 13:44:54  maechler@stat.math.ethz.ch
-#&gt; 8 2018-01-16 16:21:14  maechler@stat.math.ethz.ch
-#&gt;                                                         changes issue
-#&gt; 1 application/octet-stream, attachments.mimetype, 1, text/plain     1
-#&gt; 2                             simon.urbanek@r-project.org, , cc     1
-#&gt; 3                    NEW, status, RESOLVED, FIXED, , resolution     1
-#&gt; 4                                           depends_on, , 15763     1
-#&gt; 5                                           15764, depends_on,      1
-#&gt; 6                                           15862, depends_on,      1
-#&gt; 7                                      RESOLVED, status, CLOSED     1
-#&gt; 8                                    R 2.11.0, version, R 2.y.z     1</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>fields</span> <span class='op'>&lt;-</span> <span class='fu'>get_fields</span><span class='op'>(</span><span class='op'>)</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
