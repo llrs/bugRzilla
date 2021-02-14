@@ -1,3 +1,12 @@
+#' Get fields
+#'
+#' Retrieve possible fields to fill and their values if they are from a closed list.
+#' @inheritParams create_bugzilla_key
+#' @return A data.frame with three columns, Name of the fields, if it is
+#' mandatory and the values it can take.
+#' @export
+#' @examples
+#' fields <- get_fields()
 get_fields <- function(host) {
     host <- missing_host(host)
     url <- paste0(host, "/rest/field/bug")

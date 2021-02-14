@@ -57,9 +57,10 @@ set_key <- function(key = Sys.getenv("R_BUGZILLA")) {
 #' @rdname authentication
 #' @importFrom cli cli_alert_danger cli_alert_success
 #' @export
+#' @examples
+#' check_authentication()
 check_authentication <- function(key = Sys.getenv("R_BUGZILLA"), host) {
     host <- missing_host(host)
-    httr::handle(host)
     whoami <- httr::GET(paste0(host, "rest/whoami"),
                         httr::add_headers("X-BUGZILLA-API-KEY" = key,
                                           "User-agent" = "https://github.com/llrs/bugRzilla/"))
