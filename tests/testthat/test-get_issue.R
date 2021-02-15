@@ -1,7 +1,7 @@
 test_that("get_issue works", {
-    vcr::use_cassette("get_issue", {
-        gi <- get_issue(1)
-    })
+    skip_if_offline()
+    skip_on_cran()
+    gi <- get_issue(1)
     expect_s3_class(gi, "data.frame")
     expect_equal(dim(gi), c(5, 46))
     expect_s3_class(gi$bug_when, "POSIXlt")

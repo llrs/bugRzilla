@@ -4,6 +4,7 @@
 #' @inheritParams get_issue
 #' @param new_since A character with a Date in YYYY-MM-DD format.
 #' @export
+#' @importFrom httr status_code
 #' @examples
 #' get_history(issue = 1)
 get_history <- function(issue, host, new_since = NULL) {
@@ -15,6 +16,10 @@ get_history <- function(issue, host, new_since = NULL) {
      } else {
          url <- paste(url, "?new_since=", new_since)
          history <- httr::GET(url, headers)
+     }
+    if (httr::status_code(history) != 200) {
+        history <- httr::content(history)
+        stop(history$message, call. = FALSE)
     }
     history <- httr::content(history)
     history <- history$bugs[[1]]$history

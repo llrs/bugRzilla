@@ -30,6 +30,10 @@ get_attachmenti <- function(issue, host) {
     url <- paste0(host, "rest/bug/", issue, "/attachment")
     attachments <- httr::GET(url, headers)
     attachments <- httr::content(attachments)
+    if ("error" %in% names(attachments)) {
+        stop(attachments$message, call. = FALSE)
+    }
+
     attachments <- attachments$bugs[[1]]
     for (i in seq_along(attachments)) {
         x <- flatten_list(attachments[[i]])

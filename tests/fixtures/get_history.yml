@@ -1,0 +1,37 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://bugs.r-project.org/bugzilla/rest/bug/1/history
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-BUGZILLA-API-KEY: Removing this header too just in case
+      User-Agent: https://github.com/llrs/bugRzilla/
+      Authorization: My bearer token is safe
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Mon, 15 Feb 2021 18:58:21 GMT
+      server: gazelle
+      etag: P77lijcRhgnDxbKQvkQKRQ
+      content-length: '1253'
+      content-type: application/json; charset=UTF-8
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-login, x-bugzilla-token, x-bugzilla-password, x-bugzilla-api-key
+      access-control-allow-origin: '*'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"bugs":[{"id":1,"history":[{"when":"2010-02-16T17:43:29Z","who":"admin@urbanek.info","changes":[{"field_name":"attachments.mimetype","removed":"application/octet-stream","added":"text/plain","attachment_id":1}]},{"when":"2010-03-09T18:14:23Z","changes":[{"added":"simon.urbanek@r-project.org","field_name":"cc","removed":""}],"who":"simon.urbanek@r-project.org"},{"changes":[{"field_name":"status","removed":"NEW","added":"RESOLVED"},{"added":"FIXED","removed":"","field_name":"resolution"}],"who":"admin@urbanek.info","when":"2010-03-10T16:54:39Z"},{"when":"2014-04-19T11:23:06Z","changes":[{"added":"15763","field_name":"depends_on","removed":""}],"who":"shanghaihuinanzhen@163.com"},{"who":"shanghaihuinanzhen@163.com","changes":[{"added":"15764","removed":"","field_name":"depends_on"}],"when":"2014-04-19T11:25:51Z"},{"when":"2014-07-08T07:00:35Z","changes":[{"removed":"","field_name":"depends_on","added":"15862"}],"who":"kaushjaiswal@gmail.com"},{"changes":[{"removed":"RESOLVED","field_name":"status","added":"CLOSED"}],"who":"maechler@stat.math.ethz.ch","when":"2015-12-14T13:44:54Z"},{"when":"2018-01-16T16:21:14Z","who":"maechler@stat.math.ethz.ch","changes":[{"field_name":"version","removed":"R
+        2.11.0","added":"R 2.y.z"}]}],"alias":[]}]}'
+  recorded_at: 2021-02-15 18:58:22 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4

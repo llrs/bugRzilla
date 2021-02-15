@@ -17,13 +17,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Sun, 14 Feb 2021 10:10:13 GMT
+      date: Mon, 15 Feb 2021 18:58:21 GMT
       server: gazelle
       etag: UESSd+KY0BLnO5bXQ0ff8w
       content-length: '283'
       content-type: application/json; charset=UTF-8
       access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
-        x-bugzilla-login, x-bugzilla-password, x-bugzilla-token, x-bugzilla-api-key
+        x-bugzilla-api-key, x-bugzilla-token, x-bugzilla-password, x-bugzilla-login
       access-control-allow-origin: '*'
       x-content-type-options: nosniff
       x-frame-options: SAMEORIGIN
@@ -31,7 +31,7 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: '{"bugs":{},"comments":{"1":{"creator":"admin@urbanek.info","tags":[],"id":1,"time":"2010-02-15T18:29:54Z","count":0,"is_private":false,"attachment_id":null,"creation_time":"2010-02-15T18:29:54Z","text":"Bug
-        report description.\n\nAnother paragraph.","is_markdown":false,"bug_id":1}}}'
-  recorded_at: 2021-02-14 10:10:13 GMT
+      string: '{"comments":{"1":{"is_private":false,"count":0,"time":"2010-02-15T18:29:54Z","creator":"admin@urbanek.info","tags":[],"id":1,"bug_id":1,"is_markdown":false,"creation_time":"2010-02-15T18:29:54Z","text":"Bug
+        report description.\n\nAnother paragraph.","attachment_id":null}},"bugs":{}}'
+  recorded_at: 2021-02-15 18:58:21 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4

@@ -16,11 +16,16 @@ get_bug <- function(issue, host) {
     url <- paste0(host, "rest/bug?id=", issues)
     bugs <- httr::GET(url, headers)
     bugs <- httr::content(bugs)
+
     if ("error" %in% names(bugs)) {
         stop("Query too long. Reduce the number of issues requested",
              call. = FALSE)
     }
+
     bugs <- bugs$bugs
+    if (length(bugs) == 0) {
+        stop("Bug #", issue, " does not exist.", call. = FALSE)
+    }
 
     for (i in seq_along(bugs)) {
         x <- flatten_list(bugs[[i]])

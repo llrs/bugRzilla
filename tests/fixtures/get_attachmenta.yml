@@ -1,0 +1,37 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://bugs.r-project.org/bugzilla/rest/bug/attachment/1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-BUGZILLA-API-KEY: Removing this header too just in case
+      User-Agent: https://github.com/llrs/bugRzilla/
+      Authorization: My bearer token is safe
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Mon, 15 Feb 2021 18:58:19 GMT
+      server: gazelle
+      etag: p7uMfPg2Y0GxFHR4SuNj9Q
+      content-length: '510'
+      content-type: application/json; charset=UTF-8
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-api-key, x-bugzilla-login, x-bugzilla-password, x-bugzilla-token
+      access-control-allow-origin: '*'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"bugs":{},"attachments":{"1":{"size":134,"data":"I2luY2x1ZGUgPFJpbnRlcm5hbHMuaD4KClNFWFAgbXlFdmFsKFNFWFAgRk4sIFNFWFAgZmlyc3RfYXJnKSB7CiAgcmV0dXJuIGV2YWwoTENPTlMoRk4sIENPTlMoZmlyc3RfYXJnLCBSX05pbFZhbHVlKSksIFJfR2xvYmFsRW52KTsKfQo=","summary":"test
+        attachment ...","is_private":false,"last_change_time":"2010-02-16T17:43:29Z","is_obsolete":false,"creator":"admin@urbanek.info","id":1,"is_patch":false,"bug_id":1,"file_name":"ed.c","flags":[],"creation_time":"2010-02-16T17:42:59Z","content_type":"text/plain"}}}'
+  recorded_at: 2021-02-15 18:58:19 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4

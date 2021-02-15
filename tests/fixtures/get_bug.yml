@@ -1,0 +1,42 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://bugs.r-project.org/bugzilla/rest/bug?id=1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-BUGZILLA-API-KEY: Removing this header too just in case
+      User-Agent: https://github.com/llrs/bugRzilla/
+      Authorization: My bearer token is safe
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Mon, 15 Feb 2021 18:58:20 GMT
+      server: gazelle
+      etag: IjESs3XlLqr6eZ3WcucqpA
+      content-length: '1012'
+      content-type: application/json; charset=UTF-8
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-login, x-bugzilla-password, x-bugzilla-token, x-bugzilla-api-key
+      access-control-allow-origin: '*'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"bugs":[{"creator_detail":{"id":1,"name":"admin@urbanek.info","real_name":"Simon
+        Urbanek"},"qa_contact":"","creation_time":"2010-02-15T18:29:54Z","flags":[],"assigned_to":"admin@urbanek.info","component":"Misc","assigned_to_detail":{"real_name":"Simon
+        Urbanek","name":"admin@urbanek.info","id":1},"id":1,"summary":"Test bug report
+        - summary","priority":"P5","groups":[],"resolution":"FIXED","whiteboard":"","deadline":null,"product":"R","cc":["simon.urbanek@r-project.org"],"is_open":false,"version":"R
+        2.y.z","last_change_time":"2018-01-16T16:21:14Z","dupe_of":null,"platform":"PowerPC","url":"http://url.com/","target_milestone":"---","classification":"Unclassified","severity":"normal","is_confirmed":true,"is_creator_accessible":true,"cc_detail":[{"real_name":"Simon
+        Urbanek","name":"simon.urbanek@r-project.org","id":5}],"alias":[],"is_cc_accessible":true,"status":"CLOSED","op_sys":"Mac
+        OS X v10.4","blocks":[],"see_also":[],"creator":"admin@urbanek.info","keywords":[],"depends_on":[15763,15764,15862]}]}'
+  recorded_at: 2021-02-15 18:58:20 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
