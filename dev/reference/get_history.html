@@ -115,7 +115,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Provide information about the history of an issue.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/bug_history.R'><code>R/bug_history.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/get_history.R'><code>R/get_history.R</code></a></small>
     <div class="hidden name"><code>get_history.Rd</code></div>
     </div>
 
@@ -145,24 +145,24 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>get_history</span><span class='op'>(</span>issue <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                  when                         who
-#&gt; 1 2010-02-16 17:43:29          admin@urbanek.info
-#&gt; 2 2010-03-09 18:14:23 simon.urbanek@r-project.org
-#&gt; 3 2010-03-10 16:54:39          admin@urbanek.info
-#&gt; 4 2014-04-19 11:23:06  shanghaihuinanzhen@163.com
-#&gt; 5 2014-04-19 11:25:51  shanghaihuinanzhen@163.com
-#&gt; 6 2014-07-08 07:00:35      kaushjaiswal@gmail.com
-#&gt; 7 2015-12-14 13:44:54  maechler@stat.math.ethz.ch
-#&gt; 8 2018-01-16 16:21:14  maechler@stat.math.ethz.ch
+</div><div class='output co'>#&gt;                           who                when
+#&gt; 1          admin@urbanek.info 2010-02-16 17:43:29
+#&gt; 2 simon.urbanek@r-project.org 2010-03-09 18:14:23
+#&gt; 3          admin@urbanek.info 2010-03-10 16:54:39
+#&gt; 4  shanghaihuinanzhen@163.com 2014-04-19 11:23:06
+#&gt; 5  shanghaihuinanzhen@163.com 2014-04-19 11:25:51
+#&gt; 6      kaushjaiswal@gmail.com 2014-07-08 07:00:35
+#&gt; 7  maechler@stat.math.ethz.ch 2015-12-14 13:44:54
+#&gt; 8  maechler@stat.math.ethz.ch 2018-01-16 16:21:14
 #&gt;                                                         changes issue
-#&gt; 1 application/octet-stream, attachments.mimetype, 1, text/plain     1
-#&gt; 2                             simon.urbanek@r-project.org, , cc     1
-#&gt; 3                    NEW, status, RESOLVED, FIXED, , resolution     1
-#&gt; 4                                           depends_on, , 15763     1
-#&gt; 5                                           15764, depends_on,      1
-#&gt; 6                                           15862, depends_on,      1
+#&gt; 1 text/plain, 1, attachments.mimetype, application/octet-stream     1
+#&gt; 2                             , cc, simon.urbanek@r-project.org     1
+#&gt; 3                    status, NEW, RESOLVED, , resolution, FIXED     1
+#&gt; 4                                           , depends_on, 15763     1
+#&gt; 5                                           15764, , depends_on     1
+#&gt; 6                                           depends_on, , 15862     1
 #&gt; 7                                      RESOLVED, status, CLOSED     1
-#&gt; 8                                    R 2.11.0, version, R 2.y.z     1</div></pre>
+#&gt; 8                                    R 2.y.z, R 2.11.0, version     1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

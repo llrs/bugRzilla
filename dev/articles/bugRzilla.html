@@ -114,69 +114,76 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bugs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_bug.html">get_bug</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">bugs</span><span class="op">)</span>
-<span class="co">#&gt;        assigned_to flags       creation_time qa_contact</span>
-<span class="co">#&gt; 1            admin    NA 2010-02-15 18:29:54           </span>
-<span class="co">#&gt; 2 jitterbug-import    NA 1998-08-08 03:25:05           </span>
-<span class="co">#&gt; 3 jitterbug-import    NA 1998-08-10 20:23:26           </span>
-<span class="co">#&gt; 4 jitterbug-import    NA 1998-08-13 14:30:36           </span>
-<span class="co">#&gt; 5 jitterbug-import    NA 1998-08-17 05:41:33           </span>
-<span class="co">#&gt; 6 jitterbug-import    NA 1998-08-17 15:57:01           </span>
-<span class="co">#&gt;                                         creator_detail groups priority</span>
-<span class="co">#&gt; 1                              Simon Urbanek, admin, 1     NA       P5</span>
-<span class="co">#&gt; 2 jitterbug-import, 2, Jitterbug compatibility account     NA       P5</span>
-<span class="co">#&gt; 3 2, jitterbug-import, Jitterbug compatibility account     NA       P5</span>
-<span class="co">#&gt; 4 Jitterbug compatibility account, jitterbug-import, 2     NA       P5</span>
-<span class="co">#&gt; 5 2, jitterbug-import, Jitterbug compatibility account     NA       P5</span>
-<span class="co">#&gt; 6 Jitterbug compatibility account, jitterbug-import, 2     NA       P5</span>
-<span class="co">#&gt;                                                                  summary id</span>
-<span class="co">#&gt; 1                                              Test bug report - summary  1</span>
-<span class="co">#&gt; 2 [Prof Brian Ripley &lt;ripley@stats.ox.ac.uk&gt;] ... matching (still a bug)  3</span>
-<span class="co">#&gt; 3                               aov(y ~ 0)  should work {g}lm(....) does  4</span>
-<span class="co">#&gt; 4                                     row.names&lt;- is incompatible with S  5</span>
-<span class="co">#&gt; 5                                                 plot() hangs on DU 4.0  7</span>
-<span class="co">#&gt; 6                         PRIVATE: `improvement' in summary.lm is broken  8</span>
-<span class="co">#&gt;                                     assigned_to_detail       component version</span>
-<span class="co">#&gt; 1                              admin, 1, Simon Urbanek            Misc R 2.y.z</span>
-<span class="co">#&gt; 2 Jitterbug compatibility account, 2, jitterbug-import        Language     old</span>
-<span class="co">#&gt; 3 Jitterbug compatibility account, 2, jitterbug-import          Models     old</span>
-<span class="co">#&gt; 4 Jitterbug compatibility account, jitterbug-import, 2        Language     old</span>
-<span class="co">#&gt; 5 2, jitterbug-import, Jitterbug compatibility account System-specific     old</span>
-<span class="co">#&gt; 6 2, jitterbug-import, Jitterbug compatibility account          Models     old</span>
-<span class="co">#&gt;   is_open               cc product deadline whiteboard resolution</span>
-<span class="co">#&gt; 1   FALSE    simon.urbanek       R       NA                 FIXED</span>
-<span class="co">#&gt; 2   FALSE               NA       R       NA                 FIXED</span>
-<span class="co">#&gt; 3   FALSE               NA       R       NA                 FIXED</span>
-<span class="co">#&gt; 4   FALSE               NA       R       NA                 FIXED</span>
-<span class="co">#&gt; 5   FALSE               NA       R       NA                 FIXED</span>
-<span class="co">#&gt; 6   FALSE manish0731582008       R       NA                 FIXED</span>
-<span class="co">#&gt;       last_change_time             url platform dupe_of         op_sys</span>
-<span class="co">#&gt; 1 2018-01-16T16:21:14Z http://url.com/  PowerPC      NA Mac OS X v10.4</span>
-<span class="co">#&gt; 2 1998-08-10T02:50:29Z                      All      NA            All</span>
-<span class="co">#&gt; 3 1998-08-10T20:23:26Z                      All      NA        Solaris</span>
-<span class="co">#&gt; 4 1998-08-18T02:44:49Z                      All      NA        Solaris</span>
-<span class="co">#&gt; 5 1998-08-17T20:58:15Z                      All      NA          Other</span>
-<span class="co">#&gt; 6 2013-12-10T08:40:58Z                      All      NA          Other</span>
-<span class="co">#&gt;   is_cc_accessible status alias                            cc_detail</span>
-<span class="co">#&gt; 1             TRUE CLOSED    NA      5, simon.urbanek, Simon Urbanek</span>
-<span class="co">#&gt; 2             TRUE CLOSED    NA                                   NA</span>
-<span class="co">#&gt; 3             TRUE CLOSED    NA                                   NA</span>
-<span class="co">#&gt; 4             TRUE CLOSED    NA                                   NA</span>
-<span class="co">#&gt; 5             TRUE CLOSED    NA                                   NA</span>
-<span class="co">#&gt; 6             TRUE CLOSED    NA 1505, manish0731582008, Manish Singh</span>
-<span class="co">#&gt;   is_creator_accessible is_confirmed severity classification target_milestone</span>
-<span class="co">#&gt; 1                  TRUE         TRUE   normal   Unclassified              ---</span>
-<span class="co">#&gt; 2                  TRUE         TRUE   normal   Unclassified              ---</span>
-<span class="co">#&gt; 3                  TRUE         TRUE   normal   Unclassified              ---</span>
-<span class="co">#&gt; 4                  TRUE         TRUE   normal   Unclassified              ---</span>
-<span class="co">#&gt; 5                  TRUE         TRUE   normal   Unclassified              ---</span>
-<span class="co">#&gt; 6                  TRUE         TRUE   normal   Unclassified              ---</span>
-<span class="co">#&gt;   blocks          depends_on keywords          creator see_also out</span>
-<span class="co">#&gt; 1     NA 15763, 15764, 15862       NA            admin       NA    </span>
-<span class="co">#&gt; 2     NA                  NA       NA jitterbug-import       NA    </span>
-<span class="co">#&gt; 3     NA                  NA       NA jitterbug-import       NA    </span>
-<span class="co">#&gt; 4     NA                  NA       NA jitterbug-import       NA    </span>
-<span class="co">#&gt; 5     NA                  NA       NA jitterbug-import       NA    </span>
-<span class="co">#&gt; 6     NA                  NA       NA jitterbug-import       NA</span>
+<span class="co">#&gt;   target_milestone is_confirmed severity classification</span>
+<span class="co">#&gt; 1              ---         TRUE   normal   Unclassified</span>
+<span class="co">#&gt; 2              ---         TRUE   normal   Unclassified</span>
+<span class="co">#&gt; 3              ---         TRUE   normal   Unclassified</span>
+<span class="co">#&gt; 4              ---         TRUE   normal   Unclassified</span>
+<span class="co">#&gt; 5              ---         TRUE   normal   Unclassified</span>
+<span class="co">#&gt; 6              ---         TRUE   normal   Unclassified</span>
+<span class="co">#&gt;                              cc_detail is_creator_accessible         op_sys</span>
+<span class="co">#&gt; 1      Simon Urbanek, 5, simon.urbanek                  TRUE Mac OS X v10.4</span>
+<span class="co">#&gt; 2                                   NA                  TRUE            All</span>
+<span class="co">#&gt; 3                                   NA                  TRUE        Solaris</span>
+<span class="co">#&gt; 4                                   NA                  TRUE        Solaris</span>
+<span class="co">#&gt; 5                                   NA                  TRUE          Other</span>
+<span class="co">#&gt; 6 manish0731582008, 1505, Manish Singh                  TRUE          Other</span>
+<span class="co">#&gt;   status is_cc_accessible alias dupe_of platform             url see_also</span>
+<span class="co">#&gt; 1 CLOSED             TRUE    NA      NA  PowerPC http://url.com/       NA</span>
+<span class="co">#&gt; 2 CLOSED             TRUE    NA      NA      All                       NA</span>
+<span class="co">#&gt; 3 CLOSED             TRUE    NA      NA      All                       NA</span>
+<span class="co">#&gt; 4 CLOSED             TRUE    NA      NA      All                       NA</span>
+<span class="co">#&gt; 5 CLOSED             TRUE    NA      NA      All                       NA</span>
+<span class="co">#&gt; 6 CLOSED             TRUE    NA      NA      All                       NA</span>
+<span class="co">#&gt;            creator keywords          depends_on blocks</span>
+<span class="co">#&gt; 1            admin       NA 15763, 15764, 15862     NA</span>
+<span class="co">#&gt; 2 jitterbug-import       NA                  NA     NA</span>
+<span class="co">#&gt; 3 jitterbug-import       NA                  NA     NA</span>
+<span class="co">#&gt; 4 jitterbug-import       NA                  NA     NA</span>
+<span class="co">#&gt; 5 jitterbug-import       NA                  NA     NA</span>
+<span class="co">#&gt; 6 jitterbug-import       NA                  NA     NA</span>
+<span class="co">#&gt;                                     assigned_to_detail id       component</span>
+<span class="co">#&gt; 1                              Simon Urbanek, 1, admin  1            Misc</span>
+<span class="co">#&gt; 2 Jitterbug compatibility account, jitterbug-import, 2  3        Language</span>
+<span class="co">#&gt; 3 Jitterbug compatibility account, jitterbug-import, 2  4          Models</span>
+<span class="co">#&gt; 4 Jitterbug compatibility account, 2, jitterbug-import  5        Language</span>
+<span class="co">#&gt; 5 2, jitterbug-import, Jitterbug compatibility account  7 System-specific</span>
+<span class="co">#&gt; 6 Jitterbug compatibility account, jitterbug-import, 2  8          Models</span>
+<span class="co">#&gt;   priority</span>
+<span class="co">#&gt; 1       P5</span>
+<span class="co">#&gt; 2       P5</span>
+<span class="co">#&gt; 3       P5</span>
+<span class="co">#&gt; 4       P5</span>
+<span class="co">#&gt; 5       P5</span>
+<span class="co">#&gt; 6       P5</span>
+<span class="co">#&gt;                                                                  summary groups</span>
+<span class="co">#&gt; 1                                              Test bug report - summary     NA</span>
+<span class="co">#&gt; 2 [Prof Brian Ripley &lt;ripley@stats.ox.ac.uk&gt;] ... matching (still a bug)     NA</span>
+<span class="co">#&gt; 3                               aov(y ~ 0)  should work {g}lm(....) does     NA</span>
+<span class="co">#&gt; 4                                     row.names&lt;- is incompatible with S     NA</span>
+<span class="co">#&gt; 5                                                 plot() hangs on DU 4.0     NA</span>
+<span class="co">#&gt; 6                         PRIVATE: `improvement' in summary.lm is broken     NA</span>
+<span class="co">#&gt;                                         creator_detail qa_contact</span>
+<span class="co">#&gt; 1                              admin, 1, Simon Urbanek           </span>
+<span class="co">#&gt; 2 2, jitterbug-import, Jitterbug compatibility account           </span>
+<span class="co">#&gt; 3 jitterbug-import, 2, Jitterbug compatibility account           </span>
+<span class="co">#&gt; 4 Jitterbug compatibility account, jitterbug-import, 2           </span>
+<span class="co">#&gt; 5 Jitterbug compatibility account, jitterbug-import, 2           </span>
+<span class="co">#&gt; 6 jitterbug-import, 2, Jitterbug compatibility account           </span>
+<span class="co">#&gt;         creation_time      assigned_to flags     last_change_time whiteboard</span>
+<span class="co">#&gt; 1 2010-02-15 18:29:54            admin    NA 2018-01-16T16:21:14Z           </span>
+<span class="co">#&gt; 2 1998-08-08 03:25:05 jitterbug-import    NA 1998-08-10T02:50:29Z           </span>
+<span class="co">#&gt; 3 1998-08-10 20:23:26 jitterbug-import    NA 1998-08-10T20:23:26Z           </span>
+<span class="co">#&gt; 4 1998-08-13 14:30:36 jitterbug-import    NA 1998-08-18T02:44:49Z           </span>
+<span class="co">#&gt; 5 1998-08-17 05:41:33 jitterbug-import    NA 1998-08-17T20:58:15Z           </span>
+<span class="co">#&gt; 6 1998-08-17 15:57:01 jitterbug-import    NA 2013-12-10T08:40:58Z           </span>
+<span class="co">#&gt;   resolution deadline product version is_open               cc out</span>
+<span class="co">#&gt; 1      FIXED       NA       R R 2.y.z   FALSE    simon.urbanek    </span>
+<span class="co">#&gt; 2      FIXED       NA       R     old   FALSE               NA    </span>
+<span class="co">#&gt; 3      FIXED       NA       R     old   FALSE               NA    </span>
+<span class="co">#&gt; 4      FIXED       NA       R     old   FALSE               NA    </span>
+<span class="co">#&gt; 5      FIXED       NA       R     old   FALSE               NA    </span>
+<span class="co">#&gt; 6      FIXED       NA       R     old   FALSE manish0731582008</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">bugs</span><span class="op">$</span><span class="va">id</span>, <span class="va">bugs</span><span class="op">$</span><span class="va">creation_time</span>, 
      main <span class="op">=</span> <span class="st">"Bug ID vs creation time"</span>, xlab <span class="op">=</span> <span class="st">"ID"</span>, 
      ylab <span class="op">=</span> <span class="st">"Creation Time"</span><span class="op">)</span></code></pre></div>
@@ -191,39 +198,33 @@
 <p>We can now collect information about comments on issues:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_comment.html">get_comment</a></span><span class="op">(</span>issue <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt;   bug_id       creation_time</span>
-<span class="co">#&gt; 1      1 2010-02-15 18:29:54</span>
-<span class="co">#&gt; 2      1 2010-02-15 18:33:25</span>
-<span class="co">#&gt; 3      1 2010-02-16 17:42:59</span>
-<span class="co">#&gt; 4      1 2010-03-09 18:14:23</span>
-<span class="co">#&gt; 5      1 2010-03-10 16:54:39</span>
+<span class="co">#&gt;   is_private count                time       creator tags    id bug_id</span>
+<span class="co">#&gt; 1      FALSE     0 2010-02-15 18:29:54         admin   NA     1      1</span>
+<span class="co">#&gt; 2      FALSE     1 2010-02-15 18:33:25         admin   NA     2      1</span>
+<span class="co">#&gt; 3      FALSE     2 2010-02-16 17:42:59         admin   NA     3      1</span>
+<span class="co">#&gt; 4      FALSE     3 2010-03-09 18:14:23 simon.urbanek   NA 83214      1</span>
+<span class="co">#&gt; 5      FALSE     4 2010-03-10 16:54:39         admin   NA 83218      1</span>
+<span class="co">#&gt;   is_markdown attachment_id       creation_time</span>
+<span class="co">#&gt; 1       FALSE            NA 2010-02-15 18:29:54</span>
+<span class="co">#&gt; 2       FALSE            NA 2010-02-15 18:33:25</span>
+<span class="co">#&gt; 3       FALSE             1 2010-02-16 17:42:59</span>
+<span class="co">#&gt; 4       FALSE            NA 2010-03-09 18:14:23</span>
+<span class="co">#&gt; 5       FALSE            NA 2010-03-10 16:54:39</span>
 <span class="co">#&gt;                                                                     text</span>
 <span class="co">#&gt; 1                          Bug report description.\n\nAnother paragraph.</span>
 <span class="co">#&gt; 2                                                   Another response ...</span>
 <span class="co">#&gt; 3 Created attachment 1\ntest attachment ...\n\nAttaching a test file ...</span>
 <span class="co">#&gt; 4                      Additional comment ... test, as you may guess ...</span>
-<span class="co">#&gt; 5                                         Msrking the test bug as fixed.</span>
-<span class="co">#&gt;   attachment_id is_markdown is_private count                time    id</span>
-<span class="co">#&gt; 1            NA       FALSE      FALSE     0 2010-02-15 18:29:54     1</span>
-<span class="co">#&gt; 2            NA       FALSE      FALSE     1 2010-02-15 18:33:25     2</span>
-<span class="co">#&gt; 3             1       FALSE      FALSE     2 2010-02-16 17:42:59     3</span>
-<span class="co">#&gt; 4            NA       FALSE      FALSE     3 2010-03-09 18:14:23 83214</span>
-<span class="co">#&gt; 5            NA       FALSE      FALSE     4 2010-03-10 16:54:39 83218</span>
-<span class="co">#&gt;         creator tags</span>
-<span class="co">#&gt; 1         admin   NA</span>
-<span class="co">#&gt; 2         admin   NA</span>
-<span class="co">#&gt; 3         admin   NA</span>
-<span class="co">#&gt; 4 simon.urbanek   NA</span>
-<span class="co">#&gt; 5         admin   NA</span></code></pre></div>
+<span class="co">#&gt; 5                                         Msrking the test bug as fixed.</span></code></pre></div>
 <p>Or if we know the id of the comment, of just that comment:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_comment.html">get_comment</a></span><span class="op">(</span>comment <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt;   bug_id attachment_id                                          text</span>
-<span class="co">#&gt; 1      1            NA Bug report description.\n\nAnother paragraph.</span>
-<span class="co">#&gt;         creation_time is_markdown count is_private tags id creator</span>
-<span class="co">#&gt; 1 2010-02-15 18:29:54       FALSE     0      FALSE   NA  1   admin</span>
-<span class="co">#&gt;                  time</span>
-<span class="co">#&gt; 1 2010-02-15 18:29:54</span></code></pre></div>
+<span class="co">#&gt;   bug_id       creation_time is_markdown</span>
+<span class="co">#&gt; 1      1 2010-02-15 18:29:54       FALSE</span>
+<span class="co">#&gt;                                            text attachment_id is_private count</span>
+<span class="co">#&gt; 1 Bug report description.\n\nAnother paragraph.            NA      FALSE     0</span>
+<span class="co">#&gt;                  time creator tags id</span>
+<span class="co">#&gt; 1 2010-02-15 18:29:54   admin   NA  1</span></code></pre></div>
 </div>
 <div id="attachments" class="section level3">
 <h3 class="hasAnchor">
@@ -231,14 +232,14 @@
 <p>If you look carefully you’ll see that the third comment on the first issue has an attachment id. We can also explore what it is:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_attachment.html">get_attachment</a></span><span class="op">(</span>issue <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt;   content_type       creation_time flags file_name bug_id is_patch id creator</span>
-<span class="co">#&gt; 1   text/plain 2010-02-16 17:42:59    NA      ed.c      1    FALSE  1   admin</span>
-<span class="co">#&gt;   is_obsolete    last_change_time is_private             summary</span>
-<span class="co">#&gt; 1       FALSE 2010-02-16 17:43:29      FALSE test attachment ...</span>
+<span class="co">#&gt;   id creator is_obsolete    last_change_time</span>
+<span class="co">#&gt; 1  1   admin       FALSE 2010-02-16 17:43:29</span>
 <span class="co">#&gt;                                                                                                                                                                                   data</span>
 <span class="co">#&gt; 1 I2luY2x1ZGUgPFJpbnRlcm5hbHMuaD4KClNFWFAgbXlFdmFsKFNFWFAgRk4sIFNFWFAgZmlyc3RfYXJnKSB7CiAgcmV0dXJuIGV2YWwoTENPTlMoRk4sIENPTlMoZmlyc3RfYXJnLCBSX05pbFZhbHVlKSksIFJfR2xvYmFsRW52KTsKfQo=</span>
-<span class="co">#&gt;   size</span>
-<span class="co">#&gt; 1  134</span>
+<span class="co">#&gt;   size is_private             summary content_type       creation_time</span>
+<span class="co">#&gt; 1  134      FALSE test attachment ...   text/plain 2010-02-16 17:42:59</span>
+<span class="co">#&gt;   file_name bug_id is_patch flags</span>
+<span class="co">#&gt; 1      ed.c      1    FALSE    NA</span>
 <span class="co"># Similar to get_comment we can also do</span>
 <span class="co"># get_attachment(attachment = 1)</span></code></pre></div>
 <p>If you want all the information of an issue including attachments you have <code><a href="../reference/get_issue.html">get_issue()</a></code> :</p>
@@ -271,12 +272,12 @@
 <span class="co">#&gt;                                                         changes issue</span>
 <span class="co">#&gt; 1 attachments.mimetype, application/octet-stream, text/plain, 1     1</span>
 <span class="co">#&gt; 2                             simon.urbanek@r-project.org, cc,      1</span>
-<span class="co">#&gt; 3                    NEW, status, RESOLVED, , resolution, FIXED     1</span>
-<span class="co">#&gt; 4                                           , depends_on, 15763     1</span>
-<span class="co">#&gt; 5                                           , depends_on, 15764     1</span>
-<span class="co">#&gt; 6                                           15862, depends_on,      1</span>
-<span class="co">#&gt; 7                                      CLOSED, status, RESOLVED     1</span>
-<span class="co">#&gt; 8                                    version, R 2.11.0, R 2.y.z     1</span></code></pre></div>
+<span class="co">#&gt; 3                    RESOLVED, status, NEW, resolution, , FIXED     1</span>
+<span class="co">#&gt; 4                                           15763, , depends_on     1</span>
+<span class="co">#&gt; 5                                           15764, , depends_on     1</span>
+<span class="co">#&gt; 6                                           15862, , depends_on     1</span>
+<span class="co">#&gt; 7                                      status, RESOLVED, CLOSED     1</span>
+<span class="co">#&gt; 8                                    R 2.y.z, version, R 2.11.0     1</span></code></pre></div>
 </div>
 </div>
 <div id="authentication" class="section level2">
