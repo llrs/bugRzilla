@@ -5,6 +5,13 @@ missing_host <- function(host) {
     host
 }
 
+missing_key <- function(key) {
+    if (missing(key)) {
+        key <- "R_BUGZILLA"
+    }
+    key
+}
+
 missing_version <- function(version) {
     if (missing(version)) {
         ver <- R.Version()[c("major", "minor")]

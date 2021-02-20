@@ -4,7 +4,7 @@
 \alias{post_bug}
 \title{Open an issue.}
 \usage{
-post_bug(text, title, component, ..., version, product, host)
+post_bug(text, title, component, ..., version, product, host, key)
 }
 \arguments{
 \item{text}{A character vector with the text of the bug you want to
@@ -22,6 +22,8 @@ open.}
 automatically filled.}
 
 \item{host}{URL of the bugzilla instance if missing the R bugzilla is assumed.}
+
+\item{key}{API key to check.}
 }
 \value{
 The ID of the issue posted.

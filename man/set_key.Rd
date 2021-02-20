@@ -4,10 +4,12 @@
 \alias{set_key}
 \title{Set key to use}
 \usage{
-set_key(key = Sys.getenv("R_BUGZILLA"))
+set_key(key, key_name = "R_BUGZILLA")
 }
 \arguments{
 \item{key}{The API key you want to use.}
+
+\item{key_name}{The name of the API key, by default "R_BUGZILLA".}
 }
 \value{
 TRUE

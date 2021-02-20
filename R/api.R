@@ -1,9 +1,21 @@
+missing_key <- function(key) {
+    if (missing(key)) {
+        key <- "R_BUGZILLA"
+    }
+    key
+}
 
 # https://stackoverflow.com/questions/52997316/ and
 # https://bugzilla.readthedocs.io/en/latest/api/core/v1/general.html#authentication
 #' @importFrom httr GET POST add_headers
-headers <- httr::add_headers("X-BUGZILLA-API-KEY" = Sys.getenv("R_BUGZILLA"),
-                       "User-Agent" = "https://github.com/llrs/bugRzilla/")
+set_headers <- function(key) {
+    key <- missing_key(key)
+    httr::add_headers(
+        "X-BUGZILLA-API-KEY" = Sys.getenv(key),
+        "User-Agent" = "https://github.com/llrs/bugRzilla/")
+}
+
+headers <- set_headers()
 
 #' Authentication
 #'
@@ -29,11 +41,8 @@ create_bugzilla_key <- function(host) {
         return(invisible(TRUE))
     }
     browseURL(url)
-    msg <- c("Activate the API key and save it on .Renviron as R_BUGZILLA.\n",
-             "\t{.code usethis::edit_r_environ()} might come handy")
-    cli::cli_ul(paste0(msg, collapse = ""))
-    cli::cli_ul("Restart R session so that changes take effect.")
-    cli::cli_alert_info("Or use {.code set_key} to use it only for this session.")
+    cli::cli_ul("Create the API key on the website.")
+    cli::cli_ul("And use {.code set_key} to save it and get ready to use.")
     invisible(TRUE)
 }
 
@@ -43,15 +52,52 @@ create_bugzilla_key <- function(host) {
 #' API key for bugzilla you can set it up this way. It will store the key in the
 #' envirnoment which will only work for this R session.
 #' @param key The API key you want to use.
+#' @param key_name The name of the API key, by default "R_BUGZILLA".
 #' @return TRUE
+#' @importFrom rappdirs user_config_dir
 #' @export
-set_key <- function(key = Sys.getenv("R_BUGZILLA")) {
+set_key <- function(key, key_name = "R_BUGZILLA") {
+    path <- app_file()
+    if (file.exists(path)) {
+        readRenviron(path)
+    }
+    key <- Sys.getenv(key_name)
     if (!valid_key(key)) {
         return(invisible(FALSE))
     }
-    Sys.setenv("R_BUGZILLA" = key)
-    cli::cli_alert_success("Key set for this session.")
+    write_renviron(key = key_name, value = key, file = path)
+    readRenviron(path)
+    cli::cli_alert_success("Key stored and ready to be used.")
     invisible(TRUE)
+}
+
+app_file <- function() {
+    path <- rappdirs::user_config_dir("bugRzilla", roaming = TRUE)
+    file.path(normalizePath(path), ".Renviron")
+}
+
+
+# use_key <- function(){
+#     path <- app_file()
+#     file <- strsplit(readLines(path), split = "=", fixed = TRUE)
+#     key <- vector("characer", length(file))
+#     value <- vector("character", length(file))
+#     for (i in seq_along(file)) {
+#         key[i] <- file[[i]][1]
+#         value[i] <- file[[i]][2]
+#     }
+#     message("choose a key:")
+#     key[tools::menu(key)]
+# }
+
+write_renviron <- function(key, value, file) {
+    if (!dir.exists(dirname(file))) {
+        dir.create(dirname(file))
+        file.create(file)
+    }
+    msg <- paste(key, value, sep = "=")
+    msg <- paste0(msg, "\n")
+    cat(msg, file = file, append = TRUE)
 }
 
 #' @rdname authentication

@@ -69,13 +69,14 @@ get_commenti <- function(issue, host) {
 #' @inheritParams create_bugzilla_key
 #' @return The ID of the comment posted.
 #' @export
-post_comment <- function(issue, comment, is_markdown, host) {
+post_comment <- function(issue, comment, is_markdown, host, key) {
     stopifnot(!is.logical(is_markdown))
     host <- missing_host(host)
+    headers <- set_headers(key)
     url <- paste0(host, "rest/bug/", issue, "/comment")
-    comments <- httr::POST(url,
-                           comment = comment, is_markdown = is_markdown,
-                           headers)
-    httr::content(comments)$id
+    # comments <- httr::POST(url,
+    #                        comment = comment, is_markdown = is_markdown,
+    #                        headers)
+    # httr::content(comments)$id
 
 }

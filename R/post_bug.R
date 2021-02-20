@@ -24,7 +24,7 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' [Webpage](https://bugs.r-project.org/bugzilla/enter_bug.cgi) for manual entry
 #' @return The ID of the issue posted.
 post_bug <- function(text, title, component, ...,
-                    version, product, host) {
+                    version, product, host, key) {
     # Provide some checks/questions to the users
     # Fill description, version and summary
     if (missing(component)) {
@@ -36,6 +36,7 @@ post_bug <- function(text, title, component, ...,
     host <- missing_host(host)
     product <- missing_product(product)
     url <- paste0(host, "rest/bug")
+    headers <- set_headers()
     # bugs <- httr::POST(url,
     #                    description = text,
     #                    product = product,

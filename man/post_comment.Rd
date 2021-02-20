@@ -4,7 +4,7 @@
 \alias{post_comment}
 \title{Post a comment}
 \usage{
-post_comment(issue, comment, is_markdown, host)
+post_comment(issue, comment, is_markdown, host, key)
 }
 \arguments{
 \item{issue}{A numeric value of the issue ID where the comment should be
@@ -15,6 +15,8 @@ posted.}
 \item{is_markdown}{A logical value saying if it is markdown or not.}
 
 \item{host}{URL of the bugzilla instance if missing the R bugzilla is assumed.}
+
+\item{key}{API key to check.}
 }
 \value{
 The ID of the comment posted.

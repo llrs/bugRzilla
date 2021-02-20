@@ -16,7 +16,8 @@ Imports:
     cli,
     httr,
     methods,
-    utils
+    utils,
+    rappdirs
 Suggests: 
     covr,
     knitr,
