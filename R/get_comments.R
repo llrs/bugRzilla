@@ -4,7 +4,7 @@
 #' @note It doesn't require being authenticated.
 #' @param comment A character with the id of the comment eg. "1", can be
 #' missing and it will retrieve all comments.
-#' @inheritParams get_issue
+#' @inheritParams get_bug
 #' @inheritParams create_bugzilla_key
 #' @export
 #' @return A `data.frame` with creation_time, text, creator, time,

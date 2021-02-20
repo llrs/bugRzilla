@@ -90,15 +90,6 @@ get_attachment(issue = 1)
 # get_attachment(attachment = 1)
 ```
 
-If you want all the information of an issue including attachments you have `get_issue()` :
-
-```{r get_issue}
-issue1 <- get_issue(1)
-issue1[, 1:5]
-```
-
-This function doesn't use the API and is slower.
-
 ### History
 
 If you want to know what changed you can with `get_history()` :

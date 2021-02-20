@@ -20,6 +20,3 @@ Retrieve data from the issues posted.
 \examples{
 gi <- get_bug(1)
 }
-\seealso{
-get_issue() for the equivalent without using the API.
-}

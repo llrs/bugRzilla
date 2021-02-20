@@ -1,7 +1,7 @@
 #' Provide information about the history of an issue.
 #'
 #' See what has changed of an issue.
-#' @inheritParams get_issue
+#' @inheritParams get_bug
 #' @param new_since A character with a Date in YYYY-MM-DD format.
 #' @export
 #' @importFrom httr status_code

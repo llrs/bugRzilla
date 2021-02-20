@@ -6,7 +6,6 @@
 #' @inheritParams create_bugzilla_key
 #' @return A data.frame with all the information available and ordered by comment.
 #' @export
-#' @seealso get_issue() for the equivalent without using the API.
 #' @examples
 #' gi <- get_bug(1)
 get_bug <- function(issue, host) {
