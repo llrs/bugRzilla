@@ -125,7 +125,7 @@ Requires an user and an API key." />
 Requires an user and an API key.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>post_bug</span><span class='op'>(</span><span class='va'>text</span>, <span class='va'>title</span>, <span class='va'>component</span>, <span class='va'>...</span>, <span class='va'>version</span>, <span class='va'>product</span>, <span class='va'>host</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>post_bug</span><span class='op'>(</span><span class='va'>text</span>, <span class='va'>title</span>, <span class='va'>component</span>, <span class='va'>...</span>, <span class='va'>version</span>, <span class='va'>product</span>, <span class='va'>host</span>, <span class='va'>key</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,6 +159,10 @@ automatically filled.</p></td>
     <tr>
       <th>host</th>
       <td><p>URL of the bugzilla instance if missing the R bugzilla is assumed.</p></td>
+    </tr>
+    <tr>
+      <th>key</th>
+      <td><p>API key to check.</p></td>
     </tr>
     </table>
 

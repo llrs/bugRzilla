@@ -127,7 +127,7 @@ API key for bugzilla you can set it up this way. It will store the key in the
 envirnoment which will only work for this R session.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>set_key</span><span class='op'>(</span>key <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"R_BUGZILLA"</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>set_key</span><span class='op'>(</span><span class='va'>key</span>, key_name <span class='op'>=</span> <span class='st'>"R_BUGZILLA"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,6 +135,10 @@ envirnoment which will only work for this R session.</p>
     <tr>
       <th>key</th>
       <td><p>The API key you want to use.</p></td>
+    </tr>
+    <tr>
+      <th>key_name</th>
+      <td><p>The name of the API key, by default "R_BUGZILLA".</p></td>
     </tr>
     </table>
 

@@ -123,7 +123,7 @@
     <p>Add information to a bug report.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>post_comment</span><span class='op'>(</span><span class='va'>issue</span>, <span class='va'>comment</span>, <span class='va'>is_markdown</span>, <span class='va'>host</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>post_comment</span><span class='op'>(</span><span class='va'>issue</span>, <span class='va'>comment</span>, <span class='va'>is_markdown</span>, <span class='va'>host</span>, <span class='va'>key</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,6 +144,10 @@ posted.</p></td>
     <tr>
       <th>host</th>
       <td><p>URL of the bugzilla instance if missing the R bugzilla is assumed.</p></td>
+    </tr>
+    <tr>
+      <th>key</th>
+      <td><p>API key to check.</p></td>
     </tr>
     </table>
 
