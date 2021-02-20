@@ -9,6 +9,7 @@
 #' fields <- get_fields()
 get_fields <- function(host) {
     host <- missing_host(host)
+    stopifnot(is.character(host))
     url <- paste0(host, "/rest/field/bug")
     fields <- httr::GET(url)
     fields <- httr::content(fields)
