@@ -17,7 +17,8 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' automatically filled.
 #' @param ... Named arguments passed to the API [check documentation](https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html)
 #' @inheritParams create_bugzilla_key
-#' @importFrom utils select.list
+#' @importFrom utils menu
+#' @importFrom cli cli_alert
 #' @export
 #' @seealso To obtain and use the API key see create_bugzilla_key().
 #' [Webpage](https://bugs.r-project.org/bugzilla/enter_bug.cgi) for manual entry
@@ -27,26 +28,21 @@ post_bug <- function(text, title, component, ...,
     # Provide some checks/questions to the users
     # Fill description, version and summary
     if (missing(component)) {
-        if (getOption("menu.graphics")) {
-            component <- select.list(components,
-                                     title = "Pick a component")
-        } else {
-            cli::cli_alert("Please, pick a component:")
-            component <- select.list(components)
-        }
+        cli::cli_alert("Please, pick a component:")
+        component <- menu(components)
     }
     component <- match.arg(component, components)
     version <- missing_version(version)
     host <- missing_host(host)
     product <- missing_product(product)
     url <- paste0(host, "rest/bug")
-    bugs <- httr::POST(url,
-                       description = text,
-                       product = product,
-                       component = component,
-                       summary = title,
-                       version = version,
-                       ...,
-                       headers)
-    bugs <- httr::content(bugs)
+    # bugs <- httr::POST(url,
+    #                    description = text,
+    #                    product = product,
+    #                    component = component,
+    #                    summary = title,
+    #                    version = version,
+    #                    ...,
+    #                    headers)
+    # bugs <- httr::content(bugs)
 }
