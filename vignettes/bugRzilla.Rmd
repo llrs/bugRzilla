@@ -98,18 +98,32 @@ If you want to know what changed you can with `get_history()` :
 get_history(issue = 1)
 ```
 
-## Authentication
+## Authenticated operations
 
-Most queries do not require authentication but some do.
+If you want to post or comment you'll need to be authenticated.
 To set up an authentication you'll need a user (You have to ask for an account to bug-report-request\@r-project.org), and then create an API key.
 
 ``` {.r}
-create_api_key()
+create_bugzilla_key()
 ```
 
-This will ask you to save your API key to `.Renviron`.
-To check that the api key is working (after resetting the R session) you have:
+This will ask you to save your API key to a configuration file.
+To check that the api key is working you have:
 
 ``` {.r}
-check_key()
+check_authentication()
 ```
+
+Probably you'll want to validate a bug so you'll post a comment with
+
+```{.r}
+post_comment()
+```
+
+If you have found a bug you can create it with.
+
+```{.r}
+post_bug()
+```
+
+Note that this will guide you asking some questions before opening a bug report. 
