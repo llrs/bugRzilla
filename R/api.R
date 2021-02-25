@@ -54,7 +54,7 @@ create_bugzilla_key <- function(host) {
 #' @param key The API key you want to use.
 #' @param key_name The name of the API key, by default "R_BUGZILLA".
 #' @return TRUE
-#' @importFrom rappdirs user_config_dir
+#' @importFrom rappdirs user_cache_dir
 #' @export
 set_key <- function(key, key_name = "R_BUGZILLA") {
     path <- app_file()
@@ -72,7 +72,8 @@ set_key <- function(key, key_name = "R_BUGZILLA") {
 }
 
 app_file <- function() {
-    path <- rappdirs::user_config_dir("bugRzilla", roaming = TRUE)
+    path <- rappdirs::user_cache_dir("bugRzilla")
+    dir.create(path, showWarnings = FALSE, recursive = TRUE)
     file.path(normalizePath(path), ".Renviron")
 }
 
@@ -92,7 +93,7 @@ app_file <- function() {
 
 write_renviron <- function(key, value, file) {
     if (!dir.exists(dirname(file))) {
-        dir.create(dirname(file))
+        dir.create(dirname(file), showWarnings = FALSE, recursive = TRUE)
         file.create(file)
     }
     msg <- paste(key, value, sep = "=")
@@ -128,6 +129,7 @@ check_authentication <- function(key = Sys.getenv("R_BUGZILLA"), host) {
 check_api_version <- function(host) {
     host <- missing_host(host)
     version <- httr::GET(paste0(host, "rest/version"))
+    httr::stop_for_status(version)
     httr::content(version)$version != "5.1.2+"
 }
 
@@ -145,6 +147,7 @@ check_last_audit <- function(product, host) {
     product <- missing_product(product)
     audit <- httr::GET(paste0(host, "rest/last_audit_time"),
                          class = product)
+    httr::stop_for_status(audit)
     time(httr::content(audit)$last_audit_time)
 }
 

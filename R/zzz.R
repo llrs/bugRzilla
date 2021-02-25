@@ -1,5 +1,5 @@
 .onLoad <- function(libname, pkgname) {
-    path <- rappdirs::user_config_dir("bugRzilla", roaming = TRUE)
+    path <- rappdirs::user_cache_dir("bugRzilla")
     path <- file.path(normalizePath(path), ".Renviron")
     if (file.exists(path)) {
         readRenviron(path)
