@@ -34,7 +34,7 @@ missing_product <- function(product) {
 flatten_list <- function(x) {
     x[lengths(x) == 0] <- list(NA)
     special <- c("creator_detail", "assigned_to_detail", "depends_on",
-                 "cc_detail", "cc", "changes")
+                 "cc_detail", "cc", "changes", "keywords")
     df <- as.data.frame(x[!names(x) %in% special])
     # If there is a list of multiple elements add it as a list of data.frames.
 
@@ -45,6 +45,9 @@ flatten_list <- function(x) {
     }
     if ("cc" %in% names(x)) {
         df$cc <- list(unlist(x$cc, recursive = FALSE, use.names = FALSE))
+    }
+    if ("keywords" %in% names(x)) {
+        df$keywords <- list(unlist(x$keywords, recursive = FALSE, use.names = FALSE))
     }
     if ("cc_detail" %in% names(x)) {
         df$cc_detail <- list(as.data.frame(x$cc_detail))
