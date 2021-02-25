@@ -36,6 +36,7 @@ get_commentc <- function(comment, host) {
               "comment must be numeric." = is.numeric(comment))
     url <- paste0(host, "rest/bug/comment/", comment)
     comments <- httr::GET(url, headers)
+    httr::stop_for_status(comments)
     comments <- httr::content(comments)
 
     if ("error" %in% names(comments)) {
@@ -49,6 +50,7 @@ get_commenti <- function(issue, host) {
               "isue must be numeric." = is.numeric(issue))
     url <- paste0(host, "rest/bug/", issue, "/comment")
     comments <- httr::GET(url, headers)
+    httr::stop_for_status(comments)
     comments <- httr::content(comments)
 
     if ("error" %in% names(comments)) {

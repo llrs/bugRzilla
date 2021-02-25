@@ -5,6 +5,7 @@
 #' @param new_since A character with a Date in YYYY-MM-DD format.
 #' @export
 #' @importFrom httr status_code
+#' @importFrom httr stop_for_status
 #' @examples
 #' get_history(issue = 1)
 get_history <- function(issue, host, new_since = NULL) {
@@ -17,6 +18,7 @@ get_history <- function(issue, host, new_since = NULL) {
          url <- paste(url, "?new_since=", new_since)
          history <- httr::GET(url, headers)
      }
+    httr::stop_for_status(history)
     if (httr::status_code(history) != 200) {
         history <- httr::content(history)
         stop(history$message, call. = FALSE)

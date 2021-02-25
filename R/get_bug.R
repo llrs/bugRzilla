@@ -14,6 +14,7 @@ get_bug <- function(issue, host) {
     issues <- paste0(issue, collapse = ",")
     url <- paste0(host, "rest/bug?id=", issues)
     bugs <- httr::GET(url, headers)
+    httr::stop_for_status(bugs)
     bugs <- httr::content(bugs)
 
     if ("error" %in% names(bugs)) {
@@ -32,6 +33,6 @@ get_bug <- function(issue, host) {
     }
     out <- do.call(rbind, bugs)
     out$creation_time <- time(out$creation_time)
-    out$out$last_change_time <- time(out$out$last_change_time)
+    out$last_change_time <- time(out$last_change_time)
     out
 }
