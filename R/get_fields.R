@@ -12,16 +12,19 @@ get_fields <- function(host) {
     stopifnot(is.character(host))
     url <- paste0(host, "/rest/field/bug")
     fields <- httr::GET(url)
+    httr::stop_for_status(fields)
     fields <- httr::content(fields)
     fields <- fields$fields
     name <- vapply(fields, function(x){x$display_name}, character(1L))
+    name_field <- vapply(fields, function(x){x$name}, character(1L))
     mandatory <- vapply(fields, function(x){x$is_mandatory}, logical(1L))
     values <- lapply(fields, function(x){
-        lapply(x$values, function(y){
+        y <- lapply(x$values, function(y){
             y$name
-        })})
+        })
+        unlist(y, recursive = FALSE, use.names = FALSE)})
     values[lengths(values) == 0] <- list(NA)
-    df <- data.frame(Name = name, Mandatory = mandatory)
+    df <- data.frame(name = name, name_field = name_field, mandatory = mandatory)
     df$Values <- values
     df
 }
