@@ -25,6 +25,6 @@ get_fields <- function(host) {
         unlist(y, recursive = FALSE, use.names = FALSE)})
     values[lengths(values) == 0] <- list(NA)
     df <- data.frame(name = name, name_field = name_field, mandatory = mandatory)
-    df$Values <- values
+    df$values <- values
     df
 }

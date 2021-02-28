@@ -3,7 +3,7 @@ bug_search <- function(..., host) {
     params <- params(...)
 
     url <- paste0(host, "rest/bug?", params)
-    bugs <- httr::GET(url, headers)
+    bugs <- httr::GET(url, .state$headers)
     message(url)
     httr::stop_for_status(bugs)
     bugs <- httr::content(bugs)

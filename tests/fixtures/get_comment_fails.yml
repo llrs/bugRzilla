@@ -17,13 +17,13 @@ http_interactions:
       reason: Not Found
       message: 'Client error: (404) Not Found'
     headers:
-      date: Mon, 15 Feb 2021 18:58:21 GMT
+      date: Sat, 27 Feb 2021 15:27:16 GMT
       server: gazelle
       etag: +T5OLgUvQpBMFyo+y7Jixw
       content-length: '128'
       content-type: application/json; charset=UTF-8
       access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
-        x-bugzilla-api-key, x-bugzilla-login, x-bugzilla-password, x-bugzilla-token
+        x-bugzilla-token, x-bugzilla-password, x-bugzilla-login, x-bugzilla-api-key
       access-control-allow-origin: '*'
       x-content-type-options: nosniff
       x-frame-options: SAMEORIGIN
@@ -31,6 +31,7 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: '{"code":"101","message":"Bug #2 does not exist.","error":true,"documentation":"https://bugzilla.readthedocs.org/en/latest/api/"}'
-  recorded_at: 2021-02-15 18:58:21 GMT
+      string: '{"documentation":"https://bugzilla.readthedocs.org/en/latest/api/","message":"Bug
+        #2 does not exist.","error":true,"code":"101"}'
+  recorded_at: 2021-02-27 15:27:16 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4

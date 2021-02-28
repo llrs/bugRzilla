@@ -5,9 +5,9 @@ test_that("get_fields works", {
         fi <- get_fields()
     })
     expect_s3_class(fi, "data.frame")
-    expect_equal(dim(fi), c(61, 3))
+    expect_equal(dim(fi), c(61, 4))
 
-    colnames <- c("Name", "Mandatory", "Values")
+    colnames <- c("name", "name_field", "mandatory", "values")
     expect_true(all(names(fi) %in% colnames))
 
     rownames <- c(

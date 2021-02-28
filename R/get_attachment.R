@@ -28,7 +28,7 @@ get_attachment <- function(issue, attachment, host) {
 
 get_attachmenti <- function(issue, host) {
     url <- paste0(host, "rest/bug/", issue, "/attachment")
-    attachments <- httr::GET(url, headers)
+    attachments <- httr::GET(url, .state$headers)
     attachments <- httr::content(attachments)
     if ("error" %in% names(attachments)) {
         stop(attachments$message, call. = FALSE)
@@ -45,7 +45,7 @@ get_attachmenti <- function(issue, host) {
 
 get_attachmenta <- function(attachment, host){
     url <- paste0(host, "rest/bug/attachment/", attachment)
-    attachments <- httr::GET(url, headers)
+    attachments <- httr::GET(url, .state$headers)
     attachments <- httr::content(attachments)
     flatten_list(attachments$attachments[[1]])
 }

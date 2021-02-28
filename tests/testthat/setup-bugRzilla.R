@@ -10,6 +10,8 @@ if (!nzchar(Sys.getenv("R_BUGZILLA"))) {
     }
 }
 
+use_key()
+
 invisible(vcr::vcr_configure(
   dir = vcr_dir,
   filter_request_headers = list(

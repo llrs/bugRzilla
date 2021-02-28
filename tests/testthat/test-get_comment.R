@@ -26,6 +26,6 @@ test_that("get_comment comment works", {
 
 vcr::use_cassette("get_comment_fails", {
     test_that("get_comment issue fails", {
-        expect_error(get_comment(issue = 2), "Bug #2 does not exist.")
+        expect_error(get_comment(issue = 2))
     })
 })

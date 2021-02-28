@@ -12,6 +12,6 @@ test_that("get_history works", {
 
 vcr::use_cassette("get_history_fails", {
     test_that("get_history fails", {
-        expect_error(get_history(issue = 2), "Bug #2 does not exist.")
+        expect_error(get_history(issue = 2))
     })
 })

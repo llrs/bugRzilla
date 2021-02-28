@@ -5,18 +5,6 @@ missing_key <- function(key) {
     key
 }
 
-# https://stackoverflow.com/questions/52997316/ and
-# https://bugzilla.readthedocs.io/en/latest/api/core/v1/general.html#authentication
-#' @importFrom httr GET POST add_headers
-set_headers <- function(key) {
-    key <- missing_key(key)
-    httr::add_headers(
-        "X-BUGZILLA-API-KEY" = Sys.getenv(key),
-        "User-Agent" = "https://github.com/llrs/bugRzilla/")
-}
-
-headers <- set_headers()
-
 #' Authentication
 #'
 #' Obtain an API key or check if it can fine one that works for this host and
@@ -57,19 +45,59 @@ create_bugzilla_key <- function(host) {
 #' @importFrom rappdirs user_cache_dir
 #' @export
 set_key <- function(key, key_name = "R_BUGZILLA") {
+
+    if (!check_key(key_name) && valid_key(key)) {
+        write_renviron(key = key_name, value = key, file = app_file())
+    }
+    use_key(key_name)
+    invisible(TRUE)
+}
+
+check_key <- function(key_name, verbose = TRUE) {
     path <- app_file()
     if (file.exists(path)) {
+        if (verbose) {
+            cli::cli_alert_info("Reading cached keys on {.path {path}}.")
+        }
         readRenviron(path)
     }
     key <- Sys.getenv(key_name)
-    if (!valid_key(key)) {
+    if (key == "") {
+        if (verbose) {
+            cli_alert_danger("Key {.code {key_name}} not found on {.path {path}}.")
+        }
+        return(FALSE)
+    }
+    if (verbose) {
+        cli_alert_success("Found key {.code {key_name}}.")
+    }
+    return(TRUE)
+
+}
+
+#' @rdname set_key
+use_key <- function(key_name = "R_BUGZILLA") {
+    if (!check_key(key_name, verbose = FALSE)) {
+        cli_alert_danger("Key {.code {key_name}} not found. Use {.code set_key()}")
         return(invisible(FALSE))
     }
-    write_renviron(key = key_name, value = key, file = path)
-    readRenviron(path)
-    cli::cli_alert_success("Key stored and ready to be used.")
-    invisible(TRUE)
+    cli_alert_success("Using key {.code {key_name}}.")
+    .state$headers <- set_headers(key_name)
+    return(invisible(TRUE))
 }
+
+# https://stackoverflow.com/questions/52997316/ and
+# https://bugzilla.readthedocs.io/en/latest/api/core/v1/general.html#authentication
+#' @importFrom httr GET POST add_headers
+set_headers <- function(key) {
+    key <- missing_key(key)
+    httr::add_headers(
+        "X-BUGZILLA-API-KEY" = Sys.getenv(key),
+        "User-Agent" = "https://github.com/llrs/bugRzilla/")
+}
+
+.state <- new.env(parent = emptyenv())
+
 
 app_file <- function() {
     path <- rappdirs::user_cache_dir("bugRzilla")
@@ -98,6 +126,7 @@ write_renviron <- function(key, value, file) {
     }
     msg <- paste(key, value, sep = "=")
     msg <- paste0(msg, "\n")
+    cli_alert_success("Storing key on {.path {file}}.")
     cat(msg, file = file, append = TRUE)
 }
 

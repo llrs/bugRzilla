@@ -35,7 +35,7 @@ get_commentc <- function(comment, host) {
     stopifnot("comment must be a single number." = length(comment) == 1,
               "comment must be numeric." = is.numeric(comment))
     url <- paste0(host, "rest/bug/comment/", comment)
-    comments <- httr::GET(url, headers)
+    comments <- httr::GET(url, .state$headers)
     httr::stop_for_status(comments)
     comments <- httr::content(comments)
 
@@ -49,7 +49,7 @@ get_commenti <- function(issue, host) {
     stopifnot("issue must be a single number." = length(issue) == 1,
               "isue must be numeric." = is.numeric(issue))
     url <- paste0(host, "rest/bug/", issue, "/comment")
-    comments <- httr::GET(url, headers)
+    comments <- httr::GET(url, .state$headers)
     httr::stop_for_status(comments)
     comments <- httr::content(comments)
 

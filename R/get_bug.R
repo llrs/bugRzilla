@@ -13,7 +13,7 @@ get_bug <- function(issue, host) {
     stopifnot(is.numeric(issue), all(issue > 0))
     issues <- paste0(issue, collapse = ",")
     url <- paste0(host, "rest/bug?id=", issues)
-    bugs <- httr::GET(url, headers)
+    bugs <- httr::GET(url, .state$headers)
     httr::stop_for_status(bugs)
     bugs <- httr::content(bugs)
 

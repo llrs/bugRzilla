@@ -36,7 +36,6 @@ post_bug <- function(text, title, component, ...,
     host <- missing_host(host)
     product <- missing_product(product)
     url <- paste0(host, "rest/bug")
-    headers <- set_headers()
     # bugs <- httr::POST(url,
     #                    description = text,
     #                    product = product,

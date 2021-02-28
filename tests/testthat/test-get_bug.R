@@ -3,7 +3,7 @@ test_that("get_bug issue works", {
         i1 <- get_bug(issue = 1)
     })
     expect_s3_class(i1, "data.frame")
-    expect_equal(dim(i1), c(1, 38))
+    expect_equal(dim(i1), c(1, 37))
     expect_s3_class(i1$creation_time, "POSIXlt")
     colnames <- c(
         "see_also", "creator", "keywords", "depends_on", "blocks",
@@ -13,7 +13,7 @@ test_that("get_bug issue works", {
         "resolution", "whiteboard", "deadline", "product", "is_open",
         "cc", "version", "component", "assigned_to_detail", "id", "summary",
         "priority", "groups", "creator_detail", "creation_time", "qa_contact",
-        "flags", "assigned_to", "out")
+        "flags", "assigned_to")
     expect_true(all(colnames(i1) %in% colnames))
 })
 

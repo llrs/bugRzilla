@@ -13,10 +13,10 @@ get_history <- function(issue, host, new_since = NULL) {
     stopifnot(is.numeric(issue), issue > 0, length(issue) == 1)
     url <- paste0(host, "rest/bug/", issue, "/history")
      if (is.null(new_since)) {
-         history <- httr::GET(url, headers)
+         history <- httr::GET(url, .state$headers)
      } else {
          url <- paste(url, "?new_since=", new_since)
-         history <- httr::GET(url, headers)
+         history <- httr::GET(url, .state$headers)
      }
     httr::stop_for_status(history)
     if (httr::status_code(history) != 200) {
