@@ -22,4 +22,3 @@ vcr::use_cassette("get_bug_fails", {
         expect_error(get_bug(issue = 2), "Bug #2 does not exist.")
     })
 })
-
