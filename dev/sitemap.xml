@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://llrs.dev/index.html</loc>
+    <loc>https://bugrzilla.llrs.dev/index.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/authentication.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/authentication.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/bugRzilla.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/bugRzilla.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/check_api_version.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/check_api_version.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/check_last_audit.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/check_last_audit.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/get_attachment.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/get_attachment.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/get_bug.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/get_bug.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/get_comment.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/get_comment.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/get_fields.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/get_fields.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/get_history.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/get_history.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/post_bug.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/post_bug.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/post_comment.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/post_comment.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/reference/set_key.html</loc>
+    <loc>https://bugrzilla.llrs.dev/reference/set_key.html</loc>
   </url>
   <url>
-    <loc>https://llrs.dev/articles/bugRzilla.html</loc>
+    <loc>https://bugrzilla.llrs.dev/articles/bugRzilla.html</loc>
   </url>
 </urlset>

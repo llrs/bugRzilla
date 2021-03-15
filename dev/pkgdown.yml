@@ -3,8 +3,8 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   bugRzilla: bugRzilla.html
-last_built: 2021-02-28T11:07Z
+last_built: 2021-03-15T19:15Z
 urls:
-  reference: https://llrs.dev/reference
-  article: https://llrs.dev/articles
+  reference: https://bugrzilla.llrs.dev/reference
+  article: https://bugrzilla.llrs.dev/articles
 
