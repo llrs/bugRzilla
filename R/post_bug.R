@@ -31,10 +31,20 @@ post_bug <- function(text, title, component, ...,
         cli::cli_alert("Please, pick a component:")
         component <- menu(components)
     }
-    component <- match.arg(component, components)
+    component <- components[component]
     version <- missing_version(version)
     host <- missing_host(host)
     product <- missing_product(product)
+    if (read_documentation() == "Cancel") {
+        return()
+    }
+    if (ask_research() == "Cancel") {
+        return()
+    }
+    if (about_content() == "Cancel") {
+        return()
+    }
+    ask_final_confirmation()
     url <- paste0(host, "rest/bug")
     # bugs <- httr::POST(url,
     #                    description = text,

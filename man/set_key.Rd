@@ -2,9 +2,12 @@
 % Please edit documentation in R/api.R
 \name{set_key}
 \alias{set_key}
+\alias{use_key}
 \title{Set key to use}
 \usage{
 set_key(key, key_name = "R_BUGZILLA")
+
+use_key(key_name = "R_BUGZILLA")
 }
 \arguments{
 \item{key}{The API key you want to use.}

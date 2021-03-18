@@ -31,6 +31,14 @@ You can install the released version of bugRzilla from [CRAN](https://CRAN.R-pro
 install.packages("bugRzilla")
 ```
 
+Or the development version with:
+
+
+``` r
+remotes::install_github("llrs/bugRzilla")
+```
+
+
 ## Example
 
 This is a basic example which shows you the first "bug" on the issue tracker:
@@ -38,8 +46,8 @@ This is a basic example which shows you the first "bug" on the issue tracker:
 ```{r example}
 library(bugRzilla)
 ## basic example code
-g1 <- get_issue(1)
-g1[, 1:5]
+g1 <- get_bug(1)
+g1
 ```
 
 ## Other packages

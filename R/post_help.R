@@ -5,15 +5,14 @@ official_documentation <- c(
     "https://bugs.r-project.org/bugzilla/page.cgi?id=bug-writing.html")
 
 read_documentation <- function() {
-    cli::cli_alert_success("Opening documentation...")
-    # lapply(official_documentation, browseURL)
+    cli::cat_rule("Documentation")
     cli::cli_alert("Have you read the documentation recently?\n")
     cli::cat_line("(0 to cancel)")
     answer <- ask_confirmation()
     if (answer %in% no) {
+        cli::cli_alert_success("Opening documentation...")
+        lapply(official_documentation, browseURL)
         stop("Do it and then return please.", call. =  FALSE)
-    } else if (answer == "Cancel") {
-        return(invisible(NULL))
     }
     invisible(answer)
 }
@@ -50,33 +49,18 @@ ask_research <- function() {
 
 about_content <- function() {
     cli::cli_rule("Content of the issue")
-    ask_reprex()
-    ask_r()
-    ask_explanation()
-}
-
-ask_r <- function() {
-    cli::cli_alert("Is this issue about R and not a package?")
-    ask_confirmation()
-}
-
-ask_reprex <- function() {
-    cli::cli_ul("Do you provide a short reproducible example of the issue?")
+    cli_alert("Do you provide a short reproducible example of the issue?")
     cli::cat_line("Maybe first check with the R-devel mailing list")
-    ask_confirmation()
+    cli_alert("Is this issue about R and not a package?")
+    cli_alert("Do you explain expectations and the buggy behaviour?")
+    cli_alert("Did you try to identify the cause of the bug?")
+    ask_confirmation("Are all the answers above positive?")
 }
 
-ask_explanation <- function() {
-    cli::cli_ul("Do you explain expectations and the buggy behaviour?")
-    ask_confirmation()
-}
 
-ask_debugging <- function() {
-    cli_ul("Did you try to identify the cause of the bug?")
+ask_final_confirmation <- function(message) {
+    cli::cli_alert_warning("This notification will reach the R-core volunteers and many more")
+    cli::cli_ul("Are you sure to open a bug0
+                ?")
     ask_confirmation()
-}
-
-ask_confirmation <- function(message) {
-    cli::cli_alert("This notification will reach the R-core volunteers")
-    cli::cli_ul("Are you sure to post this message?")
 }

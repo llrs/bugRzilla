@@ -24,6 +24,12 @@ You can install the released version of bugRzilla from
 install.packages("bugRzilla")
 ```
 
+Or the development version with:
+
+``` r
+remotes::install_github("llrs/bugRzilla")
+```
+
 ## Example
 
 This is a basic example which shows you the first “bug” on the issue
@@ -32,14 +38,22 @@ tracker:
 ``` r
 library(bugRzilla)
 ## basic example code
-g1 <- get_issue(1)
-g1[, 1:5]
-#>   attachid commentid comment_count           who                  bug_when
-#> 1        1         3             2         admin 2010-02-16 17:42:59 +0000
-#> 2     <NA>         1             0         admin 2010-02-15 18:29:54 +0000
-#> 3     <NA>         2             1         admin 2010-02-15 18:33:25 +0000
-#> 4     <NA>     83214             3 simon.urbanek 2010-03-09 18:14:23 +0000
-#> 5     <NA>     83218             4         admin 2010-03-10 16:54:39 +0000
+g1 <- get_bug(1)
+g1
+#>   blocks see_also creator keywords          depends_on dupe_of platform
+#> 1     NA       NA   admin       NA 15763, 15764, 15862      NA  PowerPC
+#>               url target_milestone severity is_confirmed classification
+#> 1 http://url.com/              ---   normal         TRUE   Unclassified
+#>   cc_detail is_creator_accessible         op_sys alias is_cc_accessible status
+#> 1   1, 5, 1                  TRUE Mac OS X v10.4    NA             TRUE CLOSED
+#>   whiteboard resolution deadline product version            cc is_open
+#> 1                 FIXED       NA       R R 2.y.z simon.urbanek   FALSE
+#>      last_change_time creator_detail       creation_time qa_contact assigned_to
+#> 1 2018-01-16 16:21:14        1, 1, 1 2010-02-15 18:29:54                  admin
+#>   flags assigned_to_detail id component priority                   summary
+#> 1    NA            1, 1, 1  1      Misc       P5 Test bug report - summary
+#>   groups
+#> 1     NA
 ```
 
 ## Other packages
