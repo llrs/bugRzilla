@@ -42,7 +42,7 @@ create_bugzilla_key <- function(host) {
 #' @param key The API key you want to use.
 #' @param key_name The name of the API key, by default "R_BUGZILLA".
 #' @return TRUE
-#' @importFrom rappdirs user_cache_dir
+#' @importFrom tools R_user_dir
 #' @export
 set_key <- function(key, key_name = "R_BUGZILLA") {
 
@@ -100,7 +100,7 @@ set_headers <- function(key) {
 
 
 app_file <- function() {
-    path <- rappdirs::user_cache_dir("bugRzilla")
+    path <- tools::R_user_dir("bugRzilla")
     dir.create(path, showWarnings = FALSE, recursive = TRUE)
     file.path(normalizePath(path), ".Renviron")
 }
