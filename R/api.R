@@ -38,7 +38,7 @@ create_bugzilla_key <- function(host) {
 #'
 #' If you don't want to have the API key on .Renviron or you want to use another
 #' API key for bugzilla you can set it up this way. It will store the key in the
-#' envirnoment which will only work for this R session.
+#' environment which will only work for this R session.
 #' @param key The API key you want to use.
 #' @param key_name The name of the API key, by default "R_BUGZILLA".
 #' @return TRUE
@@ -100,7 +100,7 @@ set_headers <- function(key) {
 
 
 app_file <- function() {
-    path <- tools::R_user_dir("bugRzilla")
+    path <- tools::R_user_dir("bugRzilla", which = "cache")
     dir.create(path, showWarnings = FALSE, recursive = TRUE)
     file.path(normalizePath(path), ".Renviron")
 }
