@@ -17,7 +17,7 @@ Imports:
     httr,
     methods,
     utils,
-    rappdirs
+    tools
 Suggests: 
     covr,
     knitr,

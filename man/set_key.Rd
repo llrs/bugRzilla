@@ -20,5 +20,5 @@ TRUE
 \description{
 If you don't want to have the API key on .Renviron or you want to use another
 API key for bugzilla you can set it up this way. It will store the key in the
-envirnoment which will only work for this R session.
+environment which will only work for this R session.
 }
