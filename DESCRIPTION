@@ -17,7 +17,8 @@ Imports:
     httr,
     methods,
     utils,
-    tools
+    tools,
+    httptest
 Suggests: 
     covr,
     knitr,

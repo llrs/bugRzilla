@@ -17,6 +17,7 @@ missing_key <- function(key) {
 #' @importFrom cli cli_ul
 #' @importFrom utils browseURL
 #' @export
+#' @import httptest
 create_bugzilla_key <- function(host) {
     host <- missing_host(host)
     url <- paste0(host, "userprefs.cgi?tab=apikey")

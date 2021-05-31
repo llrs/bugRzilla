@@ -1,0 +1,39 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://bugs.r-project.org/bugzilla/rest/whoami
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-BUGZILLA-API-KEY: https://bugs.r-project.org/bugzilla/
+      User-agent: https://github.com/llrs/bugRzilla/
+  response:
+    status:
+      status_code: 400
+      category: Client error
+      reason: Bad Request
+      message: 'Client error: (400) Bad Request'
+    headers:
+      date: Mon, 31 May 2021 03:18:01 GMT
+      server: gazelle
+      etag: QoEOn1fkyvtzNJvFp167rw
+      content-length: '185'
+      content-type: application/json; charset=UTF-8
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-login, x-bugzilla-token, x-bugzilla-password, x-bugzilla-api-key
+      access-control-allow-origin: '*'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-xss-protection: 1; mode=block
+      set-cookie: Bugzilla_login_request_cookie=MGh4nMQZ13; domain=bugs.r-project.org;
+        path=/bugzilla/; secure; HttpOnly
+      connection: close
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"code":"306","error":true,"message":"The API key you specified is
+        invalid. Please check that you typed it correctly.","documentation":"https://bugzilla.readthedocs.org/en/latest/api/"}'
+  recorded_at: 2021-05-31 03:18:00 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0

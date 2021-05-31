@@ -1,0 +1,71 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://bugs.r-project.org/bugzilla/rest/version
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Sun, 30 May 2021 22:29:14 GMT
+      server: gazelle
+      etag: eTsYwUQ9/dEzCleTaxjJ5A
+      content-length: '20'
+      content-type: application/json; charset=UTF-8
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-login, x-bugzilla-token, x-bugzilla-password, x-bugzilla-api-key
+      access-control-allow-origin: '*'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-xss-protection: 1; mode=block
+      set-cookie: Bugzilla_login_request_cookie=bkWtzcH9Y2; domain=bugs.r-project.org;
+        path=/bugzilla/; secure; HttpOnly
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"version":"5.1.2+"}'
+  recorded_at: 2021-05-30 22:29:15 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://bugs.r-project.org/bugzilla/rest/whoami
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-BUGZILLA-API-KEY: foobar
+      User-agent: https://github.com/llrs/bugRzilla/
+  response:
+    status:
+      status_code: 400
+      category: Client error
+      reason: Bad Request
+      message: 'Client error: (400) Bad Request'
+    headers:
+      date: Sun, 30 May 2021 22:29:14 GMT
+      server: gazelle
+      etag: QoEOn1fkyvtzNJvFp167rw
+      content-length: '185'
+      content-type: application/json; charset=UTF-8
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-api-key, x-bugzilla-password, x-bugzilla-token, x-bugzilla-login
+      access-control-allow-origin: '*'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-xss-protection: 1; mode=block
+      connection: close
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"documentation":"https://bugzilla.readthedocs.org/en/latest/api/","message":"The
+        API key you specified is invalid. Please check that you typed it correctly.","error":true,"code":"306"}'
+  recorded_at: 2021-05-30 22:29:15 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0
