@@ -17,14 +17,14 @@ Imports:
     httr,
     methods,
     utils,
-    tools,
-    httptest
+    tools
 Suggests: 
     covr,
     knitr,
     reprex,
     rmarkdown,
     testthat (>= 3.0.0),
+    httptest,
     vcr
 VignetteBuilder: 
     knitr
