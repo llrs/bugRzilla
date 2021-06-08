@@ -1,5 +1,4 @@
 library("vcr") # *Required* as vcr is set up on loading
-library("httptest") # *Required* as hhtptest is set up on loading
 
 vcr_dir <- vcr::vcr_test_path("fixtures")
 if (!nzchar(Sys.getenv("R_BUGZILLA"))) {

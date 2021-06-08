@@ -1,4 +1,4 @@
-# cli_alert_warning works [plain]
+# cli_alert_warning [plain]
 
     Code
       cli::cli_alert_warning(
@@ -6,7 +6,7 @@
     Message <cliMessage>
       ! This package hasn't been tested with this Bugzilla version.
 
-# cli_alert_warning works [ansi]
+# cli_alert_warning [ansi]
 
     Code
       cli::cli_alert_warning(
@@ -14,7 +14,7 @@
     Message <cliMessage>
       [33m![39m This package hasn't been tested with this Bugzilla version.
 
-# cli_alert_warning works [unicode]
+# cli_alert_warning [unicode]
 
     Code
       cli::cli_alert_warning(
@@ -22,7 +22,7 @@
     Message <cliMessage>
       ! This package hasn't been tested with this Bugzilla version.
 
-# cli_alert_warning works [fancy]
+# cli_alert_warning [fancy]
 
     Code
       cli::cli_alert_warning(
@@ -30,7 +30,21 @@
     Message <cliMessage>
       [33m![39m This package hasn't been tested with this Bugzilla version.
 
-# cli_alert_danger [plain]
+# ul [plain]
+
+    Code
+      cli::cli_ul("Create the API key on the website.")
+    Message <cliMessage>
+      * Create the API key on the website.
+
+# ul [unicode]
+
+    Code
+      cli::cli_ul("Create the API key on the website.")
+    Message <cliMessage>
+      • Create the API key on the website.
+
+# ca_cli_alert_danger [plain]
 
     Code
       cli::cli_alert_danger("Not authenticated on this site.")
@@ -41,7 +55,7 @@
     Message <cliMessage>
       v Authenticated on this site!
 
-# cli_alert_danger [ansi]
+# ca_cli_alert_danger [ansi]
 
     Code
       cli::cli_alert_danger("Not authenticated on this site.")
@@ -52,7 +66,7 @@
     Message <cliMessage>
       [32mv[39m Authenticated on this site!
 
-# cli_alert_danger [unicode]
+# ca_cli_alert_danger [unicode]
 
     Code
       cli::cli_alert_danger("Not authenticated on this site.")
@@ -63,7 +77,7 @@
     Message <cliMessage>
       ✔ Authenticated on this site!
 
-# cli_alert_danger [fancy]
+# ca_cli_alert_danger [fancy]
 
     Code
       cli::cli_alert_danger("Not authenticated on this site.")
@@ -74,28 +88,28 @@
     Message <cliMessage>
       [32m✔[39m Authenticated on this site!
 
-# cli_alert_dangers [plain]
+# vk_cli_alert_danger [plain]
 
     Code
       cli::cli_alert_danger("Key not valid or not set.")
     Message <cliMessage>
       x Key not valid or not set.
 
-# cli_alert_dangers [ansi]
+# vk_cli_alert_danger [ansi]
 
     Code
       cli::cli_alert_danger("Key not valid or not set.")
     Message <cliMessage>
       [31mx[39m Key not valid or not set.
 
-# cli_alert_dangers [unicode]
+# vk_cli_alert_danger [unicode]
 
     Code
       cli::cli_alert_danger("Key not valid or not set.")
     Message <cliMessage>
       ✖ Key not valid or not set.
 
-# cli_alert_dangers [fancy]
+# vk_cli_alert_danger [fancy]
 
     Code
       cli::cli_alert_danger("Key not valid or not set.")
