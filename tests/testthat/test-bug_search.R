@@ -8,16 +8,14 @@ valid_parameters <- c("alias", "assigned_to", "component", "creation_time",
 
 # test_that("bug_search works", {
 #     vcr::use_cassette("bug_search", {
-#         bs <- bug_search()
+#         bs <- bug_search(id=1)
 #         url <- "https://bugs.r-project.org/bugzilla/rest/bug?id=1"
-#         params <- params(1)
 #     })
-#     expect_equal(missing_host(), "https://bugs.r-project.org/bugzilla/")
+#     expect_equal(paste0(missing_host(), "rest/bug?", params(id=1)), "https://bugs.r-project.org/bugzilla/rest/bug?id=1")
 # })
 
 test_that("params works", {
-    vcr::use_cassette("params", {
-        par <- params()
-    })
+    par <- params()
     expect_true(all(names(par) %in% valid_parameters))
+    expect_true(all(!names(params("ids")) %in% valid_parameters))
 })

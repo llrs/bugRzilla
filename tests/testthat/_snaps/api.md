@@ -1,118 +1,98 @@
-# cli_alert_warning [plain]
+# create_bugzilla_key() works [plain]
 
     Code
-      cli::cli_alert_warning(
-        "This package hasn't been tested with this Bugzilla version.")
+      create_bugzilla_key(host = missing_host())
     Message <cliMessage>
-      ! This package hasn't been tested with this Bugzilla version.
-
-# cli_alert_warning [ansi]
-
-    Code
-      cli::cli_alert_warning(
-        "This package hasn't been tested with this Bugzilla version.")
-    Message <cliMessage>
-      [33m![39m This package hasn't been tested with this Bugzilla version.
-
-# cli_alert_warning [unicode]
-
-    Code
-      cli::cli_alert_warning(
-        "This package hasn't been tested with this Bugzilla version.")
-    Message <cliMessage>
-      ! This package hasn't been tested with this Bugzilla version.
-
-# cli_alert_warning [fancy]
-
-    Code
-      cli::cli_alert_warning(
-        "This package hasn't been tested with this Bugzilla version.")
-    Message <cliMessage>
-      [33m![39m This package hasn't been tested with this Bugzilla version.
-
-# ul [plain]
-
-    Code
-      cli::cli_ul("Create the API key on the website.")
-    Message <cliMessage>
-      * Create the API key on the website.
-
-# ul [unicode]
-
-    Code
-      cli::cli_ul("Create the API key on the website.")
-    Message <cliMessage>
-      • Create the API key on the website.
-
-# ca_cli_alert_danger [plain]
-
-    Code
-      cli::cli_alert_danger("Not authenticated on this site.")
-    Message <cliMessage>
+      i Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
+      v Found key `R_BUGZILLA`.
+      v Using key `R_BUGZILLA`.
       x Not authenticated on this site.
-    Code
-      cli::cli_alert_success("Authenticated on this site!")
-    Message <cliMessage>
       v Authenticated on this site!
 
-# ca_cli_alert_danger [ansi]
+# create_bugzilla_key() works [unicode]
 
     Code
-      cli::cli_alert_danger("Not authenticated on this site.")
+      create_bugzilla_key(host = missing_host())
     Message <cliMessage>
-      [31mx[39m Not authenticated on this site.
-    Code
-      cli::cli_alert_success("Authenticated on this site!")
-    Message <cliMessage>
-      [32mv[39m Authenticated on this site!
-
-# ca_cli_alert_danger [unicode]
-
-    Code
-      cli::cli_alert_danger("Not authenticated on this site.")
-    Message <cliMessage>
+      ℹ Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
+      ✔ Found key `R_BUGZILLA`.
+      ✔ Using key `R_BUGZILLA`.
       ✖ Not authenticated on this site.
-    Code
-      cli::cli_alert_success("Authenticated on this site!")
-    Message <cliMessage>
       ✔ Authenticated on this site!
 
-# ca_cli_alert_danger [fancy]
+# check_key() works [plain]
 
     Code
-      cli::cli_alert_danger("Not authenticated on this site.")
+      check_key(key_name = missing_key(), verbose = TRUE)
     Message <cliMessage>
-      [31m✖[39m Not authenticated on this site.
-    Code
-      cli::cli_alert_success("Authenticated on this site!")
-    Message <cliMessage>
-      [32m✔[39m Authenticated on this site!
+      i Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
+      v Found key `R_BUGZILLA`.
+    Output
+      [1] TRUE
 
-# vk_cli_alert_danger [plain]
-
-    Code
-      cli::cli_alert_danger("Key not valid or not set.")
-    Message <cliMessage>
-      x Key not valid or not set.
-
-# vk_cli_alert_danger [ansi]
+# check_key() works [unicode]
 
     Code
-      cli::cli_alert_danger("Key not valid or not set.")
+      check_key(key_name = missing_key(), verbose = TRUE)
     Message <cliMessage>
-      [31mx[39m Key not valid or not set.
+      ℹ Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
+      ✔ Found key `R_BUGZILLA`.
+    Output
+      [1] TRUE
 
-# vk_cli_alert_danger [unicode]
+# use_key() works [plain]
 
     Code
-      cli::cli_alert_danger("Key not valid or not set.")
+      use_key(missing_key())
     Message <cliMessage>
-      ✖ Key not valid or not set.
+      v Using key `R_BUGZILLA`.
 
-# vk_cli_alert_danger [fancy]
+---
 
     Code
-      cli::cli_alert_danger("Key not valid or not set.")
+      !check_key(key_name = missing_key(), verbose = FALSE)
+    Output
+      [1] FALSE
+
+# use_key() works [unicode]
+
+    Code
+      use_key(missing_key())
     Message <cliMessage>
-      [31m✖[39m Key not valid or not set.
+      ✔ Using key `R_BUGZILLA`.
+
+---
+
+    Code
+      !check_key(key_name = missing_key(), verbose = FALSE)
+    Output
+      [1] FALSE
+
+# valid_key() works [plain]
+
+    Code
+      valid_key(key = missing_key())
+    Output
+      [1] TRUE
+
+# valid_key() works [ansi]
+
+    Code
+      valid_key(key = missing_key())
+    Output
+      [1] TRUE
+
+# valid_key() works [unicode]
+
+    Code
+      valid_key(key = missing_key())
+    Output
+      [1] TRUE
+
+# valid_key() works [fancy]
+
+    Code
+      valid_key(key = missing_key())
+    Output
+      [1] TRUE
 

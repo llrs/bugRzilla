@@ -7,6 +7,8 @@ http_interactions:
       string: ''
     headers:
       Accept: application/json, text/xml, application/xml, */*
+      Authorization: My bearer token is safe
+      X-BUGZILLA-API-KEY: Removing this header too just in case
   response:
     status:
       status_code: 200
@@ -14,22 +16,20 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 31 May 2021 03:04:29 GMT
+      date: Sat, 12 Jun 2021 22:38:08 GMT
       server: gazelle
-      etag: GIrwjX1k17GX4FOvl+NcVA
+      etag: /kF0g2q98GJLV5YGfBdm7Q
       content-length: '42'
       content-type: application/json; charset=UTF-8
       access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
-        x-bugzilla-login, x-bugzilla-password, x-bugzilla-token, x-bugzilla-api-key
+        x-bugzilla-api-key, x-bugzilla-login, x-bugzilla-token, x-bugzilla-password
       access-control-allow-origin: '*'
       x-content-type-options: nosniff
       x-frame-options: SAMEORIGIN
       x-xss-protection: 1; mode=block
-      set-cookie: Bugzilla_login_request_cookie=l0ZOvJZzmk; domain=bugs.r-project.org;
-        path=/bugzilla/; secure; HttpOnly
     body:
       encoding: UTF-8
       file: no
-      string: '{"last_audit_time":"2021-05-27T01:19:10Z"}'
-  recorded_at: 2021-05-31 03:04:28 GMT
+      string: '{"last_audit_time":"2021-06-09T23:47:55Z"}'
+  recorded_at: 2021-06-12 22:38:08 GMT
   recorded_with: vcr/0.6.0, webmockr/0.8.0
