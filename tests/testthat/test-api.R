@@ -22,11 +22,11 @@ cli::test_that_cli(configs = c("plain", "unicode"), "check_key() works", {
     })
 })
 
-cli::test_that_cli(configs = c("plain", "unicode"), "check_key() fails", {
-    expect_snapshot({
-        !check_key(key_name = missing_key(), verbose = TRUE)
-    })
-})
+# cli::test_that_cli(configs = c("plain", "unicode"), "check_key() fails", {
+#     expect_snapshot({
+#         !check_key(key_name = missing_key(), verbose = TRUE)
+#     })
+# })
 
 
 # This is to check the use_key function

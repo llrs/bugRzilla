@@ -40,26 +40,6 @@
     Output
       [1] TRUE
 
-# check_key() fails [plain]
-
-    Code
-      !check_key(key_name = missing_key(), verbose = TRUE)
-    Message <cliMessage>
-      i Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
-      v Found key `R_BUGZILLA`.
-    Output
-      [1] FALSE
-
-# check_key() fails [unicode]
-
-    Code
-      !check_key(key_name = missing_key(), verbose = TRUE)
-    Message <cliMessage>
-      ℹ Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
-      ✔ Found key `R_BUGZILLA`.
-    Output
-      [1] FALSE
-
 # use_key() works [plain]
 
     Code
