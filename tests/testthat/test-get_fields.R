@@ -1,6 +1,6 @@
 test_that("get_fields works", {
-    # skip_if_offline()
-    # skip_on_cran()
+    skip_if_offline()
+    skip_on_cran()
     vcr::use_cassette("get_fields", {
         fi <- get_fields()
     })

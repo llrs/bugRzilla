@@ -1,6 +1,5 @@
 # This is to check the create_bugzilla_key function
 cli::test_that_cli(configs = c("plain", "unicode"), "create_bugzilla_key() works", {
-    url <- "https://bugs.r-project.org/bugzilla/userprefs.cgi?tab=apikey"
     expect_snapshot({
         create_bugzilla_key(host = missing_host())
     })
@@ -10,7 +9,7 @@ cli::test_that_cli(configs = c("plain", "unicode"), "create_bugzilla_key() works
 # This is to check the set_key function
 test_that("set_key works", {
     vcr::use_cassette("set_key", {
-        sk <- set_key(missing_key(), key_name = "R_BUGZILLA")
+        sk <- set_key()
     })
     expect_equal(write_renviron(key = sk, value = sk, file = app_file()), NULL)
 })
@@ -23,14 +22,17 @@ cli::test_that_cli(configs = c("plain", "unicode"), "check_key() works", {
     })
 })
 
+cli::test_that_cli(configs = c("plain", "unicode"), "check_key() fails", {
+    expect_snapshot({
+        !check_key(key_name = missing_key(), verbose = TRUE)
+    })
+})
+
 
 # This is to check the use_key function
 cli::test_that_cli(configs = c("plain", "unicode"), "use_key() works", {
     expect_snapshot({
         use_key(missing_key())
-    })
-    expect_snapshot({
-        !check_key(key_name = missing_key(), verbose = FALSE)
     })
 })
 

@@ -11,11 +11,11 @@ valid_parameters <- c("alias", "assigned_to", "component", "creation_time",
 #         bs <- bug_search(id=1)
 #         url <- "https://bugs.r-project.org/bugzilla/rest/bug?id=1"
 #     })
-#     expect_equal(paste0(missing_host(), "rest/bug?", params(id=1)), "https://bugs.r-project.org/bugzilla/rest/bug?id=1")
+#     expect_equal(paste0(missing_host(), "rest/bug?", params(id=1)), url)
 # })
 
 test_that("params works", {
     par <- params()
     expect_true(all(names(par) %in% valid_parameters))
-    expect_true(all(!names(params("ids")) %in% valid_parameters))
+    expect_error(params(ids=1))
 })
