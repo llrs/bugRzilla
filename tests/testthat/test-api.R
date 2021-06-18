@@ -1,5 +1,6 @@
 # This is to check the create_bugzilla_key function
 cli::test_that_cli(configs = c("plain", "unicode"), "create_bugzilla_key() works", {
+    skip_on_ci()
     expect_snapshot({
         create_bugzilla_key()
     })
