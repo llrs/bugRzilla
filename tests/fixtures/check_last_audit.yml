@@ -16,9 +16,9 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Sat, 12 Jun 2021 22:38:08 GMT
+      date: Fri, 18 Jun 2021 20:57:31 GMT
       server: gazelle
-      etag: /kF0g2q98GJLV5YGfBdm7Q
+      etag: nuyzry+9UExbGXwyRTkrfQ
       content-length: '42'
       content-type: application/json; charset=UTF-8
       access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
@@ -30,6 +30,6 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: '{"last_audit_time":"2021-06-09T23:47:55Z"}'
-  recorded_at: 2021-06-12 22:38:08 GMT
+      string: '{"last_audit_time":"2021-06-18T20:47:32Z"}'
+  recorded_at: 2021-06-18 20:57:31 GMT
   recorded_with: vcr/0.6.0, webmockr/0.8.0

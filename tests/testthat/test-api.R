@@ -1,33 +1,26 @@
 # This is to check the create_bugzilla_key function
 cli::test_that_cli(configs = c("plain", "unicode"), "create_bugzilla_key() works", {
     expect_snapshot({
-        create_bugzilla_key(host = missing_host())
+        create_bugzilla_key()
     })
 })
 
 
 # This is to check the set_key function
 test_that("set_key works", {
-    vcr::use_cassette("set_key", {
-        sk <- set_key()
-    })
+    skip_on_ci()
+    sk <- set_key()
     expect_equal(write_renviron(key = sk, value = sk, file = app_file()), NULL)
 })
 
 
 # This is to check the check_key function
 cli::test_that_cli(configs = c("plain", "unicode"), "check_key() works", {
+    skip_on_ci()
     expect_snapshot({
-        check_key(key_name = missing_key(), verbose = TRUE)
+        check_key(key_name = missing_key(),  verbose = FALSE)
     })
 })
-
-# cli::test_that_cli(configs = c("plain", "unicode"), "check_key() fails", {
-#     expect_snapshot({
-#         !check_key(key_name = missing_key(), verbose = TRUE)
-#     })
-# })
-
 
 # This is to check the use_key function
 cli::test_that_cli(configs = c("plain", "unicode"), "use_key() works", {
@@ -40,17 +33,15 @@ cli::test_that_cli(configs = c("plain", "unicode"), "use_key() works", {
 # This is to check the check_last_audit function
 test_that("check_last_audit works", {
     vcr::use_cassette("check_last_audit", {
-        cla <- check_last_audit(missing_product(), missing_host())
+        cla <- check_last_audit()
     })
-    expect_equal(missing_host(), "https://bugs.r-project.org/bugzilla/")
-    expect_equal(missing_product(), "R")
-    expect_s3_class(GET(paste0(missing_host(), "rest/last_audit_time")), "response")
+    expect_s3_class(cla, "POSIXlt")
 })
 
 
 # This is to check the valid_key function
 cli::test_that_cli("valid_key() works", {
     expect_snapshot({
-        valid_key(key = missing_key())
+        valid_key(key = "hgfcchg12")
     })
 })

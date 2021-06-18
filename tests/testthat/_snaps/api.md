@@ -1,7 +1,7 @@
 # create_bugzilla_key() works [plain]
 
     Code
-      create_bugzilla_key(host = missing_host())
+      create_bugzilla_key()
     Message <cliMessage>
       i Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
       v Found key `R_BUGZILLA`.
@@ -12,7 +12,7 @@
 # create_bugzilla_key() works [unicode]
 
     Code
-      create_bugzilla_key(host = missing_host())
+      create_bugzilla_key()
     Message <cliMessage>
       ℹ Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
       ✔ Found key `R_BUGZILLA`.
@@ -23,20 +23,14 @@
 # check_key() works [plain]
 
     Code
-      check_key(key_name = missing_key(), verbose = TRUE)
-    Message <cliMessage>
-      i Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
-      v Found key `R_BUGZILLA`.
+      check_key(key_name = missing_key(), verbose = FALSE)
     Output
       [1] TRUE
 
 # check_key() works [unicode]
 
     Code
-      check_key(key_name = missing_key(), verbose = TRUE)
-    Message <cliMessage>
-      ℹ Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
-      ✔ Found key `R_BUGZILLA`.
+      check_key(key_name = missing_key(), verbose = FALSE)
     Output
       [1] TRUE
 
@@ -57,28 +51,28 @@
 # valid_key() works [plain]
 
     Code
-      valid_key(key = missing_key())
+      valid_key(key = "hgfcchg12")
     Output
       [1] TRUE
 
 # valid_key() works [ansi]
 
     Code
-      valid_key(key = missing_key())
+      valid_key(key = "hgfcchg12")
     Output
       [1] TRUE
 
 # valid_key() works [unicode]
 
     Code
-      valid_key(key = missing_key())
+      valid_key(key = "hgfcchg12")
     Output
       [1] TRUE
 
 # valid_key() works [fancy]
 
     Code
-      valid_key(key = missing_key())
+      valid_key(key = "hgfcchg12")
     Output
       [1] TRUE
 
