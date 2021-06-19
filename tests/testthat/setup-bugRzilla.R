@@ -15,7 +15,7 @@ use_key()
 invisible(vcr::vcr_configure(
   dir = vcr_dir,
   filter_request_headers = list(
-      "Authorization" = "My bearer token is safe",
-      "X-BUGZILLA-API-KEY" = "Removing this header too just in case")
+    "Authorization" = "My bearer token is safe",
+    "X-BUGZILLA-API-KEY" = "Removing this header too just in case")
 ))
 vcr::check_cassette_names()

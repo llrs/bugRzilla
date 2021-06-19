@@ -1,0 +1,35 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://bugs.r-project.org/bugzilla/rest/last_audit_time
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Authorization: My bearer token is safe
+      X-BUGZILLA-API-KEY: Removing this header too just in case
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Fri, 18 Jun 2021 20:57:31 GMT
+      server: gazelle
+      etag: nuyzry+9UExbGXwyRTkrfQ
+      content-length: '42'
+      content-type: application/json; charset=UTF-8
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-api-key, x-bugzilla-login, x-bugzilla-token, x-bugzilla-password
+      access-control-allow-origin: '*'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"last_audit_time":"2021-06-18T20:47:32Z"}'
+  recorded_at: 2021-06-18 20:57:31 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0
