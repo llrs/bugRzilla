@@ -8,8 +8,8 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #'
 #' Guides through the process of creating an issue.
 #' Requires an user and an API key.
-#' @param text A character vector with the text of the bug you want to
-#' open.
+# #' @param text A character vector with the text of the bug you want to
+# #' open.
 #' @param title A character vector with the title of the bug.
 #' @param component A character with the component of R you want to fill an issue with.
 #' @param version A character of the Version you want to use eg "R 4.0.0".
@@ -18,14 +18,17 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' @param ... Named arguments passed to the API [check documentation](https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html)
 #' @inheritParams create_bugzilla_key
 #' @importFrom utils menu
+#' @import jsonlite
+#' @import reshape2
 #' @importFrom cli cli_alert
 #' @export
 #' @seealso To obtain and use the API key see create_bugzilla_key().
 #' [Webpage](https://bugs.r-project.org/bugzilla/enter_bug.cgi) for manual entry
 #' @return The ID of the issue posted.
-post_bug <- function(text, title, component, ...,
-                    version, product, host, key) {
+post_bug <- function(title, component, ...,
+                     version, product, host, key) {
     # Provide some checks/questions to the users
+    text <- readline(prompt = "Bug Title: ")
     # Fill description, version and summary
     if (missing(component)) {
         cli::cli_alert("Please, pick a component:")
@@ -46,13 +49,15 @@ post_bug <- function(text, title, component, ...,
     }
     ask_final_confirmation()
     url <- paste0(host, "rest/bug")
-    # bugs <- httr::POST(url,
-    #                    description = text,
-    #                    product = product,
-    #                    component = component,
-    #                    summary = title,
-    #                    version = version,
-    #                    ...,
-    #                    headers)
-    # bugs <- httr::content(bugs)
+    data <- list(
+        product = product,
+        component = component,
+        version = version,
+        summary = text
+    )
+    bugs <- httr::POST(url, body = jsonlite::toJSON(data, pretty = TRUE, auto_unbox = TRUE), ...,
+                       httr::add_headers(`accept` = 'application/json'),
+                       httr::content_type('application/json'))
+    bugs <- httr::content(bugs)
+    return(bugs)
 }

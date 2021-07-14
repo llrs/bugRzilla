@@ -4,12 +4,9 @@
 \alias{post_bug}
 \title{Open an issue.}
 \usage{
-post_bug(text, title, component, ..., version, product, host, key)
+post_bug(title, component, ..., version, product, host, key)
 }
 \arguments{
-\item{text}{A character vector with the text of the bug you want to
-open.}
-
 \item{title}{A character vector with the title of the bug.}
 
 \item{component}{A character with the component of R you want to fill an issue with.}

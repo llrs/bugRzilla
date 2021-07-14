@@ -17,14 +17,17 @@ Imports:
     httr,
     methods,
     utils,
-    tools
+    tools,
+    jsonlite,
+    reshape2
 Suggests: 
     covr,
     knitr,
     reprex,
     rmarkdown,
     testthat (>= 3.0.0),
-    vcr
+    vcr,
+    mockr
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
