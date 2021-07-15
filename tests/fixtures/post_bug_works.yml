@@ -1,0 +1,35 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://bugs.r-project.org/bugzilla/rest/bug
+    body:
+      encoding: ''
+      string: '{"product":"R","component":"Misc","version":"4.0.x","summary":"test!!!"}'
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: application/json
+  response:
+    status:
+      status_code: 401
+      category: Client error
+      reason: Unauthorized
+      message: 'Client error: (401) Unauthorized'
+    headers:
+      date: Thu, 15 Jul 2021 17:00:35 GMT
+      server: gazelle
+      etag: 8hv3qhJNknTVRt2cjTD2dw
+      content-length: '157'
+      content-type: application/json; charset=UTF-8
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-api-key, x-bugzilla-password, x-bugzilla-token, x-bugzilla-login
+      access-control-allow-origin: '*'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"code":"410","message":"You must log in before using this part of
+        Bugzilla.","error":true,"documentation":"https://bugzilla.readthedocs.org/en/latest/api/"}'
+  recorded_at: 2021-07-15 17:00:35 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

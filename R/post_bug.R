@@ -18,8 +18,6 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' @param ... Named arguments passed to the API [check documentation](https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html)
 #' @inheritParams create_bugzilla_key
 #' @importFrom utils menu
-#' @import jsonlite
-#' @import reshape2
 #' @importFrom cli cli_alert
 #' @export
 #' @seealso To obtain and use the API key see create_bugzilla_key().
@@ -28,7 +26,7 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 post_bug <- function(title, component, ...,
                      version, product, host, key) {
     # Provide some checks/questions to the users
-    text <- readline(prompt = "Bug Title: ")
+    title <- readline(prompt = "Bug Title: ")
     # Fill description, version and summary
     if (missing(component)) {
         cli::cli_alert("Please, pick a component:")
@@ -48,16 +46,14 @@ post_bug <- function(title, component, ...,
         return()
     }
     ask_final_confirmation()
-    url <- paste0(host, "rest/bug")
+    url <- paste0(host, "rest/bug?")
     data <- list(
         product = product,
         component = component,
         version = version,
-        summary = text
+        summary = title
     )
-    bugs <- httr::POST(url, body = jsonlite::toJSON(data, pretty = TRUE, auto_unbox = TRUE), ...,
-                       httr::add_headers(`accept` = 'application/json'),
-                       httr::content_type('application/json'))
+    bugs <- httr::POST(url, body = data, encode = "json")
     bugs <- httr::content(bugs)
-    return(bugs)
+    print(bugs)
 }
