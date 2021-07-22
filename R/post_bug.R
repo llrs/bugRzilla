@@ -8,8 +8,8 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #'
 #' Guides through the process of creating an issue.
 #' Requires an user and an API key.
-# #' @param text A character vector with the text of the bug you want to
-# #' open.
+#' @param text A character vector with the text of the bug you want to
+#' open.
 #' @param title A character vector with the title of the bug.
 #' @param component A character with the component of R you want to fill an issue with.
 #' @param version A character of the Version you want to use eg "R 4.0.0".
@@ -23,10 +23,8 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' @seealso To obtain and use the API key see create_bugzilla_key().
 #' [Webpage](https://bugs.r-project.org/bugzilla/enter_bug.cgi) for manual entry
 #' @return The ID of the issue posted.
-post_bug <- function(title, component, ...,
+post_bug <- function(text, title, component, ...,
                      version, product, host, key) {
-    # Provide some checks/questions to the users
-    title <- readline(prompt = "Bug Title: ")
     # Fill description, version and summary
     if (missing(component)) {
         cli::cli_alert("Please, pick a component:")
@@ -51,9 +49,13 @@ post_bug <- function(title, component, ...,
         product = product,
         component = component,
         version = version,
-        summary = title
+        summary = title,
+        description = text
     )
-    bugs <- httr::POST(url, body = data, encode = "json")
+    bugs <- httr::POST(url, body = data, encode = "json", ...,
+                       add_headers(.headers = c(
+                           "Content-Type"="application/json",
+                           "Ocp-Apim-Subscription-Key"="my_subscrition_key")))
     bugs <- httr::content(bugs)
-    print(bugs)
+    return(bugs)
 }
