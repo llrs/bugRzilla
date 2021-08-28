@@ -30,11 +30,12 @@ post_bug <- function(text, title, component, ...,
     if (missing(component)) {
         cli::cli_alert("Please, pick a component:")
         component <- menu(components)
+        component <- components[component]
     }
-    component <- components[component]
     version <- missing_version(version)
     host <- missing_host(host)
     product <- missing_product(product)
+    title <- paste("BugRzilla:", title)
     if (read_documentation() == "Cancel") {
         return()
     }
@@ -46,13 +47,15 @@ post_bug <- function(text, title, component, ...,
     }
     ask_final_confirmation()
     url <- paste0(host, "rest/bug")
-    # bugs <- httr::POST(url,
-    #                    description = text,
-    #                    product = product,
-    #                    component = component,
-    #                    summary = title,
-    #                    version = version,
-    #                    ...,
-    #                    headers)
-    # bugs <- httr::content(bugs)
+    bugs <- httr::POST(url,
+                       body = list(
+                           description = text,
+                           product = product,
+                           component = component,
+                           summary = title,
+                           version = version,
+                           ...),
+                       encode = "json",
+                       config = set_headers(key))
+    bugs <- httr::content(bugs)
 }

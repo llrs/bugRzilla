@@ -20,7 +20,7 @@ missing_version <- function(version) {
         }
         version <- paste0(ver, collapse = ".")
     }
-    version
+    paste("R", version)
 }
 
 missing_product <- function(product) {
@@ -28,6 +28,22 @@ missing_product <- function(product) {
         product <- "R"
     }
     product
+}
+
+missing_hardware <- function(hardware) {
+    if (missing(hardware)) {
+        arch <- R.Version()[["arch"]]
+    }
+    if (arch == "x86_64") {
+        arch <- "x86_64/x64/amd64"
+    } else {
+        arch <- "Other"
+    }
+    arch
+}
+
+missing_system <- function(system) {
+
 }
 
 
