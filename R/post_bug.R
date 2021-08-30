@@ -23,29 +23,19 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' @seealso To obtain and use the API key see create_bugzilla_key().
 #' [Webpage](https://bugs.r-project.org/bugzilla/enter_bug.cgi) for manual entry
 #' @return The ID of the issue posted.
-post_bug <- function(text, title, component, ...,
-                    version, product, host, key) {
-    # Provide some checks/questions to the users
-    # Fill description, version and summary
-    if (missing(component)) {
-        cli::cli_alert("Please, pick a component:")
-        component <- menu(components)
-        component <- components[component]
-    }
-    version <- missing_version(version)
-    host <- missing_host(host)
-    product <- missing_product(product)
+post_bug <- function(title, text, component, version, product, ...,
+                    host, key) {
     title <- paste("BugRzilla:", title)
-    if (read_documentation() == "Cancel") {
-        return()
+    if (Sys.getenv("RBUGZILLA") == "" & product == "R") {
+        stop("To post to the R bugzilla use the post_r_bug function.",
+             call. = FALSE)
+    } else if (Sys.getenv("RBUGZILLA") != "" & product == "R") {
+        ask_final_confirmation()
+        Sys.unsetenv("RBUGZILLA")
+    } else {
+        Sys.unsetenv("RBUGZILLA")
+        ask_confirmation("Are you really sure?")
     }
-    if (ask_research() == "Cancel") {
-        return()
-    }
-    if (about_content() == "Cancel") {
-        return()
-    }
-    ask_final_confirmation()
     url <- paste0(host, "rest/bug")
     bugs <- httr::POST(url,
                        body = list(
@@ -57,5 +47,40 @@ post_bug <- function(text, title, component, ...,
                            ...),
                        encode = "json",
                        config = set_headers(key))
+    if (httr::http_error(bugs)) {
+        stop("You probably didn't use the right columns or values.\n",
+             "  Check the API documentation as it says:\n\t",
+             httr::content(bugs)$message, call. = FALSE)
+    }
     bugs <- httr::content(bugs)
+    bugs$id
+}
+post_r_bug <- function(title, text, component, version, ..., key) {
+    # Provide some checks/questions to the users
+    # Fill description, version and summary
+    if (missing(component)) {
+        cli::cli_alert("Please, pick a component:")
+        component <- menu(components)
+        component <- components[component]
+    }
+    version <- missing_version(version)
+    Sys.setenv("RBUGZILLA" = "a")
+    if (read_documentation() == "Cancel") {
+        return()
+    }
+    if (ask_research() == "Cancel") {
+        return()
+    }
+    if (about_content() == "Cancel") {
+        return()
+    }
+    post_bug(title = title,
+             text = text,
+             component = component,
+             version = version,
+             product = "R",
+             # To replace when going into production by: "https://bugs.r-project.org/bugzilla/"
+             host = "https://rbugs-devel.urbanek.info/bugzilla/",
+             key = missing_key(key),
+             ...)
 }
