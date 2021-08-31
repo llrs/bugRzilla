@@ -12,7 +12,7 @@ check_authentication(key = Sys.getenv("R_BUGZILLA"), host)
 \arguments{
 \item{host}{URL of the bugzilla instance if missing the R bugzilla is assumed.}
 
-\item{key}{API key to check.}
+\item{key}{API key name to check. By default R_BUGZILLA.}
 }
 \value{
 TRUE invisibly if the actions are performed.

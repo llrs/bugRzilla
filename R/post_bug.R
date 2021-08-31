@@ -7,12 +7,17 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' Open an issue.
 #'
 #' Guides through the process of creating an issue.
-#' Requires an user and an API key.
+#' Requires an user and an API key. `post_r_bug` is a helper with some checks
+#' and advice before submitting issues to the R Bugzilla database.
+#'
+#' Many arguments can be passed, read the documentation on the reference to
 #' @param text A character vector with the text of the bug you want to
 #' open.
 #' @param title A character vector with the title of the bug.
 #' @param component A character with the component of R you want to fill an issue with.
-#' @param version A character of the Version you want to use eg "R 4.0.0".
+#' If you omit it while using the `post_r_bug` you will be promted to fill it.
+#' @param version A character of the version you want to use eg "R 4.0.0".
+#' If omitted on post_r_bug it will be automatically assumed to be from the version of R being used.
 #' @param product A character of the product you want to use if missing "R" is
 #' automatically filled.
 #' @param ... Named arguments passed to the API [check documentation](https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html)
@@ -22,7 +27,8 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' @export
 #' @seealso To obtain and use the API key see create_bugzilla_key().
 #' [Webpage](https://bugs.r-project.org/bugzilla/enter_bug.cgi) for manual entry
-#' @return The ID of the issue posted.
+#' @return The ID of the issue posted. NULL if the user doesn't follow the advice.
+#' @references <https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html#create-bug>
 post_bug <- function(title, text, component, version, product, ...,
                     host, key) {
     title <- paste("BugRzilla:", title)
@@ -31,9 +37,7 @@ post_bug <- function(title, text, component, version, product, ...,
              call. = FALSE)
     } else if (Sys.getenv("RBUGZILLA") != "" & product == "R") {
         ask_final_confirmation()
-        Sys.unsetenv("RBUGZILLA")
     } else {
-        Sys.unsetenv("RBUGZILLA")
         ask_confirmation("Are you really sure?")
     }
     url <- paste0(host, "rest/bug")
@@ -55,6 +59,9 @@ post_bug <- function(title, text, component, version, product, ...,
     bugs <- httr::content(bugs)
     bugs$id
 }
+
+#' @export
+#' @rdname post_bug
 post_r_bug <- function(title, text, component, version, ..., key) {
     # Provide some checks/questions to the users
     # Fill description, version and summary
@@ -65,6 +72,7 @@ post_r_bug <- function(title, text, component, version, ..., key) {
     }
     version <- missing_version(version)
     Sys.setenv("RBUGZILLA" = "a")
+    on.exit(Sys.unsetenv("RBUGZILLA"), add = TRUE)
     if (read_documentation() == "Cancel") {
         return()
     }

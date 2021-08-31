@@ -10,7 +10,7 @@ missing_key <- function(key) {
 #' Obtain an API key or check if it can fine one that works for this host and
 #' the version of the bugzilla provided works with this package.
 #' @param host URL of the bugzilla instance if missing the R bugzilla is assumed.
-#' @param key API key to check.
+#' @param key API key name to check. By default R_BUGZILLA.
 #' @return TRUE invisibly if the actions are performed.
 #' @seealso set_key() if you want to temporary use an API key.
 #' @rdname authentication
@@ -104,20 +104,6 @@ app_file <- function() {
     dir.create(path, showWarnings = FALSE, recursive = TRUE)
     file.path(normalizePath(path), ".Renviron")
 }
-
-
-# use_key <- function(){
-#     path <- app_file()
-#     file <- strsplit(readLines(path), split = "=", fixed = TRUE)
-#     key <- vector("characer", length(file))
-#     value <- vector("character", length(file))
-#     for (i in seq_along(file)) {
-#         key[i] <- file[[i]][1]
-#         value[i] <- file[[i]][2]
-#     }
-#     message("choose a key:")
-#     key[tools::menu(key)]
-# }
 
 write_renviron <- function(key, value, file) {
     if (!dir.exists(dirname(file))) {

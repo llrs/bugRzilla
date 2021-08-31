@@ -2,35 +2,47 @@
 % Please edit documentation in R/post_bug.R
 \name{post_bug}
 \alias{post_bug}
+\alias{post_r_bug}
 \title{Open an issue.}
 \usage{
-post_bug(text, title, component, ..., version, product, host, key)
+post_bug(title, text, component, version, product, ..., host, key)
+
+post_r_bug(title, text, component, version, ..., key)
 }
 \arguments{
+\item{title}{A character vector with the title of the bug.}
+
 \item{text}{A character vector with the text of the bug you want to
 open.}
 
-\item{title}{A character vector with the title of the bug.}
+\item{component}{A character with the component of R you want to fill an issue with.
+If you omit it while using the \code{post_r_bug} you will be promted to fill it.}
 
-\item{component}{A character with the component of R you want to fill an issue with.}
-
-\item{...}{Named arguments passed to the API \href{https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html}{check documentation}}
-
-\item{version}{A character of the Version you want to use eg "R 4.0.0".}
+\item{version}{A character of the version you want to use eg "R 4.0.0".
+If omitted on post_r_bug it will be automatically assumed to be from the version of R being used.}
 
 \item{product}{A character of the product you want to use if missing "R" is
 automatically filled.}
 
+\item{...}{Named arguments passed to the API \href{https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html}{check documentation}}
+
 \item{host}{URL of the bugzilla instance if missing the R bugzilla is assumed.}
 
-\item{key}{API key to check.}
+\item{key}{API key name to check. By default R_BUGZILLA.}
 }
 \value{
-The ID of the issue posted.
+The ID of the issue posted. NULL if the user doesn't follow the advice.
 }
 \description{
 Guides through the process of creating an issue.
-Requires an user and an API key.
+Requires an user and an API key. \code{post_r_bug} is a helper with some checks
+and advice before submitting issues to the R Bugzilla database.
+}
+\details{
+Many arguments can be passed, read the documentation on the reference to
+}
+\references{
+\url{https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html#create-bug}
 }
 \seealso{
 To obtain and use the API key see create_bugzilla_key().
