@@ -5,7 +5,17 @@
 \alias{post_r_bug}
 \title{Open an issue.}
 \usage{
-post_bug(title, text, component, version, product, ..., host, key)
+post_bug(
+  title,
+  text,
+  component,
+  version,
+  product,
+  ...,
+  is_markdown = TRUE,
+  host,
+  key
+)
 
 post_r_bug(title, text, component, version, ..., key)
 }
@@ -16,7 +26,7 @@ post_r_bug(title, text, component, version, ..., key)
 open.}
 
 \item{component}{A character with the component of R you want to fill an issue with.
-If you omit it while using the \code{post_r_bug} you will be promted to fill it.}
+If you omit it while using the \code{post_r_bug} you will be prompted to fill it.}
 
 \item{version}{A character of the version you want to use eg "R 4.0.0".
 If omitted on post_r_bug it will be automatically assumed to be from the version of R being used.}
@@ -25,6 +35,8 @@ If omitted on post_r_bug it will be automatically assumed to be from the version
 automatically filled.}
 
 \item{...}{Named arguments passed to the API \href{https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html}{check documentation}}
+
+\item{is_markdown}{Is using markdown formatting? True by default.}
 
 \item{host}{URL of the bugzilla instance if missing the R bugzilla is assumed.}
 
@@ -42,7 +54,8 @@ and advice before submitting issues to the R Bugzilla database.
 Many arguments can be passed, read the documentation on the reference to
 }
 \references{
-\url{https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html#create-bug}
+API parameters: \url{https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html#create-bug}
+Markdown allowed: \url{https://bugs.r-project.org/page.cgi?id=markdown.html}
 }
 \seealso{
 To obtain and use the API key see create_bugzilla_key().

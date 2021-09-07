@@ -15,11 +15,12 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' open.
 #' @param title A character vector with the title of the bug.
 #' @param component A character with the component of R you want to fill an issue with.
-#' If you omit it while using the `post_r_bug` you will be promted to fill it.
+#' If you omit it while using the `post_r_bug` you will be prompted to fill it.
 #' @param version A character of the version you want to use eg "R 4.0.0".
 #' If omitted on post_r_bug it will be automatically assumed to be from the version of R being used.
 #' @param product A character of the product you want to use if missing "R" is
 #' automatically filled.
+#' @param is_markdown Is using markdown formatting? True by default.
 #' @param ... Named arguments passed to the API [check documentation](https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html)
 #' @inheritParams create_bugzilla_key
 #' @importFrom utils menu
@@ -28,8 +29,9 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' @seealso To obtain and use the API key see create_bugzilla_key().
 #' [Webpage](https://bugs.r-project.org/bugzilla/enter_bug.cgi) for manual entry
 #' @return The ID of the issue posted. NULL if the user doesn't follow the advice.
-#' @references <https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html#create-bug>
-post_bug <- function(title, text, component, version, product, ...,
+#' @references API parameters: <https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html#create-bug>
+#' Markdown allowed: <https://bugs.r-project.org/page.cgi?id=markdown.html>
+post_bug <- function(title, text, component, version, product, ..., is_markdown = TRUE,
                     host, key) {
     title <- paste("BugRzilla:", title)
     if (Sys.getenv("RBUGZILLA") == "" & product == "R") {
@@ -48,6 +50,7 @@ post_bug <- function(title, text, component, version, product, ...,
                            component = component,
                            summary = title,
                            version = version,
+                           is_markdown = is_markdown,
                            ...),
                        encode = "json",
                        config = set_headers(key))
