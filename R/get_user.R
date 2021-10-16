@@ -1,3 +1,15 @@
+#' User information
+#'
+#' Retrieve information about users. Requires authentication.
+#' @param ids Id of the users.
+#' @param names Names of the users.
+#' @inheritParams get_bug
+#'
+#' @return Information about the users
+#' @export
+#'
+#' @examples
+#' gu <- get_user(1)
 get_user <- function(ids, names = NULL, host) {
     host <- missing_host(host)
 
