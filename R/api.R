@@ -140,8 +140,13 @@ check_authentication <- function(key = Sys.getenv("R_BUGZILLA"), host) {
     whoami <- httr::GET(paste0(host, "rest/whoami"),
                         httr::add_headers("X-BUGZILLA-API-KEY" = key,
                                           "User-agent" = "https://github.com/llrs/bugRzilla/"))
+    if (httr::status_code(whoami) == 404) {
+        cli::cli_alert_danger("API is not working.")
+        return(invisible(FALSE))
+    }
     if ("error" %in% names(httr::content(whoami))) {
         cli::cli_alert_danger("Not authenticated on this site.")
+        return(invisible(FALSE))
     }
     cli::cli_alert_success("Authenticated on this site!")
     invisible(TRUE)
