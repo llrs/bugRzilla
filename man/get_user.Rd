@@ -21,7 +21,9 @@ real name, id, groups, and if they can log in.
 Retrieve information about users. Requires authentication.
 }
 \examples{
-gu <- get_user(1)
+\dontrun{
+use_key()
+gu <- get_user(2)}
 }
 \references{
 \url{https://bugzilla.readthedocs.io/en/latest/api/core/v1/user.html#get-user}

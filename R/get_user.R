@@ -10,7 +10,7 @@
 #' @export
 #' @references <https://bugzilla.readthedocs.io/en/latest/api/core/v1/user.html#get-user>
 #' @examples
-#' dontrun{
+#' \dontrun{
 #' use_key()
 #' gu <- get_user(2)}
 get_user <- function(ids, names = NULL, host) {
