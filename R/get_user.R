@@ -2,14 +2,17 @@
 #'
 #' Retrieve information about users. Requires authentication.
 #' @param ids Id of the users.
-#' @param names Names of the users.
+#' @param names Names of the users. Should be without spaces and with the right encoding.
 #' @inheritParams get_bug
 #'
-#' @return Information about the users
+#' @return A data.frame with information about the users:
+#' real name, id, groups, and if they can log in.
 #' @export
-#'
+#' @references <https://bugzilla.readthedocs.io/en/latest/api/core/v1/user.html#get-user>
 #' @examples
-#' gu <- get_user(1)
+#' dontrun{
+#' use_key()
+#' gu <- get_user(2)}
 get_user <- function(ids, names = NULL, host) {
     host <- missing_host(host)
 
@@ -23,28 +26,36 @@ get_user <- function(ids, names = NULL, host) {
         stop("names must be character.", call. = FALSE)
     }
 
-    if (!missing(ids) && length(ids) > 1) {
-        params <- paste0("?id=", paste0(ids, collapse = "&ids="))
-    } else if (!is.null(names) && length(names) > 1) {
-        params <- paste0("?names=", paste0(names, collapse = "&name="))
-    }
-    path <- "res/user"
+    path <- "rest/user"
 
-    if (!missing(ids) && length(ids) == 1 || !is.null(names) && length(names) == 1) {
-        path <- "res/user/"
-        if (!missing(ids)) {
-            params <- ids
-        } else {
-            params <- names
-        }
+    if (!missing(ids) && length(ids) == 1) {
+        query <- NULL
+        path <- paste0(path, "/", ids)
+    } else if (!missing(ids) && length(ids) > 1) {
+        query <- paste0("?ids=", paste0(ids, collapse = "&ids="))
+    } else if(!is.null(names) && length(names) >= 1) {
+        query <- paste0("?names=", paste0(names, collapse = "&names="))
     }
 
-    browser()
-    url <- paste0(host, path, params)
+    url <- paste0(host, path, query)
     users <- httr::GET(url, .state$headers)
     httr::stop_for_status(users)
-    users <- httr::content(users)
+    u <- httr::content(users)
+    users <- lapply(u$users, user)
+    if (length(u$users) > 1) {
+        users <- do.call(rbind, users)
+    } else {
+        users <- users[[1]]
+    }
+    users <- as.data.frame(users)
+    users$id <- as.numeric(users$id)
+    users$can_login <- as.logical(users$can_login)
+    users
 }
 
 
+user <- function(x) {
+    # We omit the name column as it contains the email and the group
+    t(simplify2array(x[c("real_name", "id", "can_login")]))
+}
 

@@ -1,0 +1,43 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://bugs.r-project.org/rest/user?ids=1&ids=2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-BUGZILLA-API-KEY: Removing this header too just in case
+      User-Agent: https://github.com/llrs/bugRzilla/
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx
+      date: Thu, 21 Oct 2021 20:55:29 GMT
+      content-type: application/json; charset=UTF-8
+      content-length: '215'
+      etag: mz+olahE9YOtDw3P3RaKZg
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-login, x-bugzilla-token, x-bugzilla-password, x-bugzilla-api-key
+      access-control-allow-origin: '*'
+      content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline'
+        'unsafe-eval'; style-src 'self' 'unsafe-inline'
+      x-content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline'
+        'unsafe-eval'; style-src 'self' 'unsafe-inline'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-webkit-csp: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';
+        style-src 'self' 'unsafe-inline'
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"users":[{"can_login":true,"name":"admin@urbanek.info","id":1,"groups":[],"real_name":"Simon
+        Urbanek"},{"can_login":true,"name":"jitterbug-import","id":2,"groups":[],"real_name":"Jitterbug
+        compatibility account"}]}'
+  recorded_at: 2021-10-21 20:55:29 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

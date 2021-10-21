@@ -9,16 +9,20 @@ get_user(ids, names = NULL, host)
 \arguments{
 \item{ids}{Id of the users.}
 
-\item{names}{Names of the users.}
+\item{names}{Names of the users. Should be without spaces and with the right encoding.}
 
 \item{host}{URL of the bugzilla instance if missing the R bugzilla is assumed.}
 }
 \value{
-Information about the users
+A data.frame with information about the users:
+real name, id, groups, and if they can log in.
 }
 \description{
 Retrieve information about users. Requires authentication.
 }
 \examples{
 gu <- get_user(1)
+}
+\references{
+\url{https://bugzilla.readthedocs.io/en/latest/api/core/v1/user.html#get-user}
 }
