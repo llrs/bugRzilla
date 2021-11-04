@@ -7,12 +7,15 @@
 #'
 #' @return A data.frame with information about the users:
 #' real name, id, groups, and if they can log in.
+#'
+#' If the real name is not provided it uses the email address without the email provider.
 #' @export
 #' @references <https://bugzilla.readthedocs.io/en/latest/api/core/v1/user.html#get-user>
 #' @examples
 #' \dontrun{
 #' use_key()
-#' gu <- get_user(2)}
+#' gu <- get_user(2)
+#' }
 get_user <- function(ids, names = NULL, host) {
     host <- missing_host(host)
 
@@ -56,6 +59,10 @@ get_user <- function(ids, names = NULL, host) {
 
 user <- function(x) {
     # We omit the name column as it contains the email and the group
+    # When the user doesn't provide a name the first part of the email is used
+    if (nchar(x[["real_name"]]) == 0) {
+        x[["real_name"]] <- gsub("@.+", "@", x["name"])
+    }
     t(simplify2array(x[c("real_name", "id", "can_login")]))
 }
 

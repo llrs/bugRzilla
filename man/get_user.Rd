@@ -16,6 +16,8 @@ get_user(ids, names = NULL, host)
 \value{
 A data.frame with information about the users:
 real name, id, groups, and if they can log in.
+
+If the real name is not provided it uses the email address without the email provider.
 }
 \description{
 Retrieve information about users. Requires authentication.
@@ -23,7 +25,8 @@ Retrieve information about users. Requires authentication.
 \examples{
 \dontrun{
 use_key()
-gu <- get_user(2)}
+gu <- get_user(2)
+}
 }
 \references{
 \url{https://bugzilla.readthedocs.io/en/latest/api/core/v1/user.html#get-user}
