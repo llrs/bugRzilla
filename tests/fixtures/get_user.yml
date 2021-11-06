@@ -1,0 +1,42 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://bugs.r-project.org/rest/user/2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-BUGZILLA-API-KEY: Removing this header too just in case
+      User-Agent: https://github.com/llrs/bugRzilla/
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx
+      date: Sat, 06 Nov 2021 16:05:59 GMT
+      content-type: application/json; charset=UTF-8
+      content-length: '121'
+      etag: 6poHRz3to1elvvFf5cDdKQ
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-api-key, x-bugzilla-password, x-bugzilla-login, x-bugzilla-token
+      access-control-allow-origin: '*'
+      content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline'
+        'unsafe-eval'; style-src 'self' 'unsafe-inline'
+      x-content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline'
+        'unsafe-eval'; style-src 'self' 'unsafe-inline'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-webkit-csp: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';
+        style-src 'self' 'unsafe-inline'
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"users":[{"id":2,"can_login":true,"name":"jitterbug-import","real_name":"Jitterbug
+        compatibility account","groups":[]}]}'
+  recorded_at: 2021-11-06 16:05:59 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

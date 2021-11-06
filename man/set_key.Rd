@@ -15,7 +15,7 @@ use_key(key_name = "R_BUGZILLA")
 \item{key_name}{The name of the API key, by default "R_BUGZILLA".}
 }
 \value{
-TRUE
+A logical value if said key is can be used.
 }
 \description{
 If you don't want to have the API key on .Renviron or you want to use another

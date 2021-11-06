@@ -3,7 +3,7 @@
     Code
       create_bugzilla_key()
     Message <cliMessage>
-      i Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
+      i Reading cached keys on '/home/lluis/.cache/R/bugRzilla/.Renviron'.
       v Found key `R_BUGZILLA`.
       v Using key `R_BUGZILLA`.
       v Authenticated on this site!
@@ -13,7 +13,7 @@
     Code
       create_bugzilla_key()
     Message <cliMessage>
-      ℹ Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
+      ℹ Reading cached keys on '/home/lluis/.cache/R/bugRzilla/.Renviron'.
       ✔ Found key `R_BUGZILLA`.
       ✔ Using key `R_BUGZILLA`.
       ✔ Authenticated on this site!

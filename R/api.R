@@ -41,7 +41,7 @@ create_bugzilla_key <- function(host) {
 #' environment which will only work for this R session.
 #' @param key The API key you want to use.
 #' @param key_name The name of the API key, by default "R_BUGZILLA".
-#' @return TRUE
+#' @return A logical value if said key is can be used.
 #' @importFrom tools R_user_dir
 #' @export
 set_key <- function(key, key_name = "R_BUGZILLA") {
@@ -76,6 +76,7 @@ check_key <- function(key_name, verbose = TRUE) {
 }
 
 #' @rdname set_key
+#' @export
 use_key <- function(key_name = "R_BUGZILLA") {
     if (!check_key(key_name, verbose = FALSE)) {
         cli_alert_danger("Key {.code {key_name}} not found. Use {.code set_key()}")
