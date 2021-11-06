@@ -91,7 +91,7 @@ post_r_bug <- function(title, text, component, version, ..., key) {
              version = version,
              product = "R",
              # To replace when going into production by: "https://bugs.r-project.org/bugzilla/"
-             host = "https://rbugs-devel.urbanek.info/bugzilla/",
+             host = "https://rbugs-devel.urbanek.info/",
              key = missing_key(key),
              ...)
 }
