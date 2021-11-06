@@ -147,23 +147,25 @@
     <p>A data.frame with the information available.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_attachment</span><span class='op'>(</span>issue <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                                                                                                                                                                                   data
-#&gt; 1 I2luY2x1ZGUgPFJpbnRlcm5hbHMuaD4KClNFWFAgbXlFdmFsKFNFWFAgRk4sIFNFWFAgZmlyc3RfYXJnKSB7CiAgcmV0dXJuIGV2YWwoTENPTlMoRk4sIENPTlMoZmlyc3RfYXJnLCBSX05pbFZhbHVlKSksIFJfR2xvYmFsRW52KTsKfQo=
-#&gt;   creator bug_id       creation_time id flags file_name size
-#&gt; 1   admin      1 2010-02-16 17:42:59  1    NA      ed.c  134
-#&gt;      last_change_time content_type is_obsolete is_patch is_private
-#&gt; 1 2010-02-16 17:43:29   text/plain       FALSE    FALSE      FALSE
-#&gt;               summary
-#&gt; 1 test attachment ...</div><div class='input'><span class='fu'>get_attachment</span><span class='op'>(</span>attachment <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                                                                                                                                                                                   data
-#&gt; 1 I2luY2x1ZGUgPFJpbnRlcm5hbHMuaD4KClNFWFAgbXlFdmFsKFNFWFAgRk4sIFNFWFAgZmlyc3RfYXJnKSB7CiAgcmV0dXJuIGV2YWwoTENPTlMoRk4sIENPTlMoZmlyc3RfYXJnLCBSX05pbFZhbHVlKSksIFJfR2xvYmFsRW52KTsKfQo=
-#&gt;   creator bug_id id flags       creation_time size file_name
-#&gt; 1   admin      1  1    NA 2010-02-16 17:42:59  134      ed.c
-#&gt;      last_change_time content_type is_patch is_obsolete is_private
-#&gt; 1 2010-02-16 17:43:29   text/plain    FALSE       FALSE      FALSE
-#&gt;               summary
-#&gt; 1 test attachment ...</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>get_attachment</span><span class='op'>(</span>issue <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>               summary is_private is_obsolete is_patch content_type</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 test attachment ...      FALSE       FALSE    FALSE   text/plain</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      last_change_time size file_name id flags       creation_time bug_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 2010-02-16 17:43:29  134      ed.c  1    NA 2010-02-16 17:42:59      1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   creator</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1   admin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                                                                                                                                                   data</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 I2luY2x1ZGUgPFJpbnRlcm5hbHMuaD4KClNFWFAgbXlFdmFsKFNFWFAgRk4sIFNFWFAgZmlyc3RfYXJnKSB7CiAgcmV0dXJuIGV2YWwoTENPTlMoRk4sIENPTlMoZmlyc3RfYXJnLCBSX05pbFZhbHVlKSksIFJfR2xvYmFsRW52KTsKfQo=</span>
+<span class='r-in'><span class='fu'>get_attachment</span><span class='op'>(</span>attachment <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   content_type    last_change_time file_name size             summary</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1   text/plain 2010-02-16 17:43:29      ed.c  134 test attachment ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   is_private is_patch is_obsolete creator</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1      FALSE    FALSE       FALSE   admin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                                                                                                                                                   data</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 I2luY2x1ZGUgPFJpbnRlcm5hbHMuaD4KClNFWFAgbXlFdmFsKFNFWFAgRk4sIFNFWFAgZmlyc3RfYXJnKSB7CiAgcmV0dXJuIGV2YWwoTENPTlMoRk4sIENPTlMoZmlyc3RfYXJnLCBSX05pbFZhbHVlKSksIFJfR2xvYmFsRW52KTsKfQo=</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         creation_time flags id bug_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 2010-02-16 17:42:59    NA  1      1</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

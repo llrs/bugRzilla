@@ -31,6 +31,9 @@
     <loc>https://bugrzilla.llrs.dev/reference/get_history.html</loc>
   </url>
   <url>
+    <loc>https://bugrzilla.llrs.dev/reference/get_user.html</loc>
+  </url>
+  <url>
     <loc>https://bugrzilla.llrs.dev/reference/post_bug.html</loc>
   </url>
   <url>

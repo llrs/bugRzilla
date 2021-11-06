@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve comment — get_comment • bugRzilla</title>
+<title>User information — get_user • bugRzilla</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Retrieve comment — get_comment" />
-<meta property="og:description" content="Get comments from an issue or by id of the comment." />
+<meta property="og:title" content="User information — get_user" />
+<meta property="og:description" content="Retrieve information about users. Requires authentication." />
 
 
 <meta name="robots" content="noindex">
@@ -114,28 +114,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve comment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/get_comments.R'><code>R/get_comments.R</code></a></small>
-    <div class="hidden name"><code>get_comment.Rd</code></div>
+    <h1>User information</h1>
+    <small class="dont-index">Source: <a href='https://github.com/llrs/bugRzilla/blob/master/R/get_user.R'><code>R/get_user.R</code></a></small>
+    <div class="hidden name"><code>get_user.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get comments from an issue or by id of the comment.</p>
+    <p>Retrieve information about users. Requires authentication.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_comment</span><span class='op'>(</span><span class='va'>issue</span>, <span class='va'>comment</span>, <span class='va'>host</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_user</span><span class='op'>(</span><span class='va'>ids</span>, names <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>host</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>issue</th>
-      <td><p>Number of the issue.</p></td>
+      <th>ids</th>
+      <td><p>Id of the users.</p></td>
     </tr>
     <tr>
-      <th>comment</th>
-      <td><p>A character with the id of the comment eg. "1", can be
-missing and it will retrieve all comments.</p></td>
+      <th>names</th>
+      <td><p>Names of the users. Should be without spaces and with the right encoding.</p></td>
     </tr>
     <tr>
       <th>host</th>
@@ -145,15 +144,18 @@ missing and it will retrieve all comments.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>data.frame</code> with creation_time, text, creator, time,
-attachment_id, bug_id.</p>
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <p>A data.frame with information about the users:
+real name, id, groups, and if they can log in.</p>
+<p>If the real name is not provided it uses the email address without the email provider.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>It doesn't require being authenticated.</p>
+    <p><a href='https://bugzilla.readthedocs.io/en/latest/api/core/v1/user.html#get-user'>https://bugzilla.readthedocs.io/en/latest/api/core/v1/user.html#get-user</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='va'>i1</span> <span class='op'>&lt;-</span> <span class='fu'>get_comment</span><span class='op'>(</span>issue <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='co'># The comments on the first issue</span></span>
-<span class='r-in'><span class='va'>c1</span> <span class='op'>&lt;-</span> <span class='fu'>get_comment</span><span class='op'>(</span>comment <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='co'># Just the first comment</span></span>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='fu'><a href='set_key.html'>use_key</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>gu</span> <span class='op'>&lt;-</span> <span class='fu'>get_user</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
