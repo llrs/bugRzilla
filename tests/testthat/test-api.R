@@ -10,8 +10,10 @@ cli::test_that_cli(configs = c("plain", "unicode"), "create_bugzilla_key() works
 # This is to check the set_key function
 test_that("set_key works", {
     skip_on_ci()
-    sk <- set_key()
-    expect_equal(write_renviron(key = sk, value = sk, file = app_file()), NULL)
+    expect_snapshot({
+        sk <- set_key()
+        expect_equal(write_renviron(key = sk, value = sk, file = app_file()), NULL)
+    })
 })
 
 

@@ -3,10 +3,9 @@
     Code
       create_bugzilla_key()
     Message <cliMessage>
-      i Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
+      i Reading cached keys on '/home/lluis/.cache/R/bugRzilla/.Renviron'.
       v Found key `R_BUGZILLA`.
       v Using key `R_BUGZILLA`.
-      x Not authenticated on this site.
       v Authenticated on this site!
 
 # create_bugzilla_key() works [unicode]
@@ -14,11 +13,23 @@
     Code
       create_bugzilla_key()
     Message <cliMessage>
-      ℹ Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
+      ℹ Reading cached keys on '/home/lluis/.cache/R/bugRzilla/.Renviron'.
       ✔ Found key `R_BUGZILLA`.
       ✔ Using key `R_BUGZILLA`.
-      ✖ Not authenticated on this site.
       ✔ Authenticated on this site!
+
+# set_key works
+
+    Code
+      sk <- set_key()
+    Message <cliMessage>
+      i Reading cached keys on '/home/data/.cache/R/bugRzilla/.Renviron'.
+      v Found key `R_BUGZILLA`.
+      v Using key `R_BUGZILLA`.
+    Code
+      expect_equal(write_renviron(key = sk, value = sk, file = app_file()), NULL)
+    Message <cliMessage>
+      v Storing key on '/home/data/.cache/R/bugRzilla/.Renviron'.
 
 # check_key() works [plain]
 
