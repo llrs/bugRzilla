@@ -1,0 +1,43 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://rbugs-devel.urbanek.info/rest/bug/1/comment
+    body:
+      encoding: ''
+      string: '{"comment":"testing\n\nPosted via bugRzilla package.","is_markdown":true}'
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: application/json
+      X-BUGZILLA-API-KEY: Removing this header too just in case
+      User-Agent: https://github.com/llrs/bugRzilla/
+  response:
+    status:
+      status_code: 201
+      category: Success
+      reason: Created
+      message: 'Success: (201) Created'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Sun, 07 Nov 2021 12:55:42 GMT
+      content-type: application/json; charset=UTF-8
+      transfer-encoding: chunked
+      connection: keep-alive
+      access-control-allow-headers: accept, content-type, origin, user-agent, x-requested-with,
+        x-bugzilla-login, x-bugzilla-api-key, x-bugzilla-password, x-bugzilla-token
+      access-control-allow-origin: '*'
+      content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline'
+        'unsafe-eval'; style-src 'self' 'unsafe-inline'
+      x-content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline'
+        'unsafe-eval'; style-src 'self' 'unsafe-inline'
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-webkit-csp: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';
+        style-src 'self' 'unsafe-inline'
+      x-xss-protection: 1; mode=block
+      etag: zdcOv9Pr4J8aMrqw8uP2Jw
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"id":97894}'
+  recorded_at: 2021-11-07 12:55:42 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
