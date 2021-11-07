@@ -7,10 +7,12 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' Open an issue.
 #'
 #' Guides through the process of creating an issue.
-#' Requires an user and an API key. `post_r_bug` is a helper with some checks
+#' Requires an user and an API key, see the vignette to know how to obtain that.
+#' `post_r_bug()` is a helper with some checks
 #' and advice before submitting issues to the R Bugzilla database.
 #'
 #' Many arguments can be passed, read the documentation on the reference to
+#' know what can be added.
 #' @param text A character vector with the text of the bug you want to
 #' open.
 #' @param title A character vector with the title of the bug.
@@ -21,13 +23,14 @@ components <- c("Accuracy", "Add-ons", "Analyses", "Documentation", "Graphics",
 #' @param product A character of the product you want to use if missing "R" is
 #' automatically filled.
 #' @param is_markdown Is using markdown formatting? True by default.
-#' @param ... Named arguments passed to the API [check documentation](https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html)
+#' @param ... Named arguments passed to the API [check documentation](https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html#create-bug)
 #' @inheritParams create_bugzilla_key
 #' @importFrom utils menu
 #' @importFrom cli cli_alert
 #' @export
-#' @seealso To obtain and use the API key see create_bugzilla_key().
-#' [Webpage](https://bugs.r-project.org/bugzilla/enter_bug.cgi) for manual entry
+#' @seealso To obtain and use the API key see `create_bugzilla_key()`.
+#'
+#' [Webpage](https://bugs.r-project.org/bugzilla/enter_bug.cgi) for manual entry for the R project.
 #' @return The ID of the issue posted. NULL if the user doesn't follow the advice.
 #' @references API parameters: <https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html#create-bug>
 #' Markdown allowed: <https://bugs.r-project.org/page.cgi?id=markdown.html>
@@ -95,3 +98,6 @@ post_r_bug <- function(title, text, component, version, ..., key) {
              key = missing_key(key),
              ...)
 }
+
+
+# Markdown formatting is conserved (copying content from bug 18231 and directly posting it accepts markdown)

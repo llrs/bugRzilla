@@ -34,7 +34,7 @@ If omitted on post_r_bug it will be automatically assumed to be from the version
 \item{product}{A character of the product you want to use if missing "R" is
 automatically filled.}
 
-\item{...}{Named arguments passed to the API \href{https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html}{check documentation}}
+\item{...}{Named arguments passed to the API \href{https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html#create-bug}{check documentation}}
 
 \item{is_markdown}{Is using markdown formatting? True by default.}
 
@@ -52,12 +52,14 @@ and advice before submitting issues to the R Bugzilla database.
 }
 \details{
 Many arguments can be passed, read the documentation on the reference to
+know what can be added.
 }
 \references{
 API parameters: \url{https://bugzilla.readthedocs.io/en/latest/api/core/v1/bug.html#create-bug}
 Markdown allowed: \url{https://bugs.r-project.org/page.cgi?id=markdown.html}
 }
 \seealso{
-To obtain and use the API key see create_bugzilla_key().
-\href{https://bugs.r-project.org/bugzilla/enter_bug.cgi}{Webpage} for manual entry
+To obtain and use the API key see \code{create_bugzilla_key()}.
+
+\href{https://bugs.r-project.org/bugzilla/enter_bug.cgi}{Webpage} for manual entry for the R project.
 }
