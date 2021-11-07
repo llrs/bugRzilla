@@ -47,7 +47,8 @@ The ID of the issue posted. NULL if the user doesn't follow the advice.
 }
 \description{
 Guides through the process of creating an issue.
-Requires an user and an API key. \code{post_r_bug} is a helper with some checks
+Requires an user and an API key, see the vignette to know how to obtain that.
+\code{post_r_bug()} is a helper with some checks
 and advice before submitting issues to the R Bugzilla database.
 }
 \details{

@@ -4,7 +4,7 @@
 \alias{post_comment}
 \title{Post a comment}
 \usage{
-post_comment(issue, comment, is_markdown, host, key)
+post_comment(issue, comment, is_markdown = TRUE, host, key)
 }
 \arguments{
 \item{issue}{A numeric value of the issue ID where the comment should be
@@ -23,4 +23,8 @@ The ID of the comment posted.
 }
 \description{
 Add information to a bug report.
+}
+\seealso{
+\code{post_bug()}, \code{get_comment()}
+See the API reference: \url{https://bugzilla.readthedocs.io/en/latest/api/core/v1/comment.html#create-comments}
 }
