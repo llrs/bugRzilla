@@ -60,7 +60,6 @@ about_content <- function() {
 
 ask_final_confirmation <- function(message) {
     cli::cli_alert_warning("This notification will reach the R-core volunteers and many more")
-    cli::cli_ul("Are you sure to open a bug0
-                ?")
+    cli::cli_ul("Are you sure to open a bug?")
     ask_confirmation()
 }

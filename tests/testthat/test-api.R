@@ -3,7 +3,7 @@ cli::test_that_cli(configs = c("plain", "unicode"), "create_bugzilla_key() works
     skip_on_ci()
     expect_snapshot({
         create_bugzilla_key()
-    })
+    }, transform = function(x){gsub("/home/\\w+/", "~/", x)})
 })
 
 
@@ -13,7 +13,7 @@ test_that("set_key works", {
     expect_snapshot({
         sk <- set_key()
         expect_equal(write_renviron(key = sk, value = sk, file = app_file()), NULL)
-    })
+    }, transform = function(x){gsub("/home/\\w+/", "~/", x)})
 })
 
 
@@ -22,14 +22,14 @@ cli::test_that_cli(configs = c("plain", "unicode"), "check_key() works", {
     skip_on_ci()
     expect_snapshot({
         check_key(key_name = missing_key(),  verbose = FALSE)
-    })
+    }, transform = function(x){gsub("/home/\\w+/", "~/", x)})
 })
 
 # This is to check the use_key function
 cli::test_that_cli(configs = c("plain", "unicode"), "use_key() works", {
     expect_snapshot({
         use_key(missing_key())
-    })
+    }, transform = function(x){gsub("/home/\\w+/", "~/", x)})
 })
 
 
@@ -46,5 +46,5 @@ test_that("check_last_audit works", {
 cli::test_that_cli("valid_key() works", {
     expect_snapshot({
         valid_key(key = "hgfcchg12")
-    })
+    }, transform = function(x){gsub("/home/\\w+/", "~/", x)})
 })

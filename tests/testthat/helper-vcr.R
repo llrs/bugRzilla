@@ -13,9 +13,11 @@ if (!nzchar(Sys.getenv("R_BUGZILLA"))) {
 use_key()
 
 invisible(vcr::vcr_configure(
-  dir = vcr_dir,
-  filter_request_headers = list(
-    "Authorization" = "My bearer token is safe",
-    "X-BUGZILLA-API-KEY" = "Removing this header too just in case")
+    dir = vcr_dir,
+    filter_request_headers = list(
+        "Authorization" = "My bearer token is safe",
+        "X-BUGZILLA-API-KEY" = "Removing this header too just in case"),
+    serialize_with = "json"
 ))
 vcr::check_cassette_names()
+

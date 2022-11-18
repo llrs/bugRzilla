@@ -17,7 +17,7 @@ get_comment <- function(issue, comment, host) {
         stop("Provide an issue or a comment to retrieve from.", call. = FALSE)
     }
     if (!missing(issue) && !missing(comment)) {
-        warning("Issue ID is ignored", call. = FALSE)
+        warning("Comment ID is ignored", call. = FALSE)
     }
     host <- missing_host(host)
     if (missing(issue)) {
@@ -70,15 +70,28 @@ get_commenti <- function(issue, host) {
 #' @param comment The text you want to post.
 #' @inheritParams create_bugzilla_key
 #' @return The ID of the comment posted.
+#' @seealso `post_bug()`, `get_comment()`
+#' See the API reference: <https://bugzilla.readthedocs.io/en/latest/api/core/v1/comment.html#create-comments>
 #' @export
-post_comment <- function(issue, comment, is_markdown, host, key) {
-    stopifnot(!is.logical(is_markdown))
+post_comment <- function(issue, comment, is_markdown = TRUE, host, key) {
+    stopifnot(is.logical(is_markdown))
     host <- missing_host(host)
+    comment <- paste0(comment, "\n\nPosted via bugRzilla package.")
     headers <- set_headers(key)
     url <- paste0(host, "rest/bug/", issue, "/comment")
-    # comments <- httr::POST(url,
-    #                        comment = comment, is_markdown = is_markdown,
-    #                        headers)
-    # httr::content(comments)$id
+    comment_resp <- httr::POST(url,
+                           body = list(
+                               comment = comment,
+                               is_markdown = is_markdown),
+                           encode = "json",
+
+                           headers)
+    if (httr::http_error(comment_resp)) {
+        stop("You probably didn't use the right columns or values.\n",
+             "  Check the API documentation as it says:\n\t",
+             httr::content(comment_resp)$message, call. = FALSE)
+    }
+    bugs <- httr::content(comment_resp)
+    bugs$id
 
 }

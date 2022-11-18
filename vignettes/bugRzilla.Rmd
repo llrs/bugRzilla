@@ -22,20 +22,13 @@ library(bugRzilla)
 
 Some time ago the R core team [requested](https://developer.r-project.org/Blog/public/2019/10/09/r-can-use-your-help-reviewing-bug-reports/index.html) help with bugs in bugzilla.
 Some time later on a [thank you post](https://developer.r-project.org/Blog/public/2019/12/16/thanks-for-reviewing-bug-reports/index.html) they reported bugs closed over time.
-Which pointed out that we, users, package developer might not be helping enough.
-This packages tries to lower the barrier to improve R by finding bugs, testing and checking they are reproducible.
+This packages tries to lower the barrier to improve R by helping filling and navigating bugs. 
 
-To do so this package is to support ease the interaction with bugzilla for a user who wants to:
-
--   see what happened/what's happening.
-
--   submit/validate/comment on existing issues.
-
-To do so it uses the Bugzilla API[^1] and sometimes the accessible xml files.
+This package is to support ease the interaction with bugzilla for a user who wants to submit/validate/comment on existing issues using the Bugzilla API[^1].
 
 [^1]: The full documentation of the API is [here](https://bugzilla.readthedocs.io/en/latest/api/index.html "API documentation").
 
-# The package
+# Checking Bugzilla
 
 We can check if there has been an update recently with:
 
@@ -50,7 +43,7 @@ check_last_audit()
 To get information about which issues exists you can call `get_bug()` :
 
 ```{r bugs}
-bugs <- get_bug(1:100)
+bugs <- get_bug(1:5)
 head(bugs)
 plot(bugs$id, bugs$creation_time, 
      main = "Bug ID vs creation time", xlab = "ID", 
